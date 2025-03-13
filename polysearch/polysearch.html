@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <script>
+      class PolySearch extends HTMLElement {
+        constructor() {
+          super();
+          console.log("constructor");
+        }
+        connectedCallback() {
+          console.log("connected call back");
+          // this.doSearch();
+        }
+        static get observedAttributes() {
+          return ["apikey"];
+        }
+
+        attributeChangedCallback(attrName, oldVal, newVal) {
+          console.log({ oldVal, newVal });
+          this.doSearch();
+        }
+
+        doSearch() {
+          if (!this.getAttribute("apikey") || !this.getAttribute("secKey"))
+            return;
+          fetch(
+            "https://api.echo3D.com/query?key=" +
+              this.getAttribute("apiKey") +
+              "&secKey=" +
+              this.getAttribute("secKey")
+            // &entry=5200e857-511a-4312-afcf-9921d9faa9c2&fileFormat=glb"
+          )
+            .then(async (response) => {
+              const bob = await response.json();
+              // alert(bob);
+              // console.log(bob);
+
+              const assets = Object.keys(bob.db).map((key) => bob.db[key]);
+
+              console.log(assets);
+
+              this.renderResults(assets);
+            })
+
+            .catch((error) => {
+              console.error(error);
+            });
+        }
+
+        renderResults(assets) {
+          let html = "<ul>";
+          assets.forEach((asset) => {
+            html +=
+              "<li>" +
+              (asset.additionalData.source ||
+                asset.additionalData.glbHologramStorageFilename ||
+                asset.additionalData.fbxHologramStorageFilename) +
+              "</li>";
+          });
+          this.innerHTML = html + "</ul>";
+        }
+      }
+      if (!customElements.get("poly-search")) {
+        customElements.define("poly-search", PolySearch);
+      }
+    </script>
+  </head>
+  <body>
+    <poly-search
+      apikey="wild-math-6971"
+      secKey="CL9X2ybW1SEBgaGllLLnly33"
+    ></poly-search>
+  </body>
+</html>
