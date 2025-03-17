@@ -1,7 +1,8 @@
 import { TileMap } from "../tilemap/tilemap.js";
 
 class TileApp extends HTMLElement {
-  connectedCallBack() {
+  connectedCallback() {
+    console.log("connected");
     this.innerHTML = "<t-ilemap></t-ilemap>";
   }
 }
@@ -9,3 +10,5 @@ class TileApp extends HTMLElement {
 if (!customElements.get("tile-app")) {
   customElements.define("tile-app", TileApp);
 }
+
+export { TileApp };
