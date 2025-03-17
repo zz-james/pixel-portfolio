@@ -7,7 +7,7 @@
   <image source="tileset.png" width="544" height="672"/>
  </tileset>
  <tileset firstgid="358" name="background" tilewidth="32" tileheight="32" tilecount="240" columns="20">
-  <image source="background.png" width="320" height="192"/>
+  <image source="background.png" width="640" height="384"/>
  </tileset>
  <layer id="1" name="background" width="20" height="12">
   <data encoding="csv">
