@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="10" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="20" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="10" nextobjectid="1">
  <editorsettings>
   <export target="tilemap_01." format="js"/>
  </editorsettings>
- <tileset firstgid="1" name="Tileset_gameplay" tilewidth="16" tileheight="16" tilecount="357" columns="17">
-  <image source="tileset.png" width="272" height="336"/>
+ <tileset firstgid="1" name="Tileset_gameplay" tilewidth="32" tileheight="32" tilecount="357" columns="17">
+  <image source="tileset.png" width="544" height="672"/>
  </tileset>
- <tileset firstgid="358" name="background" tilewidth="16" tileheight="16" tilecount="240" columns="20">
+ <tileset firstgid="358" name="background" tilewidth="32" tileheight="32" tilecount="60" columns="10">
   <image source="background.png" width="320" height="192"/>
  </tileset>
  <layer id="1" name="background" width="20" height="12">

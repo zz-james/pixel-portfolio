@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Time Map</title>
+    <title>tile test</title>
     <script type="module" src="./components/app/app.js"></script>
+
     <style>
       :root {
         --tile-size: 32;
@@ -21,7 +22,7 @@
         width: 98vw;
         height: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
       }
-      t-ile {
+      .tile {
         min-height: var(--tile-size);
         --x: 0;
         --y: -3;
@@ -57,6 +58,39 @@
     </style>
   </head>
   <body>
-    <tile-app></tile-app>
+    <div id="tilemap">
+      <div class="tile"></div>
+      <div class="tile"></div>
+    </div>
+    <script>
+      const viewPortWidth = 98;
+      const cols = 17;
+
+      const root = document.querySelector(":root");
+
+      const tilemapwidth =
+        viewPortWidth * (document.documentElement.clientWidth / 100);
+
+      root.style.setProperty("--screen-tile-width", tilemapwidth / cols); // width of a tile (can't use calc for this as needs to be unitless)
+
+      // now deal with tile
+      const tile = document.querySelector("#tilemap div:nth-of-type(1)");
+      tile.style.setProperty("--x", 0);
+
+      const tile2 = document.querySelector("#tilemap div:nth-of-type(2)");
+      tile2.style.setProperty("--x", 2);
+
+      let walkCounter = 0;
+
+      const walk = () => {
+        // root.style.setProperty("--x", 1);
+        walkCounter--;
+        // if (walkCounter > -20) {
+        //   window.requestAnimationFrame(walk);
+        // }
+      };
+
+      // window.requestAnimationFrame(walk);
+    </script>
   </body>
 </html>
