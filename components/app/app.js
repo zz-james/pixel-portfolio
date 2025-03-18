@@ -2,8 +2,7 @@ import { TileMap } from "../tilemap/tilemap.js";
 
 class TileApp extends HTMLElement {
   connectedCallback() {
-    console.log("connected");
-    this.innerHTML = "<t-ilemap></t-ilemap>";
+    this.innerHTML = `<t-ilemap stageCols='${TileMaps.tilemap_01.width}' stageRows='${TileMaps.tilemap_01.height}'></t-ilemap>`;
   }
 }
 

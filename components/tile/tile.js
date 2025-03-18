@@ -1,15 +1,21 @@
 class Tile extends HTMLElement {
-  tilemapHTML = ""; // string containing constructed html
   tilemapStyles = ""; // string containing initial styles
   x; // the x coord of the tile in the tile map
   y; // the y coord of the tile in the tile map
   tileIndex; // the index number of the tile
   connectedCallback() {
-    // to-do probabbly put a style tag on this i dunno
-    this.innerHTML = "<div></div>";
     this.tileIndex = this.getAttribute("index");
-    // console.log(this.style);
-    this.style.setProperty("--x", this.tileIndex);
+
+    const cols = this.parentElement.tileMapCols;
+
+    // convert index into x and y props
+    const y = (this.tileIndex / cols) | 0;
+
+    const x = this.tileIndex - 1 - cols * y;
+    console.log({ x, y });
+
+    this.style.setProperty("--x", x);
+    this.style.setProperty("--y", y);
   }
 }
 
