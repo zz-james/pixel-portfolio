@@ -28,10 +28,7 @@ class TileMap extends HTMLElement {
     this.tilemapWidth =
       this.viewPortWidth * (document.documentElement.clientWidth / 100);
 
-    root.style.setProperty(
-      "--screen-tile-width",
-      this.tilemapWidth / this.tileMapCols
-    ); // width of a tile (can't use calc for this as needs to be unitless)
+    root.style.setProperty("--screen-tile-width", 32); // width of a tile (can't use calc for this as needs to be unitless)
   }
 
   get tileMapCols() {
