@@ -6,7 +6,7 @@
   --stage-rows: 12;
   --background-width: calc(var(--tile-size) * var(--tilemap-cols));
   --background-height: calc(var(--tile-size) * var(--tilemap-rows));
-  --screen-tile-width: 32; /* it probably wont be this js overwrites this as it can't be done in CSS variables without becoming a px value which you can't use as divisor */
+  --screen-tile-width: 0; /* it probably wont be this js overwrites this as it can't be done in CSS variables without becoming a px value which you can't use as divisor */
 }
 t-ilemap {
   border: 1px solid red;
@@ -34,6 +34,10 @@ t-ile {
     var(--background-width) - var(--screen-tile-width)
   );
 
+  --background-height-adjusted-for-percent-offset: calc(
+    var(--background-height) - var(--screen-tile-width)
+  );
+
   /* this is the x coordinate we start taking from the background image, in integer terms not px as it's not the rendered value */
   --x-tile-offset: calc(var(--x) * var(--tile-size));
   --y-tile-offset: calc(var(--y) * var(--tile-size));
@@ -47,7 +51,10 @@ t-ile {
   );
 
   --y-background-offset: calc(
-    calc(var(--y-tile-offset) / var(--background-height)) * 100%
+    calc(
+      var(--y-tile-offset) / 
+        var(--background-height-adjusted-for-percent-offset)
+      ) * 100%
   );
 
   background-position: var(--x-background-offset) var(--y-background-offset);
