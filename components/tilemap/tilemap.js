@@ -23,6 +23,7 @@ class TileMap extends HTMLElement {
       const tileIndex = TileMaps.tilemap_01.layers[2].data[c];
       tilemapHTML += '<t-ile index="' + tileIndex + '"></t-ile>';
     }
+
     this.innerHTML += tilemapHTML;
 
     this.tilemapWidth =
