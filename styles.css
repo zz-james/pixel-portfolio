@@ -1,0 +1,51 @@
+:root {
+  --tile-size: 32;
+  --tilemap-cols: 17;
+  --tilemap-rows: 21;
+  --stage-cols: 10;
+  --stage-rows: 5;
+  --background-width: calc(var(--tile-size) * var(--tilemap-cols));
+  --screen-tile-width: 32; /* it probably wont be this js overwrites this as it can't be done in CSS variables without becoming a px value which you can't use as divisor */
+}
+t-ilemap {
+  border: 1px solid red;
+  display: grid;
+  grid-template-rows: repeat(var(--stage-rows), 1fr);
+  grid-template-columns: repeat(var(--stage-cols), 1fr);
+  width: 98vw;
+  height: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
+}
+t-ile {
+  /* min-height: var(--tile-size); */
+
+  --x: 0;
+  --y: -3;
+  background-image: url(tileset.png);
+
+  /* scale up the background because it needs to scale with the page */
+  --background-x-size: calc(calc(100% * var(--tilemap-cols)));
+  --background-y-size: calc(calc(100% * var(--tilemap-rows)));
+  background-size: var(--background-x-size) var(--background-y-size); /* these are % values */
+
+  display: inline-block;
+  grid-row: span 1;
+  grid-column: span 1;
+
+  /* calcs -- background width needs to be adjusted because we want 100% to be the start of the last tile not the end nb. integer not px*/
+  --background-width-adjusted-for-percent-offset: calc(
+    var(--background-width) - var(--screen-tile-width)
+  );
+
+  /* this is the x coordinate we start taking from the background image, in integer terms not px as it's not the rendered value */
+  --x-tile-offset: calc(var(--x) * var(--tile-size));
+
+  /* here we calculate the percentage offset in the integer values and use that in the background position prop  which will give us real px values */
+  --x-background-offset: calc(
+    calc(
+        var(--x-tile-offset) /
+          var(--background-width-adjusted-for-percent-offset)
+      ) * 100%
+  );
+
+  background-position: var(--x-background-offset) 0%;
+}
