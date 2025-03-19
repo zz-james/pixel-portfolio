@@ -6,23 +6,34 @@
   --stage-rows: 12;
   --background-width: calc(var(--tile-size) * var(--tilemap-cols));
   --background-height: calc(var(--tile-size) * var(--tilemap-rows));
-  --screen-tile-width: 0; /* it probably wont be this js overwrites this as it can't be done in CSS variables without becoming a px value which you can't use as divisor */
+  --screen-tile-width: 32; /* it probably wont be this js overwrites this as it can't be done in CSS variables without becoming a px value which you can't use as divisor */
+  --screen-tile-height: 32;
 }
-t-ilemap {
-  border: 1px solid red;
+
+t-ile-app {
+  display: block;
+  position: relative;
+  background-image: url(images/background.png);
+  width: 98vw;
+  height: calc(calc(var(--tile-size) * var(--stage-rows)) * 1px);
+}
+
+t-ile-layer {
+  position: absolute;
+  /* border: 1px solid red; */
   display: grid;
   gap: 0;
   grid-template-rows: repeat(var(--stage-rows), 1fr);
   grid-template-columns: repeat(var(--stage-cols), 1fr);
-  width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
-  height: calc(calc(var(--tile-size) * var(--stage-rows)) * 1px);
-  background-image: url(background.png);
+  /* width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px); */
+  width: 100%;
+  height: 100%;
 }
 t-ile {
   display: inline-block;
   grid-row: span 1;
   grid-column: span 1;
-  background-image: url(tileset.png);
+  background-image: url(images/tileset.png);
 
   /* scale up the background because it needs to scale with the page */
   --background-x-size: calc(calc(100% * var(--tilemap-cols)));
@@ -52,8 +63,8 @@ t-ile {
 
   --y-background-offset: calc(
     calc(
-      var(--y-tile-offset) / 
-        var(--background-height-adjusted-for-percent-offset)
+        var(--y-tile-offset) /
+          var(--background-height-adjusted-for-percent-offset)
       ) * 100%
   );
 

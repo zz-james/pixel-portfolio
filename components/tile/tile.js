@@ -12,7 +12,6 @@ class Tile extends HTMLElement {
     const y = (this.tileIndex / cols) | 0;
 
     const x = this.tileIndex - 1 - cols * y;
-    console.log({ x, y });
 
     this.style.setProperty("--x", x);
     this.style.setProperty("--y", y);
