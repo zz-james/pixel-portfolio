@@ -14,8 +14,10 @@ t-ile-app {
   display: block;
   position: relative;
   background-image: url(images/background.png);
+  background-repeat: repeat-x;
+  background-size: contain;
   width: 98vw;
-  height: calc(calc(var(--tile-size) * var(--stage-rows)) * 1px);
+  height: calc(calc(var(--tile-size) * var(--stage-rows)) * 2px);
 }
 
 t-ile-layer {
