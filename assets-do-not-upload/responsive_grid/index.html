@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>layout</title>
+    <style>
+      body {
+        overflow-y: hidden;
+      }
+      #layout {
+        height: 98svh;
+        display: flex;
+        flex-direction: column;
+        align-content: stretch;
+      }
+      #game {
+        background-color: chartreuse;
+        flex-grow: 1;
+      }
+      #navigation {
+        background-color: yellowgreen;
+        flex-shrink: 0;
+
+        display: flex;
+      }
+      /* @media screen and (min-width: 530px) { */
+      #control_panel {
+        --control-panel-button-width: 128px;
+        --control-panel-button-height: 128px;
+        --control-panel-button-height: 64px;
+        --control-panel-width: 256px;
+      }
+      /* } */
+      @media screen and (min-width: 780px) {
+        #control_panel {
+          --control-panel-button-width: 33%;
+          --control-panel-button-height: 128px;
+          --control-panel-width: 390px;
+        }
+      }
+      @media screen and (min-width: 1510px) {
+        #control_panel {
+          --control-panel-button-width: 16.5%;
+          --control-panel-width: 770px;
+        }
+      }
+
+      @media screen and (max-height: 700px) {
+        /* when under 1510 height */
+        #control_panel {
+          --control-panel-button-height: 50px;
+        }
+      }
+
+      #control_panel {
+        min-width: var(--control-panel-width);
+        width: var(--control-panel-width);
+        background-color: peru;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-around;
+      }
+      .control_panel_button {
+        height: var(--control-panel-button-height);
+        width: var(--control-panel-button-width);
+        min-height: var(--control-panel-button-height);
+        min-width: var(--control-panel-button-width);
+      }
+      #progress {
+        flex-grow: 1;
+
+        flex-shrink: 0;
+        background-color: aquamarine;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="layout">
+      <div id="game"></div>
+      <div id="navigation">
+        <div id="control_panel">
+          <button class="control_panel_button">Home</button>
+          <button class="control_panel_button">Projects</button>
+          <button class="control_panel_button">Skills</button>
+          <button class="control_panel_button">Freelance</button>
+          <button class="control_panel_button">About me</button>
+          <button class="control_panel_button">Contact</button>
+        </div>
+        <div id="progress"></div>
+      </div>
+    </div>
+    <script>
+      const gameelement = document.getElementById("game");
+
+      gameelement.innerHTML = `<h1>${window
+        .getComputedStyle(gameelement)
+        .getPropertyValue("width")}, ${window
+        .getComputedStyle(gameelement)
+        .getPropertyValue("height")}</h1>`;
+    </script>
+  </body>
+</html>
