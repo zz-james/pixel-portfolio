@@ -16,7 +16,7 @@ t-ile-app {
   background-image: url(images/background.png);
   background-repeat: repeat-x;
   background-size: calc(var(--background-width) * 1px) 100%;
-  width: 98vw;
+  /* width: 98vw; */
   height: calc(calc(var(--tile-size) * var(--stage-rows)) * 1px);
 }
 
@@ -71,4 +71,105 @@ t-ile {
   );
 
   background-position: var(--x-background-offset) var(--y-background-offset);
+}
+
+body {
+  margin: 0;
+}
+
+#layout {
+  height: 93dvh;
+  max-height: 93dvh;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+}
+
+#game {
+  overflow: hidden;
+  background-color: black;
+  flex-grow: 1;
+}
+#navigation {
+  background-color: yellowgreen;
+  flex-shrink: 0;
+
+  display: flex;
+}
+
+/* mobile portrait */
+#control_panel {
+  --control-panel-button-width: 64px;
+  --control-panel-button-height: 64px;
+  --control-panel-width: 192px;
+}
+
+/* if screen width is larger than 600 */
+@media screen and (min-width: 600px) {
+  #layout {
+    height: 98svh;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+  }
+
+  #control_panel {
+    border: 1px solid red;
+    --control-panel-button-width: 33%;
+    --control-panel-button-height: 128px;
+    --control-panel-width: 390px;
+  }
+}
+
+/* if screen width is larger than 780 */
+@media screen and (min-width: 780px) {
+  #control_panel {
+    --control-panel-button-width: 33%;
+    --control-panel-button-height: 128px;
+    --control-panel-width: 390px;
+  }
+}
+/* if screen width is larger than 1510 */
+@media screen and (min-width: 1510px) {
+  #control_panel {
+    --control-panel-button-width: 16.5%;
+    --control-panel-width: 770px;
+  }
+}
+
+/* if screen height is under 500 height */
+@media screen and (max-height: 500px) {
+  #control_panel {
+    --control-panel-button-height: 50px;
+    --control-panel-width: 390px;
+  }
+}
+
+#control_panel {
+  min-width: var(--control-panel-width);
+  width: var(--control-panel-width);
+  background-color: peru;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+.control_panel_button {
+  height: var(--control-panel-button-height);
+  width: var(--control-panel-button-width);
+  min-height: var(--control-panel-button-height);
+  min-width: var(--control-panel-button-width);
+}
+#progress {
+  flex-grow: 1;
+  flex-shrink: 0;
+  background-color: aquamarine;
+}
+
+.button_unstyled {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
 }

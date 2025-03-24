@@ -10,7 +10,7 @@
   }
 })("tilemap_01", {
   compressionlevel: -1,
-  height: 12,
+  height: 60,
   infinite: false,
   layers: [
     {
@@ -220,5 +220,5 @@
   tilewidth: 32,
   type: "map",
   version: "1.10",
-  width: 20,
+  width: 4,
 });

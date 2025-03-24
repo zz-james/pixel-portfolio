@@ -23,14 +23,14 @@
 
         display: flex;
       }
-      /* @media screen and (min-width: 530px) { */
+
       #control_panel {
         --control-panel-button-width: 128px;
         --control-panel-button-height: 128px;
         --control-panel-button-height: 64px;
         --control-panel-width: 256px;
       }
-      /* } */
+      /* if screen width is larger than 780 */
       @media screen and (min-width: 780px) {
         #control_panel {
           --control-panel-button-width: 33%;
@@ -38,6 +38,7 @@
           --control-panel-width: 390px;
         }
       }
+      /* if screen width is larger than 1510 */
       @media screen and (min-width: 1510px) {
         #control_panel {
           --control-panel-button-width: 16.5%;
@@ -45,10 +46,11 @@
         }
       }
 
-      @media screen and (max-height: 700px) {
-        /* when under 1510 height */
+      /* if screen height is under 500 height */
+      @media screen and (max-height: 500px) {
         #control_panel {
           --control-panel-button-height: 50px;
+          --control-panel-width: 390px;
         }
       }
 

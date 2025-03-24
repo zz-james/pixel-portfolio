@@ -1,0 +1,60 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1
+        },
+        "#ground": {
+            "scaleInDock": 1
+        },
+        "/home/james/Projects/portfolio/assets-do-not-upload/mobile_portrait.tmx": {
+            "scale": 1.322578125,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": -28.35371256423889,
+                "y": 320.2079272254711
+            }
+        },
+        "/home/james/Projects/portfolio/assets-do-not-upload/mobile_portrait.tmx#ground": {
+            "scaleInDock": 1
+        },
+        "environmant.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "ground.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "grounds.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/home/james/Projects/portfolio",
+    "last.imagePath": "/home/james/Projects/portfolio/images",
+    "map.height": 60,
+    "map.lastUsedExportFilter": "JavaScript map files (*.js)",
+    "map.lastUsedFormat": "tmx",
+    "map.width": 4,
+    "openFiles": [
+    ],
+    "project": "mobile-portait.tiled-project",
+    "recentFiles": [
+        "ground.tsx",
+        "grounds.tsx",
+        "environmant.tsx"
+    ],
+    "tileset.embedInMap": true,
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 0
+}
