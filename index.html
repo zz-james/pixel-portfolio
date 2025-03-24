@@ -4,7 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tile Map</title>
     <script type="text/javascript" src="./mobile_portrait.js"></script>
-    <script type="module" src="./components/app/app.js"></script>
+    <script type="module" src="./components/app/tile-app.js"></script>
+    <script type="module"  src="./components/navigation/control-panel.js"></script>
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
@@ -13,16 +14,7 @@
         <t-ile-app mapname="mobile_portrait"></tile-app>
       </div>
       <div id="navigation">
-
-        <div id="control_panel">
-          <button class="control_panel_button button_unstyled">Home</button>
-          <button class="control_panel_button button_unstyled">Projects</button>
-          <button class="control_panel_button button_unstyled">Skills</button>
-          <button class="control_panel_button button_unstyled">Freelance</button>
-          <button class="control_panel_button button_unstyled">About me</button>
-          <button class="control_panel_button button_unstyled">Contact</button>
-        </div>
-
+        <c-ontrol-panel></c-ontrol-panel>
         <div id="progress"></div>
       </div>
     </div>
