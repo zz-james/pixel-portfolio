@@ -10,19 +10,24 @@ class TileApp extends HTMLElement {
     super();
   }
 
-  connectedCallback() {
-    this.tilemap = TileMaps[this.getAttribute("mapname")];
-    this.htmlString = "";
-
+  createLayers() {
+    let htmlString = "";
     this.tilemap.layers.forEach((layerData, index) => {
       this.layersObject = {
         ...this.layersObject,
         [layerData.name]: layerData.data,
       };
-      this.htmlString = `${this.htmlString} <t-ile-layer layer="${index}" name="${layerData.name}" stageCols='${this.tilemap.width}' stageRows='${this.tilemap.height}'></t-ile-layer>`;
+      htmlString += `<t-ile-layer layer="${index}" name="${layerData.name}" stageCols='${this.tilemap.width}' stageRows='${this.tilemap.height}'></t-ile-layer>`;
     });
 
-    this.innerHTML = this.htmlString;
+    return htmlString;
+  }
+
+  connectedCallback() {
+    this.tilemap = TileMaps[this.getAttribute("mapname")];
+    const tilesString = this.createLayers();
+
+    this.innerHTML = tilesString;
   }
 
   getLayerData(name) {

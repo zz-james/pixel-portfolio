@@ -9,6 +9,14 @@ class TileLayer extends HTMLElement {
   tilemapWidth;
   data;
 
+  get tileMapCols() {
+    return this.tileMapCols;
+  }
+
+  get tileMapRows() {
+    return this.tileMapRows;
+  }
+
   connectedCallback() {
     this.name = this.getAttribute("name");
     this.data = this.parentElement.getLayerData(this.name);
@@ -28,14 +36,6 @@ class TileLayer extends HTMLElement {
     }
     this.style.setProperty("z-index", this.getAttribute("layer"));
     this.innerHTML += tileLayerHTML;
-  }
-
-  get tileMapCols() {
-    return this.tileMapCols;
-  }
-
-  get tileMapRows() {
-    return this.tileMapRows;
   }
 }
 

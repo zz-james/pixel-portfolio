@@ -10,6 +10,13 @@
   --screen-tile-height: 32;
 }
 
+* {
+  font-family: "Lato", ".SFNSText", "SFProText-Regular", "SFUIText-Regular",
+    ".SFUIText", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 t-ile-app {
   display: block;
   position: relative;
@@ -75,11 +82,13 @@ t-ile {
 
 body {
   margin: 0;
+  background-color: #0f0e1f;
 }
 
 #layout {
-  height: 93dvh;
-  max-height: 93dvh;
+  position: relative;
+  height: 98dvh;
+  max-height: 98dvh;
   display: flex;
   flex-direction: column;
   align-content: stretch;
@@ -98,7 +107,7 @@ body {
 }
 
 /* mobile portrait */
-#control_panel {
+:root {
   --control-panel-button-width: 64px;
   --control-panel-button-height: 64px;
   --control-panel-width: 192px;
@@ -107,7 +116,7 @@ body {
 /* if screen width is larger than 600 */
 @media screen and (min-width: 600px) {
   #layout {
-    height: 98svh;
+    height: 98dvh;
     display: flex;
     flex-direction: column;
     align-content: stretch;
@@ -115,6 +124,8 @@ body {
 
   #control_panel {
     border: 1px solid red;
+  }
+  :root {
     --control-panel-button-width: 33%;
     --control-panel-button-height: 128px;
     --control-panel-width: 390px;
@@ -123,7 +134,7 @@ body {
 
 /* if screen width is larger than 780 */
 @media screen and (min-width: 780px) {
-  #control_panel {
+  :root {
     --control-panel-button-width: 33%;
     --control-panel-button-height: 128px;
     --control-panel-width: 390px;
@@ -131,7 +142,7 @@ body {
 }
 /* if screen width is larger than 1510 */
 @media screen and (min-width: 1510px) {
-  #control_panel {
+  :root {
     --control-panel-button-width: 16.5%;
     --control-panel-width: 770px;
   }
@@ -139,13 +150,13 @@ body {
 
 /* if screen height is under 500 height */
 @media screen and (max-height: 500px) {
-  #control_panel {
+  :root {
     --control-panel-button-height: 50px;
     --control-panel-width: 390px;
   }
 }
 
-#control_panel {
+c-ontrol-panel {
   min-width: var(--control-panel-width);
   width: var(--control-panel-width);
   background-color: peru;
@@ -154,12 +165,27 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-.control_panel_button {
+c-ontrol-panel-button {
   height: var(--control-panel-button-height);
   width: var(--control-panel-button-width);
   min-height: var(--control-panel-button-height);
   min-width: var(--control-panel-button-width);
+  position: relative;
+  border: 12px solid;
+  border-image-source: url(images/yellow_button_blank.png);
+  border-image-slice: 15 fill;
 }
+
+.control_panel_button {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+}
+
+.control_panel_button_text {
+  font-size: 12px;
+}
+
 #progress {
   flex-grow: 1;
   flex-shrink: 0;
@@ -172,4 +198,26 @@ body {
   padding: 0;
   margin: 0;
   outline: none;
+}
+
+#content {
+  position: absolute;
+  margin-inline: 5%;
+  width: 90%;
+  top: 5rem;
+  height: 55%;
+  background-color: transparent;
+  z-index: 20;
+  padding: 15px 20px;
+  overflow-x: clip;
+  border-image-width: 15px 15px 35px 15px;
+  border-image-source: url(images/speech_bubble.png);
+  border-image-slice: 15 15 45 15 fill;
+  border-image-repeat: stretch;
+
+  /* visibility: hidden; */
+  p {
+    margin-block-start: 0;
+    margin-block-end: 1rem;
+  }
 }
