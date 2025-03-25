@@ -4,6 +4,11 @@ class ControlPanelButton extends HTMLElement {
   connectedCallback() {
     this.attachEvents();
     this.label = this.innerHTML;
+    this.color = this.parentElement.getButtonColor(this.label);
+    this.style.setProperty(
+      "border-image-source",
+      `url(images/${this.color}_button_blank.png)`
+    );
     this.render();
   }
 
@@ -23,7 +28,7 @@ class ControlPanelButton extends HTMLElement {
     const html = `
     <button class="control_panel_button button_unstyled">
       <span class='wrapper'>
-          <span class='textWrapper'>
+          <span class='control_panel_button_text'>
             ${this.innerHTML}
           </span>
         </span>

@@ -1,6 +1,15 @@
 import { ControlPanelButton } from "../control-panel-button/controlPanelButton.js";
 
 class ControlPanel extends HTMLElement {
+  buttonsData = {
+    Home: "red",
+    Work: "orange",
+    Skills: "yellow",
+    "Free-lance": "green",
+    About: "blue",
+    Contact: "purple",
+  };
+
   connectedCallback() {
     this.attachListeners();
     this.render();
@@ -13,18 +22,21 @@ class ControlPanel extends HTMLElement {
   }
 
   render() {
-    const htmlButtons = [
-      "Home",
-      "Projects",
-      "Skills",
-      "Freelance",
-      "About Me",
-      "Contact",
-    ].reduce((acc, label) => {
-      return acc + `<c-ontrol-panel-button >${label}</c-ontrol-panel-button>`;
-    }, "");
+    const htmlButtons = Object.keys(this.buttonsData).reduce(
+      (acc, label, index) => {
+        return (
+          acc +
+          `<c-ontrol-panel-button buttonindex=${index}>${label}</c-ontrol-panel-button>`
+        );
+      },
+      ""
+    );
 
     this.innerHTML = `${htmlButtons}`;
+  }
+
+  getButtonColor(label) {
+    return this.buttonsData[label];
   }
 }
 

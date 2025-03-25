@@ -10,6 +10,13 @@
   --screen-tile-height: 32;
 }
 
+* {
+  font-family: "Lato", ".SFNSText", "SFProText-Regular", "SFUIText-Regular",
+    ".SFUIText", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 t-ile-app {
   display: block;
   position: relative;
@@ -75,11 +82,13 @@ t-ile {
 
 body {
   margin: 0;
+  background-color: #0f0e1f;
 }
 
 #layout {
-  height: 93dvh;
-  max-height: 93dvh;
+  position: relative;
+  height: 98dvh;
+  max-height: 98dvh;
   display: flex;
   flex-direction: column;
   align-content: stretch;
@@ -107,7 +116,7 @@ body {
 /* if screen width is larger than 600 */
 @media screen and (min-width: 600px) {
   #layout {
-    height: 98svh;
+    height: 98dvh;
     display: flex;
     flex-direction: column;
     align-content: stretch;
@@ -157,13 +166,12 @@ c-ontrol-panel {
   justify-content: space-around;
 }
 c-ontrol-panel-button {
-  box-sizing: border-box;
   height: var(--control-panel-button-height);
   width: var(--control-panel-button-width);
   min-height: var(--control-panel-button-height);
   min-width: var(--control-panel-button-width);
   position: relative;
-  border: 15px solid;
+  border: 12px solid;
   border-image-source: url(images/yellow_button_blank.png);
   border-image-slice: 15 fill;
 }
@@ -172,6 +180,10 @@ c-ontrol-panel-button {
   height: 100%;
   width: 100%;
   cursor: pointer;
+}
+
+.control_panel_button_text {
+  font-size: 12px;
 }
 
 #progress {
@@ -186,4 +198,26 @@ c-ontrol-panel-button {
   padding: 0;
   margin: 0;
   outline: none;
+}
+
+#content {
+  position: absolute;
+  margin-inline: 5%;
+  width: 90%;
+  top: 5rem;
+  height: 55%;
+  background-color: transparent;
+  z-index: 20;
+  padding: 15px 20px;
+  overflow-x: clip;
+  border-image-width: 15px 15px 35px 15px;
+  border-image-source: url(images/speech_bubble.png);
+  border-image-slice: 15 15 45 15 fill;
+  border-image-repeat: stretch;
+
+  /* visibility: hidden; */
+  p {
+    margin-block-start: 0;
+    margin-block-end: 1rem;
+  }
 }
