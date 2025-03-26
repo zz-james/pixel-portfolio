@@ -87,8 +87,8 @@ body {
 
 #layout {
   position: relative;
-  height: 98dvh;
-  max-height: 98dvh;
+  height: 96dvh;
+  max-height: 96dvh;
   display: flex;
   flex-direction: column;
   align-content: stretch;
@@ -180,10 +180,18 @@ c-ontrol-panel-button {
   height: 100%;
   width: 100%;
   cursor: pointer;
+  display: block;
+  position: relative;
 }
 
 .control_panel_button_text {
   font-size: 12px;
+  color: white;
+  text-shadow: #000 0px 0px 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #progress {
@@ -200,24 +208,44 @@ c-ontrol-panel-button {
   outline: none;
 }
 
-#content {
+c-ontent {
+  --content-window-height: 55%;
+  --content-window-border-image: none;
   position: absolute;
   margin-inline: 5%;
   width: 90%;
   top: 5rem;
-  height: 55%;
+  /* height: 55%;
+   */
+  top: 0.5rem;
+  /* height: 94%; */
+  height: var(--content-window-height);
   background-color: transparent;
   z-index: 20;
   padding: 15px 20px;
   overflow-x: clip;
   border-image-width: 15px 15px 35px 15px;
-  border-image-source: url(images/speech_bubble.png);
+  /* border-image-source: url(images/speech_bubble.png); */
+  /* border-image-source: url(images/bubble.png);
+   */
+  border-image-source: var(--content-window-border-image);
   border-image-slice: 15 15 45 15 fill;
   border-image-repeat: stretch;
-
+  transition: height 1s;
   /* visibility: hidden; */
   p {
     margin-block-start: 0;
     margin-block-end: 1rem;
+  }
+
+  .blue_button {
+    border: 12px solid;
+    border-image-source: url(images/blue_button_blank.png);
+    border-image-slice: 15 fill;
+  }
+  .button_text {
+    font-size: 12px;
+    color: white;
+    text-shadow: #000 0px 0px 2px;
   }
 }

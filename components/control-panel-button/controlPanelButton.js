@@ -26,14 +26,14 @@ class ControlPanelButton extends HTMLElement {
 
   render() {
     const html = `
-    <button class="control_panel_button button_unstyled">
-      <span class='wrapper'>
+    <a class="control_panel_button button_unstyled" href="#${this.innerHTML}">
+     
           <span class='control_panel_button_text'>
             ${this.innerHTML}
           </span>
-        </span>
-      </span>
-    </button>`;
+     
+     
+    </a>`;
     this.innerHTML = html;
   }
 }

@@ -6,6 +6,8 @@
     <script type="text/javascript" src="./mobile_portrait.js"></script>
     <script type="module" src="./components/app/tile-app.js"></script>
     <script type="module"  src="./components/navigation/control-panel.js"></script>
+    <script type="text/javascript" src="./db.js"><</script>
+    <script type="module"  src="./components/content/content.js"></script>
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
@@ -18,11 +20,21 @@
         <div id="progress"></div>
       </div>
     </div>
-    <div id="content">
-      <h4>Welcome to my portfolio.</h4>
-      <p>Please use the buttons below to navigate the site. You will find everything you need to know about me and my work as a web developer</p>
+    
+      <c-ontent></c-ontent>
+       <template id="welcome">
+        <h4>Welcome to my portfolio.</h4>
+        <p>Please use the buttons below to navigate the site. You will find everything you need to know about me and my work as a web developer</p>
 
-      <p>For a plain text version of the site please click the text button at the top of the screen</p>
-    </div>
+        <p>For a plain text version of the site please click the text button at the top of the screen</p>
+  
+        
+        <div style="position:absolute; bottom: 3rem; right: 2rem">
+          <button class="button_unstyled blue_button">
+            <span class='button_text'>Continue</span>
+          </button>
+        </div>
+      </template> 
+     
   </body>
 </html>

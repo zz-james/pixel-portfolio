@@ -11,14 +11,7 @@ class ControlPanel extends HTMLElement {
   };
 
   connectedCallback() {
-    this.attachListeners();
     this.render();
-  }
-
-  attachListeners() {
-    this.addEventListener("control-panel-button-mouse-up", (e) => {
-      alert(e.detail);
-    });
   }
 
   render() {
