@@ -6,7 +6,7 @@
     <script type="text/javascript" src="./mobile_portrait.js"></script>
     <script type="module" src="./components/app/tile-app.js"></script>
     <script type="module"  src="./components/navigation/control-panel.js"></script>
-    <script type="text/javascript" src="./db.js"><</script>
+    <script type="text/javascript" src="./db.js"></script>
     <script type="module"  src="./components/content/content.js"></script>
     <link href="./styles.css" rel="stylesheet" />
   </head>
@@ -22,6 +22,9 @@
     </div>
     
       <c-ontent></c-ontent>
+
+
+      <!-- templates -->
        <template id="welcome">
         <h4>Welcome to my portfolio.</h4>
         <p>Please use the buttons below to navigate the site. You will find everything you need to know about me and my work as a web developer</p>
@@ -30,10 +33,21 @@
   
         
         <div style="position:absolute; bottom: 3rem; right: 2rem">
-          <button class="button_unstyled blue_button">
-            <span class='button_text'>Continue</span>
-          </button>
+          <a class="button_unstyled blue_button" href="#Home">
+            <span class='control_panel_button_text' style="position: static;">Continue</span>
+          </a>
         </div>
+      </template> 
+
+        <template id="work">
+        <h4>Work.</h4>
+<p>
+       <select onchange="updateLayout(event)">                        1
+           <option value="none">Front End</option>
+           <option value="default-card">Full Stack</option>
+           <option value="variation">Back End</option>
+       </select>
+   </p>
       </template> 
      
   </body>
