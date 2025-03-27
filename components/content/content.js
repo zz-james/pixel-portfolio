@@ -44,18 +44,32 @@ class Content extends HTMLElement {
     this.render();
   }
 
+  processTemplate(template, templateID) {
+    const returnElement = document.createElement("div");
+    // switch (templateID) {
+    //   case "work":
+    //     template.innerHTML = "fuck off";
+    // }
+    return template.innerHTML;
+  }
+
   render() {
     const templateID = db[this.route].contentID;
     const template = document.getElementById(templateID);
+    let domNode = document.importNode(template.content, true);
+    console.log(document.importNode(template.content, true).innerHTML);
+    // element.querySelector(".name span").innerText = "George Ruth";
+    // element.querySelector(".rbi span").innerText = ".357";
+    // parent.appendChild(element);
 
     let htmlString = "";
     if (this.type === "modal") {
       // ad close button
       htmlString += `<button class="close_button button_unstyled" onclick="document.location.href='/#Home'"></button>`;
     }
-    htmlString += `<div>${template.innerHTML} </div>`;
+    // htmlString += this.processTemplate(template, templateID);
 
-    this.innerHTML = htmlString;
+    this.appendChild(domNode);
   }
 }
 

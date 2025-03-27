@@ -39,15 +39,22 @@
         </div>
       </template> 
 
-        <template id="work">
+      <template id="work">
         <h4>Work.</h4>
-<p>
-       <select onchange="updateLayout(event)">                        1
-           <option value="none">Front End</option>
-           <option value="default-card">Full Stack</option>
-           <option value="variation">Back End</option>
-       </select>
-   </p>
+        <div>
+          <label for="skills">List of Skills:</label>
+          <select name="skills" id="skills">
+            <option value="">...</option>
+          </select>
+          </div>
+          <div>
+          <label for="roles">List of Roles:</label>
+          <select id="roles" name="roles" onchange="updateLayout(event)">                        
+              <option value="none">Front End</option>
+              <option value="default-card">Full Stack</option>
+              <option value="variation">Back End</option>
+          </select>
+        </div>
       </template> 
      
   </body>
