@@ -256,4 +256,28 @@ c-ontent {
   .close_button:active {
     background-position-x: 16px;
   }
+
+  .work_content_container {
+    display: flex;
+    flex-direction: column;
+    height: 88%;
+  }
+
+  .work_selector {
+    width: 100%;
+  }
+
+  #card_list {
+    margin-top: 4px;
+    overflow-x: clip;
+    overflow-y: auto;
+    .card_wrapper {
+      border: 2px solid black;
+      border-radius: 5px;
+      margin: 8px 8px 0 0;
+    }
+    img {
+      width: 100%;
+    }
+  }
 }

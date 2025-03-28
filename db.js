@@ -18,10 +18,10 @@ const db = {
         },
         description:
           "Coelrind develop and operate online e-learning, e-training and e-assessment platforms. I was lead on the reports section of their flagship product XAMS which required creating complex UIs from JSON objects using the MUI components library",
-        role: ["Lead", "Front-End", "Developer"],
+        role: ["Front-End", "Lead", "Developer"],
         employer: "Coelrind Ltd",
         skills: ["React", "Typescript", "MUI components", "Zustand"],
-        screenshot: "images/coelrind/xams.png",
+        screenshot: "images/work/coelrind/xams.png",
         contract: "full time",
       },
       {
@@ -31,7 +31,7 @@ const db = {
         },
         description:
           "Develped dashboards for hospital staff to read and interrogate predictions made by machine learning statistical models using historical NHS data, I designed and implemented a UI and data visualisations including maps, charts and dynamic diagrams. I also co-developed a Flask based Python back-end that consolidates data so patient level, ward level and hospital level data is efficiently available",
-        role: ["UI Design", "Full Stack", "Developer"],
+        role: ["UI Design", "Full-Stack", "Developer"],
         employer:
           "Nuffield Department of Medicine / The Big Data Institute, University of Oxford",
         skills: [
@@ -46,7 +46,7 @@ const db = {
           "Flash",
           "Cypress",
         ],
-        screenshot: "images/oxford/patient_safety.png",
+        screenshot: "images/work/oxford/patient_safety.png",
         contract: "fixed term",
       },
       {
@@ -56,7 +56,7 @@ const db = {
         },
         description:
           "pi-top is a Raspberry-Pi based educational project that puts toughened up Raspberry Pis with simple to wire-up connectors into classrooms together with electronics kit, robotics kit and a highly interactive web based learning platform named Further. I was part of the full-stack software engineering team at pi-top that built Further using ReactJS, Apollo GraphQL, Express, MongoDB, Prisma, Loopback, PostGres and also the Further-Link server that runs on the RaspberryPi using Python (Flask). I worked on all aspects of the codebase as well as collaborating on domain model design and technical direction decisions. All code was fully tested with a combination of component and e2e tests. Hosted on Google Cloud using Git, Docker and Jenkins to provide a CI pipeline. Working as a collaborative cross-functional Agile team (at most 5 developers and 1 UX designer) we self-managed using Scrum method organised through Jira, taking feature requests from users, fleshing out features and negotiating timelines with stakeholders such as teachers, resellers, consumers and senior management.",
-        role: ["Full Stack", "Developer"],
+        role: ["Full-Stack"],
         employer: "Pi-Top/CEED LTD",
         skills: [
           "React",
@@ -81,7 +81,7 @@ const db = {
           "Agile",
           "Jira",
         ],
-        screenshot: "images/pi-top/further.png",
+        screenshot: "images/work/pi-top/further.png",
         link: "https://further.pi-top.com/",
         contract: "full time",
       },
@@ -96,7 +96,7 @@ const db = {
         role: ["Front-End", "Developer"],
         employer: "Learning Technologies Group UK Ltd.",
         skills: ["React", "Redux", "Sass", "Scorm"],
-        screenshot: "images/leo/rails.png",
+        screenshot: "images/work/leo/rails.png",
       },
 
       {
@@ -109,7 +109,7 @@ const db = {
         role: ["UI design", "Front-End", "Developer"],
         employer: "XAMS",
         skills: ["React", "Redux", "Material Design"],
-        screenshot: "images/coelrind/xams-player.png",
+        screenshot: "images/work/coelrind/xams-player.png",
       },
 
       {
@@ -119,7 +119,13 @@ const db = {
         },
         description:
           "Campaign Against Living Miserably (CALM) are a charity organisation that campaigns for suicide prevention through good mental health with a particular focus on men, their website delivered both health and entertainment information as well as hosting a vital online chat application to connect those in urgent need of support - a requirement of this service was 24/7 uptime and optimal efficient performance due to high loads at peak times",
-        role: ["Technical Director", "Developer", "Full stack", "Web design"],
+        role: [
+          "Technical Director",
+          "Developer",
+          "Full-Stack",
+          "Web design",
+          "Back-End",
+        ],
         employer: "Campaign Against Living Miserably.",
         skills: [
           "WordPress",
@@ -130,7 +136,7 @@ const db = {
           "JavaScript",
           "Google Maps",
         ],
-        screenshot: "images/calm/calm.png",
+        screenshot: "images/work/calm/calm.png",
       },
 
       {
@@ -140,10 +146,10 @@ const db = {
         },
         description:
           "Edible Urban are an organisation set up to map out potential food growing areas in cities. I worked with them to develop an mobile app which could be used to crowd source data by allowing users to add potential food growing areas in their city to a map",
-        role: ["Developer", "Full stack", "UI design"],
+        role: ["Developer", "Full-Stack", "UI design"],
         employer: "Edible Urban.",
         skills: ["PHP", "MySQL", "JavaScript", "LeafletJS"],
-        screenshot: "images/edible_urban/edible_urban.png",
+        screenshot: "images/work/edible_urban/edible_urban.png",
       },
     ],
   },
