@@ -2,7 +2,7 @@
 class Content extends HTMLElement {
   route = "welcome";
   type;
-
+  param;
   connectedCallback() {
     this.attachListeners();
     this.locationHashChanged();
@@ -13,8 +13,11 @@ class Content extends HTMLElement {
   }
 
   locationHashChanged() {
-    this.route = window.location.hash.substring(1);
-    // this.render();
+    const [route, param] = window.location.hash.substring(1).split("/");
+
+    this.route = route;
+    this.param = param;
+
     this.type = db[this.route].type;
 
     switch (this.type) {
@@ -63,12 +66,18 @@ class Content extends HTMLElement {
               .flat(1)
           ),
         ];
-        htmlString = "";
+
         htmlString += `<option value="all">Show all</option>`;
+
         skills.forEach((skill) => {
-          htmlString += `<option value="${skill}">${skill}</option>`;
+          htmlString += `<option value="${skill}" ${
+            skill === this.param ? "selected" : ""
+          }>${skill}</option>`;
         });
         selectSkills.innerHTML = htmlString;
+        selectSkills.addEventListener("change", (e) => {
+          window.location.hash = this.route + "/" + e.target.value;
+        });
 
         const selectRoles = domNode.querySelector("#roles");
         const roles = [
@@ -86,6 +95,10 @@ class Content extends HTMLElement {
           htmlString += `<option value="${role}">${role}</option>`;
         });
         selectRoles.innerHTML = htmlString;
+        selectRoles.addEventListener("change", (e) => {
+          window.location.hash =
+            this.route + "/" + this.param + "/" + e.target.value;
+        });
         //
         const cardTemplate = document.getElementById("card");
         const cardData = db.Work.content;

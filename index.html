@@ -53,22 +53,11 @@
       <div class="work_content_container">
         <div>
           <label for="skills">Skills:</label><br />
-          <select class="work_selector" name="skills" id="skills">
-            <option value="">...</option>
-          </select>
+          <select class="work_selector" name="skills" id="skills"></select>
         </div>
         <div>
           <label for="roles">Roles:</label><br />
-          <select
-            class="work_selector"
-            id="roles"
-            name="roles"
-            onchange="updateLayout(event)"
-          >
-            <option value="none">Front End</option>
-            <option value="default-card">Full Stack</option>
-            <option value="variation">Back End</option>
-          </select>
+          <select class="roles_selector" name="roles" id="roles"></select>
         </div>
         <div id="card_list"></div>
       </div>
