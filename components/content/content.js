@@ -56,50 +56,10 @@ class Content extends HTMLElement {
     let htmlString = "";
     switch (templateID) {
       case "work":
-        const selectSkills = domNode.querySelector("#skills");
-        const skills = [
-          ...new Set(
-            db.Work.content
-              .map((jobs) => {
-                return jobs.skills;
-              })
-              .flat(1)
-          ),
-        ];
+        // render drop downs
+        this.makeDropDowns(domNode);
 
-        htmlString += `<option value="all">Show all</option>`;
-
-        skills.forEach((skill) => {
-          htmlString += `<option value="${skill}" ${
-            skill === this.param ? "selected" : ""
-          }>${skill}</option>`;
-        });
-        selectSkills.innerHTML = htmlString;
-        selectSkills.addEventListener("change", (e) => {
-          window.location.hash = this.route + "/" + e.target.value;
-        });
-
-        const selectRoles = domNode.querySelector("#roles");
-        const roles = [
-          ...new Set(
-            db.Work.content
-              .map((jobs) => {
-                return jobs.role;
-              })
-              .flat(1)
-          ),
-        ].sort();
-        htmlString = "";
-        htmlString += `<option value="all">Show all</option>`;
-        roles.forEach((role) => {
-          htmlString += `<option value="${role}">${role}</option>`;
-        });
-        selectRoles.innerHTML = htmlString;
-        selectRoles.addEventListener("change", (e) => {
-          window.location.hash =
-            this.route + "/" + this.param + "/" + e.target.value;
-        });
-        //
+        // render cards
         const cardTemplate = document.getElementById("card");
         const cardData = db.Work.content;
         const cardList = domNode.querySelector("#card_list");
@@ -110,6 +70,53 @@ class Content extends HTMLElement {
       default:
         console.log("no matching templateID");
     }
+  }
+
+  makeDropDowns(domNode) {
+    let htmlString = "";
+    const selectSkills = domNode.querySelector("#skills");
+    const skills = [
+      ...new Set(
+        db.Work.content
+          .map((jobs) => {
+            return jobs.skills;
+          })
+          .flat(1)
+      ),
+    ];
+
+    htmlString += `<option value="all">Show all</option>`;
+
+    skills.forEach((skill) => {
+      htmlString += `<option value="${skill}" ${
+        skill === this.param ? "selected" : ""
+      }>${skill}</option>`;
+    });
+    selectSkills.innerHTML = htmlString;
+    selectSkills.addEventListener("change", (e) => {
+      window.location.hash = this.route + "/" + e.target.value;
+    });
+
+    const selectRoles = domNode.querySelector("#roles");
+    const roles = [
+      ...new Set(
+        db.Work.content
+          .map((jobs) => {
+            return jobs.role;
+          })
+          .flat(1)
+      ),
+    ].sort();
+    htmlString = "";
+    htmlString += `<option value="all">Show all</option>`;
+    roles.forEach((role) => {
+      htmlString += `<option value="${role}">${role}</option>`;
+    });
+    selectRoles.innerHTML = htmlString;
+    selectRoles.addEventListener("change", (e) => {
+      window.location.hash =
+        this.route + "/" + this.param + "/" + e.target.value;
+    });
   }
 
   makeCard(card, cardTemplate, index) {
