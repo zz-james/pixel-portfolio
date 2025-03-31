@@ -16,8 +16,8 @@ class Content extends HTMLElement {
   locationHashChanged() {
     const [route, ...params] = window.location.hash.substring(1).split("/");
 
-    this.route = route;
-    this.params = params; // string[]
+    this.route = decodeURI(route);
+    this.params = params.map((param) => decodeURI(param)); // string[]
 
     this.selectedContent = this.selectContent();
 
@@ -49,16 +49,21 @@ class Content extends HTMLElement {
   }
 
   selectContent() {
-    console.log(this.params[0]);
     if (this.params[0] === "" || this.params[0] === "all") {
       return db.Work.content;
     }
 
-    const skills = db.Work.content.filter((work) => {
+    const items = db.Work.content.filter((work) => {
       return work.skills.includes(this.params[0]);
     });
 
-    return skills;
+    if (this.params[1] === "" || this.params[1] === "all") {
+      return items;
+    }
+
+    return items.filter((work) => {
+      return work.role.includes(this.params[1]);
+    });
   }
 
   /**
@@ -75,9 +80,7 @@ class Content extends HTMLElement {
 
         // render cards
         const cardTemplate = document.getElementById("card");
-
         const cardList = domNode.querySelector("#card_list");
-        console.log(this.selectedContent);
         this.selectedContent.forEach((data, index) => {
           cardList.append(
             this.makeCard(data, cardTemplate, "card_dates" + index)
@@ -111,14 +114,13 @@ class Content extends HTMLElement {
     });
     selectSkills.innerHTML = htmlString;
     selectSkills.addEventListener("change", (e) => {
-      window.location.hash =
-        this.route + "/" + e.target.value + "/" + (this.params[1] || "");
+      window.location.hash = this.route + "/" + e.target.value + "/";
     });
 
     const selectRoles = domNode.querySelector("#roles");
     const roles = [
       ...new Set(
-        db.Work.content
+        this.selectedContent
           .map((jobs) => {
             return jobs.role;
           })
