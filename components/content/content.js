@@ -2,7 +2,8 @@
 class Content extends HTMLElement {
   route = "welcome";
   type;
-  param;
+  params;
+  selectedContent;
   connectedCallback() {
     this.attachListeners();
     this.locationHashChanged();
@@ -13,19 +14,19 @@ class Content extends HTMLElement {
   }
 
   locationHashChanged() {
-    const [route, param] = window.location.hash.substring(1).split("/");
+    const [route, ...params] = window.location.hash.substring(1).split("/");
 
     this.route = route;
-    this.param = param;
+    this.params = params; // string[]
+
+    this.selectedContent = this.selectContent();
 
     this.type = db[this.route].type;
 
     switch (this.type) {
       case null:
         this.style.setProperty("--content-window-visibility", 0);
-
         this.style.setProperty("--content-window-height", "0%");
-
         break;
       case "modal":
         this.style.setProperty("--content-window-visibility", 1);
@@ -47,6 +48,19 @@ class Content extends HTMLElement {
     this.render();
   }
 
+  selectContent() {
+    console.log(this.params[0]);
+    if (this.params[0] === "" || this.params[0] === "all") {
+      return db.Work.content;
+    }
+
+    const skills = db.Work.content.filter((work) => {
+      return work.skills.includes(this.params[0]);
+    });
+
+    return skills;
+  }
+
   /**
    *
    * @param domNode DOM node. NB this is passed by reference
@@ -61,9 +75,10 @@ class Content extends HTMLElement {
 
         // render cards
         const cardTemplate = document.getElementById("card");
-        const cardData = db.Work.content;
+
         const cardList = domNode.querySelector("#card_list");
-        cardData.forEach((data, index) => {
+        console.log(this.selectedContent);
+        this.selectedContent.forEach((data, index) => {
           cardList.append(
             this.makeCard(data, cardTemplate, "card_dates" + index)
           );
@@ -91,12 +106,13 @@ class Content extends HTMLElement {
 
     skills.forEach((skill) => {
       htmlString += `<option value="${skill}" ${
-        skill === this.param ? "selected" : ""
+        skill === this.params[0] ? "selected" : ""
       }>${skill}</option>`;
     });
     selectSkills.innerHTML = htmlString;
     selectSkills.addEventListener("change", (e) => {
-      window.location.hash = this.route + "/" + e.target.value;
+      window.location.hash =
+        this.route + "/" + e.target.value + "/" + (this.params[1] || "");
     });
 
     const selectRoles = domNode.querySelector("#roles");
@@ -112,12 +128,14 @@ class Content extends HTMLElement {
     htmlString = "";
     htmlString += `<option value="all">Show all</option>`;
     roles.forEach((role) => {
-      htmlString += `<option value="${role}">${role}</option>`;
+      htmlString += `<option value="${role}" ${
+        role === this.params[1] ? "selected" : ""
+      }>${role}</option>`;
     });
     selectRoles.innerHTML = htmlString;
     selectRoles.addEventListener("change", (e) => {
       window.location.hash =
-        this.route + "/" + this.param + "/" + e.target.value;
+        this.route + "/" + (this.params[0] || "") + "/" + e.target.value;
     });
   }
 
