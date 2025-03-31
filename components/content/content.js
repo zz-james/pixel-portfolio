@@ -63,8 +63,10 @@ class Content extends HTMLElement {
         const cardTemplate = document.getElementById("card");
         const cardData = db.Work.content;
         const cardList = domNode.querySelector("#card_list");
-        cardData.forEach((card, index) => {
-          cardList.append(this.makeCard(card, cardTemplate, index));
+        cardData.forEach((data, index) => {
+          cardList.append(
+            this.makeCard(data, cardTemplate, "card_dates" + index)
+          );
         });
         break;
       default:
@@ -119,11 +121,11 @@ class Content extends HTMLElement {
     });
   }
 
-  makeCard(card, cardTemplate, index) {
+  makeCard(card, cardTemplate, id) {
     let cardNode = document.importNode(cardTemplate.content, true);
     /* do dates */
     const dates = cardNode.querySelector("#card_dates");
-    dates.id = "card_dates" + index;
+    dates.id = id;
     dates.innerHTML =
       card.dates.start.toLocaleDateString("en-us", {
         year: "numeric",
@@ -137,29 +139,29 @@ class Content extends HTMLElement {
 
     /* do title */
     const title = cardNode.querySelector("#card_title");
-    title.id = "card_title" + index;
+    title.removeAttribute("id");
     title.innerHTML = card.employer;
 
     /* do image */
     const imagescr = cardNode.querySelector("#card_image");
-    imagescr.id = "card_image" + index;
+    imagescr.removeAttribute("id");
     imagescr.src = card.screenshot;
 
     /* do description */
     const description = cardNode.querySelector("#card_description");
-    description.id = "card_description" + index;
-    title.innerHTML = card.description;
+    description.removeAttribute("id");
+    description.innerHTML = card.description;
 
     /* do skills */
     const skills = cardNode.querySelector("#card_skills");
-    skills.id = "card_skills" + index;
+    skills.removeAttribute("id");
     skills.innerHTML = card.skills
       .map((skill) => `<li>${skill}</li>`)
       .join(" ");
 
     if (card.link) {
-      const link = cardNode.querySelector("a");
-      link.id = "card_link" + index;
+      const link = cardNode.querySelector("#card_link");
+      link.removeAttribute("id");
       link.href = card.link;
       link.innerHTML = card.link;
       link.target = "pop";

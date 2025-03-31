@@ -4,7 +4,7 @@ class ControlPanel extends HTMLElement {
   buttonsData = {
     Home: "red",
     Work: "orange",
-    Skills: "yellow",
+    Projects: "yellow",
     "Free-lance": "green",
     About: "blue",
     Contact: "purple",

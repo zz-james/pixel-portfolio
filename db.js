@@ -96,7 +96,7 @@ const db = {
         role: ["Front-End", "Developer"],
         employer: "Learning Technologies Group UK Ltd.",
         skills: ["React", "Redux", "Sass", "Scorm"],
-        screenshot: "images/work/leo/rails.png",
+        screenshot: "images/work/leo/rails.webp",
       },
 
       {
@@ -109,7 +109,7 @@ const db = {
         role: ["UI design", "Front-End", "Developer"],
         employer: "XAMS",
         skills: ["React", "Redux", "Material Design"],
-        screenshot: "images/work/coelrind/xams-player.png",
+        screenshot: "images/work/coelrind/xams-player2.png",
       },
 
       {
