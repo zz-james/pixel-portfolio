@@ -49,13 +49,12 @@ class Content extends HTMLElement {
   }
 
   selectContent() {
-    debugger;
-
     let items = db.Work.content;
 
     if (
-      this.params[0] == false /*empty string == false */ ||
-      this.params[0] === "all"
+      this.params[0] === undefined ||
+      this.params[0] === "all" ||
+      this.params[0] === ""
     ) {
       items = items;
     } else {
@@ -64,13 +63,23 @@ class Content extends HTMLElement {
       });
     }
 
-    if (!this.params[1] || this.params[1] === "" || this.params[1] === "all") {
-      return items;
+    if (
+      this.params[1] === undefined ||
+      this.params[1] === "all" ||
+      this.params[1] === ""
+    ) {
+      items = items;
+    } else {
+      items = items.filter((work) => {
+        return work.role.includes(this.params[1]);
+      });
     }
 
-    return items.filter((work) => {
-      return work.role.includes(this.params[1]);
-    });
+    if (items.length === 0) {
+      window.location.hash = this.route;
+    }
+
+    return items;
   }
 
   /**

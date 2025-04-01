@@ -106,7 +106,7 @@ const db = {
         },
         description:
           "Coelrind's flagship e-assessment app was undergoing a rewrite from server side rendered .NET based project to a SPA build in React with a .NET JSON API. My role was to design and build the exam player part of the system",
-        role: ["UI design", "Front-End", "Developer"],
+        role: ["UI Design", "Front-End", "Developer"],
         employer: "XAMS",
         skills: ["React", "Redux", "Material Design"],
         screenshot: "images/work/coelrind/xams-player2.png",
@@ -146,9 +146,15 @@ const db = {
         },
         description:
           "Edible Urban are an organisation set up to map out potential food growing areas in cities. I worked with them to develop an mobile app which could be used to crowd source data by allowing users to add potential food growing areas in their city to a map",
-        role: ["Developer", "Full-Stack", "UI design"],
+        role: ["Developer", "Full-Stack", "UI Design"],
         employer: "Edible Urban.",
-        skills: ["PHP", "MySQL", "JavaScript", "LeafletJS"],
+        skills: [
+          "PHP",
+          "MySQL",
+          "JavaScript",
+          "LeafletJS",
+          "Data Visualisation",
+        ],
         screenshot: "images/work/edible_urban/edible_urban.png",
       },
     ],
