@@ -5,24 +5,78 @@
     <title>Tile Map</title>
     <script type="text/javascript" src="./mobile_portrait.js"></script>
     <script type="module" src="./components/app/tile-app.js"></script>
-    <script type="module"  src="./components/navigation/control-panel.js"></script>
+    <script
+      type="module"
+      src="./components/navigation/control-panel.js"
+    ></script>
+    <script type="text/javascript" src="./db.js"></script>
+    <script type="module" src="./components/content/content.js"></script>
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
     <div id="layout">
       <div id="game">
-        <t-ile-app mapname="mobile_portrait"></tile-app>
+        <t-ile-app mapname="mobile_portrait"></t-ile-app>
       </div>
       <div id="navigation">
         <c-ontrol-panel></c-ontrol-panel>
         <div id="progress"></div>
       </div>
     </div>
-    <div id="content">
-      <h4>Welcome to my portfolio.</h4>
-      <p>Please use the buttons below to navigate the site. You will find everything you need to know about me and my work as a web developer</p>
 
-      <p>For a plain text version of the site please click the text button at the top of the screen</p>
-    </div>
+    <c-ontent></c-ontent>
+
+    <!-- templates -->
+    <template id="welcome">
+      <h4>Welcome to my portfolio.</h4>
+      <p>
+        Please use the buttons below to navigate the site. You will find
+        everything you need to know about me and my work as a web developer
+      </p>
+
+      <p>
+        For a plain text version of the site please click the text button at the
+        top of the screen
+      </p>
+
+      <div style="position: absolute; bottom: 3rem; right: 2rem">
+        <a class="button_unstyled blue_button" href="#Home">
+          <span class="control_panel_button_text" style="position: static"
+            >Continue</span
+          >
+        </a>
+      </div>
+    </template>
+
+    <template id="work">
+      <h4>Work.</h4>
+      <div class="work_content_container">
+        <div>
+          <label for="skills">Skills:</label><br />
+          <select class="work_selector" name="skills" id="skills"></select>
+        </div>
+        <div>
+          <label for="roles">Roles:</label><br />
+          <select class="roles_selector" name="roles" id="roles"></select>
+        </div>
+        <div id="card_list"></div>
+      </div>
+    </template>
+
+    <template id="card">
+      <div class="card_wrapper">
+        <input id="card_switch" type="radio" name="selector" />
+        <div class="card">
+          <label id="card_switch_label">
+            <img id="card_image" src="images/work/xams.png" />
+            <span id="card_dates"></span><br />
+            <span id="card_title"></span><br />
+            <div id="card_description" class="card_description"></div>
+            <ul id="card_skills"></ul>
+            <a id="card_link"></a>
+          </label>
+        </div>
+      </div>
+    </template>
   </body>
 </html>

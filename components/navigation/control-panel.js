@@ -4,21 +4,14 @@ class ControlPanel extends HTMLElement {
   buttonsData = {
     Home: "red",
     Work: "orange",
-    Skills: "yellow",
+    Projects: "yellow",
     "Free-lance": "green",
     About: "blue",
     Contact: "purple",
   };
 
   connectedCallback() {
-    this.attachListeners();
     this.render();
-  }
-
-  attachListeners() {
-    this.addEventListener("control-panel-button-mouse-up", (e) => {
-      alert(e.detail);
-    });
   }
 
   render() {

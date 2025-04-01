@@ -87,8 +87,8 @@ body {
 
 #layout {
   position: relative;
-  height: 98dvh;
-  max-height: 98dvh;
+  height: 96dvh;
+  max-height: 96dvh;
   display: flex;
   flex-direction: column;
   align-content: stretch;
@@ -180,10 +180,18 @@ c-ontrol-panel-button {
   height: 100%;
   width: 100%;
   cursor: pointer;
+  display: block;
+  position: relative;
 }
 
 .control_panel_button_text {
   font-size: 12px;
+  color: white;
+  text-shadow: #000 0px 0px 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 #progress {
@@ -198,26 +206,98 @@ c-ontrol-panel-button {
   padding: 0;
   margin: 0;
   outline: none;
+  text-decoration: none;
 }
 
-#content {
+c-ontent {
+  --content-window-height: 55%;
+  --content-window-border-image: none;
+  --content-window-visibility: 1;
   position: absolute;
   margin-inline: 5%;
   width: 90%;
-  top: 5rem;
-  height: 55%;
+  top: 0.5rem;
+  height: var(--content-window-height);
   background-color: transparent;
   z-index: 20;
   padding: 15px 20px;
   overflow-x: clip;
   border-image-width: 15px 15px 35px 15px;
-  border-image-source: url(images/speech_bubble.png);
+  border-image-source: var(--content-window-border-image);
   border-image-slice: 15 15 45 15 fill;
   border-image-repeat: stretch;
+  opacity: var(--content-window-visibility);
 
-  /* visibility: hidden; */
+  transition: height 1s, opacity 0.5s;
   p {
     margin-block-start: 0;
     margin-block-end: 1rem;
+  }
+
+  .blue_button {
+    border: 12px solid;
+    border-image-source: url(images/blue_button_blank.png);
+    border-image-slice: 15 fill;
+  }
+  .button_text {
+    font-size: 12px;
+    color: white;
+    text-shadow: #000 0px 0px 2px;
+  }
+  .close_button {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    height: 16px;
+    width: 16px;
+    background-image: url(images/close_button_on_off.png);
+  }
+  .close_button:hover,
+  .close_button:active {
+    background-position-x: 16px;
+  }
+
+  .work_content_container {
+    display: flex;
+    flex-direction: column;
+    height: 88%;
+  }
+
+  .work_selector {
+    width: 100%;
+  }
+
+  #card_list {
+    margin-top: 4px;
+    overflow-x: clip;
+    overflow-y: auto;
+    .card_wrapper {
+      border: 2px solid darkslategray;
+      background-color: white;
+      border-radius: 5px;
+      margin: 8px 8px 0 0;
+      .card_description {
+        display: none;
+      }
+      input {
+        font-size: 12px;
+        outline: 2px solid deeppink;
+      }
+      input:hover {
+        font-size: 14px;
+        outline: 4px solid deeppink;
+      }
+
+      input:checked {
+        font-size: 10px;
+        outline: 6px solid green;
+      }
+      input:checked ~ .card {
+        border: 6px solid blue;
+      }
+    }
+    img {
+      width: 100%;
+    }
   }
 }
