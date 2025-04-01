@@ -49,15 +49,22 @@ class Content extends HTMLElement {
   }
 
   selectContent() {
-    if (this.params[0] === "" || this.params[0] === "all") {
-      return db.Work.content;
+    debugger;
+
+    let items = db.Work.content;
+
+    if (
+      this.params[0] == false /*empty string == false */ ||
+      this.params[0] === "all"
+    ) {
+      items = items;
+    } else {
+      items = db.Work.content.filter((work) => {
+        return work.skills.includes(this.params[0]);
+      });
     }
 
-    const items = db.Work.content.filter((work) => {
-      return work.skills.includes(this.params[0]);
-    });
-
-    if (this.params[1] === "" || this.params[1] === "all") {
+    if (!this.params[1] || this.params[1] === "" || this.params[1] === "all") {
       return items;
     }
 
