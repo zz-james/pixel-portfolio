@@ -221,7 +221,7 @@ c-ontent {
   background-color: transparent;
   z-index: 20;
   padding: 15px 20px;
-  overflow-x: clip;
+
   border-image-width: 15px 15px 35px 15px;
   border-image-source: var(--content-window-border-image);
   border-image-slice: 15 15 45 15 fill;
@@ -272,28 +272,67 @@ c-ontent {
     overflow-x: clip;
     overflow-y: auto;
     .card_wrapper {
-      border: 2px solid darkslategray;
-      background-color: white;
-      border-radius: 5px;
-      margin: 8px 8px 0 0;
-      .card_description {
-        display: none;
-      }
       input {
-        font-size: 12px;
-        outline: 2px solid deeppink;
-      }
-      input:hover {
-        font-size: 14px;
-        outline: 4px solid deeppink;
+        display: none;
+        touch-action: manipulation;
       }
 
-      input:checked {
-        font-size: 10px;
-        outline: 6px solid green;
-      }
       input:checked ~ .card {
-        border: 6px solid blue;
+        position: absolute;
+        z-index: 21;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        margin-top: -8px;
+        margin-left: -5%;
+        .card_description {
+          display: block;
+        }
+      }
+      .card {
+        position: relative;
+        isolation: isolate;
+        padding: 0 5px 5px 5px;
+        border: 2px solid lightgrey;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+        margin: 8px 8px 0 0;
+        img {
+          margin-top: 2px;
+          border: 1px solid #ddd;
+        }
+        .card_description {
+          display: none;
+        }
+        .card_dates {
+          font-size: 10px;
+        }
+        .card_title {
+          display: block;
+          max-width: calc(100% - 10px);
+          line-height: 1.5em;
+          max-height: 3em;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          padding: 2px 4px;
+        }
+        .card_skills {
+          display: flex;
+          flex-wrap: wrap;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          li {
+            background-color: blue;
+            border-radius: 5px;
+            color: white;
+            font-size: 12px;
+            padding: 2px;
+            margin: 2px 4px;
+          }
+        }
       }
     }
     img {
