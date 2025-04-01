@@ -272,9 +272,29 @@ c-ontent {
     overflow-x: clip;
     overflow-y: auto;
     .card_wrapper {
-      border: 2px solid black;
+      border: 2px solid darkslategray;
+      background-color: white;
       border-radius: 5px;
       margin: 8px 8px 0 0;
+      .card_description {
+        display: none;
+      }
+      input {
+        font-size: 12px;
+        outline: 2px solid deeppink;
+      }
+      input:hover {
+        font-size: 14px;
+        outline: 4px solid deeppink;
+      }
+
+      input:checked {
+        font-size: 10px;
+        outline: 6px solid green;
+      }
+      input:checked ~ .card {
+        border: 6px solid blue;
+      }
     }
     img {
       width: 100%;

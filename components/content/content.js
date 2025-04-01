@@ -202,6 +202,12 @@ class Content extends HTMLElement {
       link.innerHTML = card.link;
       link.target = "pop";
     }
+
+    /* fix up the input tag and label */
+    const checkbox = cardNode.querySelector("#card_switch");
+    checkbox.id = `checkbox_${id}`;
+    const label = cardNode.querySelector("#card_switch_label");
+    label.htmlFor = `checkbox_${id}`;
     return cardNode;
   }
 
