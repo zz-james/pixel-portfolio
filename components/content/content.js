@@ -206,6 +206,9 @@ class Content extends HTMLElement {
     /* fix up the input tag and label */
     const checkbox = cardNode.querySelector("#card_switch");
     checkbox.id = `checkbox_${id}`;
+    checkbox.addEventListener("change", (event) => {
+      alert(event.target.checked);
+    });
     const label = cardNode.querySelector("#card_switch_label");
     label.htmlFor = `checkbox_${id}`;
     return cardNode;
