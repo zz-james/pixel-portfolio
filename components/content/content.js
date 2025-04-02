@@ -234,6 +234,9 @@ class Content extends HTMLElement {
   render() {
     const templateID = db[this.route].contentID;
     const template = document.getElementById(templateID);
+    if (!template) {
+      return;
+    }
     let domNode = document.importNode(template.content, true);
 
     this.processTemplate(domNode, templateID);

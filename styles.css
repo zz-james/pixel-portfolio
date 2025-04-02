@@ -34,8 +34,8 @@ t-ile-layer {
   gap: 0;
   grid-template-rows: repeat(var(--stage-rows), 1fr);
   grid-template-columns: repeat(var(--stage-cols), 1fr);
-  /* width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px); */
-  width: 100%;
+  width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
+  /* width: 100%; */
   height: 100%;
 }
 t-ile {
@@ -289,6 +289,24 @@ c-ontent {
         .card_description {
           display: block;
         }
+        .card_skills {
+          display: flex;
+          flex-wrap: wrap;
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+          li {
+            background-color: blue;
+            border-radius: 5px;
+            font-size: 12px;
+            padding: 2px 4px;
+            margin: 2px 4px;
+            a {
+              color: white;
+              text-decoration: none;
+            }
+          }
+        }
         .card_switch_click_target {
           margin-left: calc(100% - 20px);
           height: 16px;
@@ -320,6 +338,9 @@ c-ontent {
         .card_description {
           display: none;
         }
+        .card_skills {
+          display: none;
+        }
         .card_dates {
           font-size: 10px;
         }
@@ -327,29 +348,14 @@ c-ontent {
           display: block;
           max-width: calc(100% - 10px);
           line-height: 1.5em;
-          max-height: 3em;
+          /* max-height: 3em;
           text-overflow: ellipsis;
-          overflow: hidden;
+          overflow: hidden; */
           padding: 2px 4px;
         }
-        .card_skills {
-          display: flex;
-          flex-wrap: wrap;
-          list-style-type: none;
-          padding: 0;
-          margin: 0;
-          li {
-            background-color: blue;
-            border-radius: 5px;
-            font-size: 12px;
-            padding: 2px 4px;
-            margin: 2px 4px;
-            a {
-              color: white;
-              text-decoration: none;
-            }
-          }
-        }
+      }
+      .card:hover {
+        border-color: yellow;
       }
     }
     img {
