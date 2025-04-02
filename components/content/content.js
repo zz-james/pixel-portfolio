@@ -21,6 +21,11 @@ class Content extends HTMLElement {
 
     this.selectedContent = this.selectContent();
 
+    // deal with invalid url params
+    if (this.selectedContent.length === 0) {
+      window.location.hash = this.route;
+    }
+
     this.type = db[this.route].type;
 
     switch (this.type) {
@@ -52,6 +57,7 @@ class Content extends HTMLElement {
     let items = db.Work.content;
 
     if (
+      !Number.isNaN(parseInt(this.params[0], 10)) ||
       this.params[0] === undefined ||
       this.params[0] === "all" ||
       this.params[0] === ""
@@ -64,6 +70,7 @@ class Content extends HTMLElement {
     }
 
     if (
+      !Number.isNaN(parseInt(this.params[1], 10)) ||
       this.params[1] === undefined ||
       this.params[1] === "all" ||
       this.params[1] === ""
@@ -73,10 +80,6 @@ class Content extends HTMLElement {
       items = items.filter((work) => {
         return work.role.includes(this.params[1]);
       });
-    }
-
-    if (items.length === 0) {
-      window.location.hash = this.route;
     }
 
     return items;
@@ -98,9 +101,7 @@ class Content extends HTMLElement {
         const cardTemplate = document.getElementById("card");
         const cardList = domNode.querySelector("#card_list");
         this.selectedContent.forEach((data, index) => {
-          cardList.append(
-            this.makeCard(data, cardTemplate, "card_dates" + index)
-          );
+          cardList.append(this.makeCard(data, cardTemplate, index));
         });
         break;
       default:
@@ -161,7 +162,7 @@ class Content extends HTMLElement {
     let cardNode = document.importNode(cardTemplate.content, true);
     /* do dates */
     const dates = cardNode.querySelector("#card_dates");
-    dates.id = id;
+    dates.id = "card_dates" + id;
     dates.innerHTML =
       card.dates.start.toLocaleDateString("en-us", {
         year: "numeric",
@@ -192,7 +193,10 @@ class Content extends HTMLElement {
     const skills = cardNode.querySelector("#card_skills");
     skills.removeAttribute("id");
     skills.innerHTML = card.skills
-      .map((skill) => `<li>${skill}</li>`)
+      .map(
+        (skill) =>
+          `<li><a class="card_tag_link" href="#${this.route}/${skill}">${skill}</a></li>`
+      )
       .join(" ");
 
     if (card.link) {
@@ -206,8 +210,21 @@ class Content extends HTMLElement {
     /* fix up the input tag and label */
     const checkbox = cardNode.querySelector("#card_switch");
     checkbox.id = `checkbox_${id}`;
+    const showCard = parseInt(this.params[this.params.length - 1], 10);
+    if (showCard === id) {
+      checkbox.checked = true;
+    }
+    // debugger;
+
     checkbox.addEventListener("change", (event) => {
-      alert(event.target.checked);
+      const cardClicked = event.target.id.split("_")[1];
+      if (!cardClicked) return;
+      if (event.target.checked) {
+        window.location.hash = `${window.location.hash}/${cardClicked}`;
+      } else {
+        window.location.hash =
+          this.route + "/" + this.params.slice(0, -1).join("/");
+      }
     });
     const label = cardNode.querySelector("#card_switch_label");
     label.htmlFor = `checkbox_${id}`;
