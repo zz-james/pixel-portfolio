@@ -289,6 +289,12 @@ c-ontent {
         .card_description {
           display: block;
         }
+        .card_switch_click_target {
+          margin-left: calc(100% - 20px);
+          height: 16px;
+          width: 16px;
+          background-image: url(images/close_button_on_off.png);
+        }
       }
       .card {
         position: relative;
@@ -299,6 +305,14 @@ c-ontent {
         border-radius: 5px;
         box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
         margin: 8px 8px 0 0;
+        .card_switch_click_target {
+          position: absolute;
+
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+        }
         img {
           margin-top: 2px;
           border: 1px solid #ddd;
@@ -327,10 +341,13 @@ c-ontent {
           li {
             background-color: blue;
             border-radius: 5px;
-            color: white;
             font-size: 12px;
-            padding: 2px;
+            padding: 2px 4px;
             margin: 2px 4px;
+            a {
+              color: white;
+              text-decoration: none;
+            }
           }
         }
       }
