@@ -50,17 +50,21 @@
     </template>
 
     <template id="work">
-      <h4>Work.</h4>
-      <div class="work_content_container">
-        <div>
-          <label for="skills">Skills:</label><br />
-          <select class="work_selector" name="skills" id="skills"></select>
+      <input id="modal_content_switch" type="checkbox" name="wk_selector" />
+      <input id="bubble_content_switch" type="checkbox" name="wk_selector" />
+      <div class="work_content">
+        <h4>Work.</h4>
+        <div class="work_content_container">
+          <div>
+            <label for="skills">Skills:</label><br />
+            <select class="work_selector" name="skills" id="skills"></select>
+          </div>
+          <div>
+            <label for="roles">Roles:</label><br />
+            <select class="roles_selector" name="roles" id="roles"></select>
+          </div>
+          <div id="card_list"></div>
         </div>
-        <div>
-          <label for="roles">Roles:</label><br />
-          <select class="roles_selector" name="roles" id="roles"></select>
-        </div>
-        <div id="card_list"></div>
       </div>
     </template>
 

@@ -12,6 +12,9 @@
   --player-left: 0;
   --player-sprite: url(images/ghost.png);
   --content-delay: 0s;
+  --content-window-visibility: 1;
+  --content-window-height: "94%";
+  --content-window-border-image: url(images/bubble.png);
 }
 
 * {
@@ -117,6 +120,8 @@ body {
   background-image: var(--player-sprite);
   transition: top 2s, left 2s;
 }
+
+/* ------------------------------- control panel ----------------------------------- */
 
 #navigation {
   background-color: yellowgreen;
@@ -228,10 +233,18 @@ c-ontrol-panel-button {
   text-decoration: none;
 }
 
-c-ontent {
-  --content-window-height: 55%;
-  --content-window-border-image: none;
-  --content-window-visibility: 1;
+/* ----------------------------- content ---------------------------------- */
+
+c-ontent > input#modal_content_switch:checked ~ .work_content {
+  --content-window-height: 94%;
+}
+
+c-ontent > input#bubble_content_switch:checked ~ .work_content {
+  --content-window-height: 65%;
+}
+
+c-ontent > .work_content {
+  --content-window-height: 0;
   position: absolute;
   margin-inline: 5%;
   width: 90%;
@@ -281,6 +294,7 @@ c-ontent {
     display: flex;
     flex-direction: column;
     height: 88%;
+    overflow-y: hidden;
   }
 
   .work_selector {
@@ -290,7 +304,7 @@ c-ontent {
   #card_list {
     margin-top: 4px;
     overflow-x: clip;
-    overflow-y: auto;
+    overflow-y: scroll;
     .card_wrapper {
       input {
         display: none;

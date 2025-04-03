@@ -28,29 +28,29 @@ class Content extends HTMLElement {
 
     this.type = db[this.route].type;
 
-    switch (this.type) {
-      case null:
-        this.style.setProperty("--content-delay", 0);
-        this.style.setProperty("--content-window-visibility", 0);
-        this.style.setProperty("--content-window-height", "0%");
-        break;
-      case "modal":
-        this.style.setProperty("--content-delay", "2s");
-        this.style.setProperty("--content-window-visibility", 1);
-        this.style.setProperty("--content-window-height", "94%");
-        this.style.setProperty(
-          "--content-window-border-image",
-          "url(images/bubble.png)"
-        );
-        break;
-      case "bubble":
-        this.style.setProperty("--content-window-visibility", 1);
-        this.style.setProperty("--content-window-height", "65%");
-        this.style.setProperty(
-          "--content-window-border-image",
-          "url(images/speech_bubble.png)"
-        );
-    }
+    // switch (this.type) {
+    //   case null:
+    //     this.style.setProperty("--content-delay", 0);
+    //     this.style.setProperty("--content-window-visibility", 0);
+    //     this.style.setProperty("--content-window-height", "0%");
+    //     break;
+    //   case "modal":
+    //     this.style.setProperty("--content-delay", "2s");
+    //     this.style.setProperty("--content-window-visibility", 1);
+    //     this.style.setProperty("--content-window-height", "94%");
+    //     this.style.setProperty(
+    //       "--content-window-border-image",
+    //       "url(images/bubble.png)"
+    //     );
+    //     break;
+    //   case "bubble":
+    //     this.style.setProperty("--content-window-visibility", 1);
+    //     this.style.setProperty("--content-window-height", "65%");
+    //     this.style.setProperty(
+    //       "--content-window-border-image",
+    //       "url(images/speech_bubble.png)"
+    //     );
+    // }
 
     this.render();
   }
@@ -238,6 +238,24 @@ class Content extends HTMLElement {
     const template = document.getElementById(templateID);
     if (!template) return;
     let domNode = document.importNode(template.content, true);
+
+    const modal = domNode.getElementById("modal_content_switch");
+    const bubble = domNode.getElementById("bubble_content_switch");
+
+    switch (this.type) {
+      case null:
+        modal.checked = false;
+        bubble.checked = false;
+        break;
+      case "modal":
+        modal.checked = true;
+        bubble.checked = false;
+        break;
+      case "bubble":
+        modal.checked = false;
+        bubble.checked = true;
+        break;
+    }
 
     this.processTemplate(domNode, templateID);
 
