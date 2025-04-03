@@ -30,10 +30,12 @@ class Content extends HTMLElement {
 
     switch (this.type) {
       case null:
+        this.style.setProperty("--content-delay", 0);
         this.style.setProperty("--content-window-visibility", 0);
         this.style.setProperty("--content-window-height", "0%");
         break;
       case "modal":
+        this.style.setProperty("--content-delay", "2s");
         this.style.setProperty("--content-window-visibility", 1);
         this.style.setProperty("--content-window-height", "94%");
         this.style.setProperty(

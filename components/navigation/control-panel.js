@@ -10,8 +10,38 @@ class ControlPanel extends HTMLElement {
     Contact: "purple",
   };
 
+  positions = {
+    Home: {
+      x: 0,
+      y: 0,
+    },
+    Work: {
+      x: 250,
+      y: 400,
+    },
+  };
+  route; /*string*/
+  map;
+
   connectedCallback() {
     this.render();
+    this.attachListeners();
+    this.map = document.getElementById("game");
+    this.locationHashChanged();
+  }
+
+  attachListeners() {
+    window.addEventListener("hashchange", () => this.locationHashChanged());
+  }
+
+  locationHashChanged() {
+    const [route] = window.location.hash.substring(1).split("/");
+    /* move map */
+
+    this.route = decodeURI(route);
+    const xcoord = this.positions[route].x;
+    const ycoord = this.positions[route].y;
+    this.map.scroll(xcoord, ycoord);
   }
 
   render() {

@@ -12,14 +12,6 @@ class Player extends HTMLElement {
   route; /*string*/
 
   connectedCallback() {
-    // this.tileIndex = this.getAttribute("index");
-    // const cols = this.parentElement.tileMapCols;
-    // // convert index into x and y props
-    // const y = (this.tileIndex / cols) | 0;
-    // const x = this.tileIndex - 1 - cols * y;
-
-    this.style.setProperty("--player-left", 170);
-    this.style.setProperty("--player-top", 280);
     this.id = "player";
     this.attachListeners();
     this.locationHashChanged();
@@ -35,7 +27,6 @@ class Player extends HTMLElement {
     this.route = decodeURI(route);
     this.style.setProperty("--player-left", this.positions[route].left);
     this.style.setProperty("--player-top", this.positions[route].top);
-    console.log(route);
   }
 }
 

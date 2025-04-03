@@ -11,6 +11,7 @@
   --player-top: 0;
   --player-left: 0;
   --player-sprite: url(images/ghost.png);
+  --content-delay: 0s;
 }
 
 * {
@@ -247,6 +248,7 @@ c-ontent {
   opacity: var(--content-window-visibility);
 
   transition: height 1s, opacity 0.5s;
+  transition-delay: var(--content-delay);
   p {
     margin-block-start: 0;
     margin-block-end: 1rem;
