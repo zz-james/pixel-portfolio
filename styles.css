@@ -8,6 +8,9 @@
   --background-height: calc(var(--tile-size) * var(--tilemap-rows));
   --screen-tile-width: 32; /* it probably wont be this js overwrites this as it can't be done in CSS variables without becoming a px value which you can't use as divisor */
   --screen-tile-height: 32;
+  --player-top: 0;
+  --player-left: 0;
+  --player-sprite: url(images/ghost.png);
 }
 
 * {
@@ -20,11 +23,13 @@
 t-ile-app {
   display: block;
   position: relative;
+  margin: auto;
   background-image: url(images/background.png);
   background-repeat: repeat-x;
   background-size: calc(var(--background-width) * 1px) 100%;
   /* width: 98vw; */
   height: calc(calc(var(--tile-size) * var(--stage-rows)) * 1px);
+  width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
 }
 
 t-ile-layer {
@@ -99,6 +104,17 @@ body {
   background-color: black;
   flex-grow: 1;
   scroll-behavior: smooth;
+}
+
+#player {
+  z-index: 100; /* sigh */
+  position: absolute;
+  top: calc(var(--player-top) * 1px);
+  left: calc(var(--player-left) * 1px);
+  height: calc(var(--tile-size) * 1px);
+  width: calc(var(--tile-size) * 1px);
+  background-image: var(--player-sprite);
+  transition: top 2s, left 2s;
 }
 
 #navigation {

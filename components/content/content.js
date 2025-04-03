@@ -10,7 +10,7 @@ class Content extends HTMLElement {
   }
 
   attachListeners() {
-    window.onhashchange = () => this.locationHashChanged();
+    window.addEventListener("hashchange", () => this.locationHashChanged());
   }
 
   locationHashChanged() {
