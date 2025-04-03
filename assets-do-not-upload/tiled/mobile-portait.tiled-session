@@ -7,7 +7,7 @@
     "expandedProjectPaths": [
         "."
     ],
-    "file.lastUsedOpenFilter": "All Files (*)",
+    "file.lastUsedOpenFilter": "Tiled map files (*.tmx *.xml)",
     "fileStates": {
         "": {
             "scaleInDock": 1
@@ -24,6 +24,20 @@
             }
         },
         "/home/james/Projects/portfolio/assets-do-not-upload/mobile_portrait.tmx#ground": {
+            "scaleInDock": 1
+        },
+        "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx": {
+            "scale": 1.4942708333333334,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 319.88846287905193,
+                "y": 75.62216800278841
+            }
+        },
+        "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx#Tileset_gameplay": {
+            "scaleInDock": 1
+        },
+        "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx#background": {
             "scaleInDock": 1
         },
         "Windows.tsx": {
@@ -56,6 +70,7 @@
     ],
     "project": "mobile-portait.tiled-project",
     "recentFiles": [
+        "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx",
         "/home/james/Projects/portfolio/assets-do-not-upload/mobile_portrait.tmx",
         "environmant.tsx",
         "Windows.tsx",
