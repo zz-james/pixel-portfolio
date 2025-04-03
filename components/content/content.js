@@ -259,14 +259,6 @@ class Content extends HTMLElement {
 
     this.processTemplate(domNode, templateID);
 
-    let htmlString = "";
-    if (this.type === "modal") {
-      // ad close button
-      htmlString += `<button class="close_button button_unstyled" onclick="document.location.href='/#Home'"></button>`;
-    }
-
-    this.innerHTML = htmlString;
-
     this.append(domNode);
   }
 }

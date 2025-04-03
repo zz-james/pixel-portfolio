@@ -237,13 +237,30 @@ c-ontrol-panel-button {
 
 c-ontent > input#modal_content_switch:checked ~ .work_content {
   --content-window-height: 94%;
+  #modal_content_switch_label {
+    display: block;
+  }
 }
 
 c-ontent > input#bubble_content_switch:checked ~ .work_content {
   --content-window-height: 65%;
+
+  #bubble_content_switch_label {
+    display: block;
+  }
+}
+
+c-ontent > input {
+  display: none;
 }
 
 c-ontent > .work_content {
+  #modal_content_switch_label {
+    display: none;
+  }
+  #bubble_content_switch_label {
+    display: none;
+  }
   --content-window-height: 0;
   position: absolute;
   margin-inline: 5%;
