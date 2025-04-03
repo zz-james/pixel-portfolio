@@ -30,8 +30,6 @@ class TileLayer extends HTMLElement {
 
     let tileLayerHTML = "";
 
-    console.log(this.data);
-
     for (let c = 0; c < this.stageCols * this.stageRows; c++) {
       const tileIndex = this.data[c];
       tileLayerHTML += '<t-ile index="' + tileIndex + '"></t-ile>';

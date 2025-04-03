@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "/home/james/Projects/portfolio/assets-do-not-upload/mobile_portrait.tmx",
+    "activeFile": "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -27,11 +27,14 @@
             "scaleInDock": 1
         },
         "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx": {
-            "scale": 1.4942708333333334,
-            "selectedLayer": 0,
+            "expandedGroupLayers": [
+                8
+            ],
+            "scale": 0.75,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 319.88846287905193,
-                "y": 75.62216800278841
+                "x": 642,
+                "y": 505.99999999999994
             }
         },
         "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx#Tileset_gameplay": {
@@ -66,7 +69,7 @@
     "map.lastUsedFormat": "tmx",
     "map.width": 4,
     "openFiles": [
-        "/home/james/Projects/portfolio/assets-do-not-upload/mobile_portrait.tmx"
+        "/home/james/Projects/portfolio/assets-do-not-upload/tilemap_01.tmx"
     ],
     "project": "mobile-portait.tiled-project",
     "recentFiles": [
