@@ -98,7 +98,9 @@ body {
   overflow: hidden;
   background-color: black;
   flex-grow: 1;
+  scroll-behavior: smooth;
 }
+
 #navigation {
   background-color: yellowgreen;
   flex-shrink: 0;

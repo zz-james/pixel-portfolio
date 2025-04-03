@@ -10,7 +10,7 @@
     "file.lastUsedOpenFilter": "Tiled map files (*.tmx *.xml)",
     "fileStates": {
         "": {
-            "scaleInDock": 1
+            "scaleInDock": 0.5
         },
         "#ground": {
             "scaleInDock": 1
