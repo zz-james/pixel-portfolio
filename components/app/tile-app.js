@@ -31,7 +31,12 @@ class TileApp extends HTMLElement {
   attachListeners() {
     this.addEventListener("mouseover", (e) => {
       if (e.target.getAttribute("position") === "823") {
-        alert("you found it");
+        e.target.style.setProperty("border", "1px solid red");
+      }
+    });
+    this.addEventListener("mouseout", (e) => {
+      if (e.target.getAttribute("position") === "823") {
+        e.target.style.setProperty("border", "none");
       }
     });
   }
