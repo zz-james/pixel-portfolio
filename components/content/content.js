@@ -1,19 +1,26 @@
+import { makeWorkDropDowns } from "./makeWorkDropDowns.js";
+
 // this class is largely just about switching the templates
 class Content extends HTMLElement {
   route = "welcome";
-  type;
+  windowType;
   params;
   selectedContent;
+  templateID;
+
   connectedCallback() {
     this.attachListeners();
-    this.locationHashChanged();
+    this.setRoute();
+    this.render();
+    this.setStyles();
+    this.processTemplate(this.templateID);
   }
 
   attachListeners() {
     window.addEventListener("hashchange", () => this.locationHashChanged());
   }
 
-  locationHashChanged() {
+  setRoute() {
     const [route, ...params] = window.location.hash.substring(1).split("/");
 
     this.route = decodeURI(route);
@@ -26,33 +33,14 @@ class Content extends HTMLElement {
       window.location.hash = this.route;
     }
 
-    this.type = db[this.route].type;
+    this.windowType = db[this.route].type;
+    this.templateID = db[this.route].contentID;
+  }
 
-    // switch (this.type) {
-    //   case null:
-    //     this.style.setProperty("--content-delay", 0);
-    //     this.style.setProperty("--content-window-visibility", 0);
-    //     this.style.setProperty("--content-window-height", "0%");
-    //     break;
-    //   case "modal":
-    //     this.style.setProperty("--content-delay", "2s");
-    //     this.style.setProperty("--content-window-visibility", 1);
-    //     this.style.setProperty("--content-window-height", "94%");
-    //     this.style.setProperty(
-    //       "--content-window-border-image",
-    //       "url(images/bubble.png)"
-    //     );
-    //     break;
-    //   case "bubble":
-    //     this.style.setProperty("--content-window-visibility", 1);
-    //     this.style.setProperty("--content-window-height", "65%");
-    //     this.style.setProperty(
-    //       "--content-window-border-image",
-    //       "url(images/speech_bubble.png)"
-    //     );
-    // }
-
-    this.render();
+  locationHashChanged() {
+    this.setRoute();
+    this.processTemplate(this.templateID);
+    this.setStyles();
   }
 
   selectContent() {
@@ -88,20 +76,29 @@ class Content extends HTMLElement {
   }
 
   /**
-   *
-   * @param domNode DOM node. NB this is passed by reference
    * @param templateID
    */
-  processTemplate(domNode, templateID) {
+  processTemplate(templateID) {
+    const contentNode = this.querySelector("#content");
+
+    const contentTemplate = document.getElementById(templateID);
+    if (!contentTemplate) return;
+    const templateNode = document.importNode(contentTemplate.content, true);
     let htmlString = "";
+
     switch (templateID) {
       case "work":
         // render drop downs
-        this.makeDropDowns(domNode);
+        makeWorkDropDowns(
+          templateNode,
+          this.params,
+          this.selectedContent,
+          this.route
+        );
 
         // render cards
         const cardTemplate = document.getElementById("card");
-        const cardList = domNode.querySelector("#card_list");
+        const cardList = templateNode.querySelector("#card_list");
         this.selectedContent.forEach((data, index) => {
           cardList.append(this.makeCard(data, cardTemplate, index));
         });
@@ -109,55 +106,8 @@ class Content extends HTMLElement {
       default:
         console.log("no matching templateID");
     }
-  }
 
-  makeDropDowns(domNode) {
-    let htmlString = "";
-    const selectSkills = domNode.querySelector("#skills");
-    const skills = [
-      ...new Set(
-        db.Work.content
-          .map((jobs) => {
-            return jobs.skills;
-          })
-          .flat(1)
-      ),
-    ];
-
-    htmlString += `<option value="all">Show all</option>`;
-
-    skills.forEach((skill) => {
-      htmlString += `<option value="${skill}" ${
-        skill === this.params[0] ? "selected" : ""
-      }>${skill}</option>`;
-    });
-    selectSkills.innerHTML = htmlString;
-    selectSkills.addEventListener("change", (e) => {
-      window.location.hash = this.route + "/" + e.target.value + "/";
-    });
-
-    const selectRoles = domNode.querySelector("#roles");
-    const roles = [
-      ...new Set(
-        this.selectedContent
-          .map((jobs) => {
-            return jobs.role;
-          })
-          .flat(1)
-      ),
-    ].sort();
-    htmlString = "";
-    htmlString += `<option value="all">Show all</option>`;
-    roles.forEach((role) => {
-      htmlString += `<option value="${role}" ${
-        role === this.params[1] ? "selected" : ""
-      }>${role}</option>`;
-    });
-    selectRoles.innerHTML = htmlString;
-    selectRoles.addEventListener("change", (e) => {
-      window.location.hash =
-        this.route + "/" + (this.params[0] || "") + "/" + e.target.value;
-    });
+    contentNode.replaceChildren(templateNode);
   }
 
   makeCard(card, cardTemplate, id) {
@@ -233,16 +183,11 @@ class Content extends HTMLElement {
     return cardNode;
   }
 
-  render() {
-    const templateID = db[this.route].contentID;
-    const template = document.getElementById(templateID);
-    if (!template) return;
-    let domNode = document.importNode(template.content, true);
+  setStyles() {
+    const modal = document.getElementById("modal_content_switch");
+    const bubble = document.getElementById("bubble_content_switch");
 
-    const modal = domNode.getElementById("modal_content_switch");
-    const bubble = domNode.getElementById("bubble_content_switch");
-
-    switch (this.type) {
+    switch (this.windowType) {
       case null:
         modal.checked = false;
         bubble.checked = false;
@@ -256,10 +201,14 @@ class Content extends HTMLElement {
         bubble.checked = true;
         break;
     }
+  }
 
-    this.processTemplate(domNode, templateID);
+  render() {
+    const template = document.getElementById("window");
+    if (!template) return;
+    let windowNode = document.importNode(template.content, true);
 
-    this.append(domNode);
+    this.replaceChildren(windowNode);
   }
 }
 
