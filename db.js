@@ -160,16 +160,20 @@ const db = {
     ],
   },
   Projects: {
-    type: null,
+    type: "modal",
+    contentID: "projects",
   },
   "Free-lance": {
     type: "modal",
+    contentID: "freelance",
   },
   About: {
     type: "modal",
+    contentID: "about",
   },
   Contact: {
     type: "modal",
+    contentID: "contact",
   },
   "": {
     type: "bubble",

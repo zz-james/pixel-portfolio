@@ -235,16 +235,15 @@ c-ontrol-panel-button {
 
 /* ----------------------------- content ---------------------------------- */
 
-c-ontent > input#modal_content_switch:checked {
-  ~ #content {
-    --content-window-height: 94dvh;
-    --content-window-visibility: 1;
-    --content-window-border-image: url(images/bubble.png);
-    --content-delay: 2s;
-  }
-  ~ #modal_content_switch_label {
-    display: block;
-  }
+c-ontent > input#modal_content_switch:checked ~ #content {
+  --content-window-height: 94dvh;
+  --content-window-visibility: 1;
+  --content-window-border-image: url(images/bubble.png);
+  --content-delay: 2s;
+}
+
+c-ontent > input#modal_content_switch:checked ~ #modal_content_switch_label {
+  display: block;
 }
 
 /* c-ontent > input#modal_content_switch ~ #content {
@@ -256,11 +255,13 @@ c-ontent > input#modal_content_switch:checked {
   }
 } */
 
-c-ontent > input#bubble_content_switch:checked ~ #content {
-  --content-window-height: 65%;
-  --content-window-visibility: 1;
-  --content-window-border-image: url(images/speech_bubble.png);
-  #bubble_content_switch_label {
+c-ontent > input#bubble_content_switch:checked {
+  ~ #content {
+    --content-window-height: 65%;
+    --content-window-visibility: 1;
+    --content-window-border-image: url(images/speech_bubble.png);
+  }
+  ~ #bubble_content_switch_label {
     display: block;
   }
 }
@@ -304,7 +305,7 @@ c-ontent > #content {
   #bubble_content_switch_label {
     display: none;
   } */
-
+  --content-delay: 0s;
   position: absolute;
   margin-inline: 5%;
   width: 90%;

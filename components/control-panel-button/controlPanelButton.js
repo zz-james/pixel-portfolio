@@ -15,6 +15,7 @@ class ControlPanelButton extends HTMLElement {
   attachEvents() {
     this.addEventListener("mouseup", (e) => {
       window.location.hash = ""; // this is needed if they want to reset the window by pressing a button
+      //
     });
   }
 
