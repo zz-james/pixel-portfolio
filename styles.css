@@ -271,7 +271,7 @@ c-ontent {
   z-index: 100;
   left: 0;
   top: 0;
-  height: 50vh;
+  height: 0;
   width: 100vw;
   overflow-y: visible;
   input {

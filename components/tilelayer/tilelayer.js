@@ -17,11 +17,6 @@ class TileLayer extends HTMLElement {
     return this.tileMapRows;
   }
 
-  /* put this somewhere
-  const bob = document.querySelector('t-ile-app')
-bob.addEventListener('mouseover', (e)=>console.log(e.target))
-*/
-
   connectedCallback() {
     this.name = this.getAttribute("name");
     this.data = this.parentElement.getLayerData(this.name);

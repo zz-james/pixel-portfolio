@@ -25,6 +25,12 @@ class TileApp extends HTMLElement {
     const tilesString = this.createLayers() + "<p-layer></p-layer>";
 
     this.innerHTML = tilesString;
+    this.attachListeners();
+  }
+
+  attachListeners() {
+    debugger;
+    this.addEventListener("mouseover", (e) => console.log(e.target));
   }
 
   getLayerData(name) {
