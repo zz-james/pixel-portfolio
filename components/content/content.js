@@ -23,7 +23,20 @@ class Content extends HTMLElement {
   setRoute() {
     const [route, ...params] = window.location.hash.substring(1).split("/");
 
-    this.route = decodeURI(route);
+    const newRoute = decodeURI(route);
+
+    if (this.route === newRoute) {
+      // we haven't moved
+      const hack = document.getElementById("content");
+      hack?.style.setProperty("transition-delay", "0s");
+    } else {
+      // we moved so delay
+      const hack = document.getElementById("content");
+      hack?.style.setProperty("transition-delay", "2s");
+    }
+
+    this.route = newRoute;
+
     this.params = params.map((param) => decodeURI(param)); // string[]
 
     this.selectedContent = this.selectContent();
@@ -82,9 +95,11 @@ class Content extends HTMLElement {
     const contentNode = this.querySelector("#content");
 
     const contentTemplate = document.getElementById(templateID);
-    if (!contentTemplate) return;
+    if (!contentTemplate) {
+      contentNode.replaceChildren("");
+      return;
+    }
     const templateNode = document.importNode(contentTemplate.content, true);
-    let htmlString = "";
 
     switch (templateID) {
       case "work":
@@ -104,7 +119,7 @@ class Content extends HTMLElement {
         });
         break;
       default:
-        console.log("no matching templateID");
+        console.log(`no matching templateID: ${templateID} process`);
     }
 
     contentNode.replaceChildren(templateNode);
