@@ -23,6 +23,18 @@ class ControlPanel extends HTMLElement {
       x: 620,
       y: 300,
     },
+    "Free-lance": {
+      x: 0,
+      y: 450,
+    },
+    About: {
+      x: 620,
+      y: 0,
+    },
+    Contact: {
+      x: 620,
+      y: 450,
+    },
   };
   route; /*string*/
   map;
@@ -42,10 +54,13 @@ class ControlPanel extends HTMLElement {
     const [route] = window.location.hash?.substring(1).split("/");
     /* move map */
 
-    this.route = decodeURI(route);
+    const newRoute = decodeURI(route);
+    this.route = newRoute;
 
-    const xcoord = this.positions[route]?.x;
-    const ycoord = this.positions[route]?.y;
+    if (!this.positions[newRoute]) return;
+
+    const xcoord = this.positions[newRoute]?.x;
+    const ycoord = this.positions[newRoute]?.y;
     this.map.scroll(xcoord, ycoord);
   }
 
