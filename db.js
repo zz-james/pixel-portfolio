@@ -159,8 +159,8 @@ const db = {
       },
     ],
   },
-  Skills: {
-    type: "modal",
+  Projects: {
+    type: null,
   },
   "Free-lance": {
     type: "modal",

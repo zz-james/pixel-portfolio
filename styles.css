@@ -237,23 +237,24 @@ c-ontrol-panel-button {
 
 c-ontent > input#modal_content_switch:checked {
   ~ #content {
-    --content-window-height: 90vh;
+    --content-window-height: 94dvh;
     --content-window-visibility: 1;
     --content-window-border-image: url(images/bubble.png);
+    --content-delay: 2s;
   }
   ~ #modal_content_switch_label {
     display: block;
   }
 }
 
-c-ontent c-ontent > input#modal_content_switch ~ #content {
+/* c-ontent > input#modal_content_switch ~ #content {
   --content-window-height: 0;
   --content-window-visibility: 0;
   --content-window-border-image: none;
   #modal_content_switch_label {
     display: none;
   }
-}
+} */
 
 c-ontent > input#bubble_content_switch:checked ~ #content {
   --content-window-height: 65%;
@@ -266,7 +267,7 @@ c-ontent > input#bubble_content_switch:checked ~ #content {
 
 c-ontent {
   position: absolute;
-  z-index: 90;
+  z-index: 100;
   left: 0;
   top: 0;
   height: 50vh;
@@ -286,12 +287,13 @@ c-ontent {
   #modal_content_switch_label,
   #bubble_content_switch_label {
     display: none;
+    position: absolute;
+    right: calc(5% + 20px);
+    top: 1.4rem;
+    z-index: 101;
   }
   #modal_content_switch_label > div,
   #bubble_content_switch_label > div {
-    position: absolute;
-    right: 16px;
-    top: 12px;
     height: 16px;
     width: 16px;
   }
