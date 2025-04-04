@@ -16,6 +16,18 @@ class Player extends HTMLElement {
       left: 1100,
       top: 670,
     },
+    "Free-lance": {
+      left: 170,
+      top: 890,
+    },
+    About: {
+      left: 1100,
+      top: 288,
+    },
+    Contact: {
+      left: 1100,
+      top: 890,
+    },
   };
   route; /*string*/
 
@@ -31,12 +43,12 @@ class Player extends HTMLElement {
 
   locationHashChanged() {
     const [route] = window.location.hash.substring(1).split("/");
+    const newRoute = decodeURI(route);
+    this.route = newRoute;
 
-    this.route = decodeURI(route);
-    if (!this.positions[route]) return;
-
-    this.style.setProperty("--player-left", this.positions[route].left);
-    this.style.setProperty("--player-top", this.positions[route].top);
+    if (!this.positions[newRoute]) return;
+    this.style.setProperty("--player-left", this.positions[newRoute].left);
+    this.style.setProperty("--player-top", this.positions[newRoute].top);
   }
 }
 
