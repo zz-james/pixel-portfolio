@@ -11,6 +11,10 @@
   --player-top: 0;
   --player-left: 0;
   --player-sprite: url(images/ghost.png);
+  --content-delay: 0s;
+  --content-window-visibility: 0;
+  --content-window-height: 0;
+  --content-window-border-image: none;
 }
 
 * {
@@ -116,6 +120,8 @@ body {
   background-image: var(--player-sprite);
   transition: top 2s, left 2s;
 }
+
+/* ------------------------------- control panel ----------------------------------- */
 
 #navigation {
   background-color: yellowgreen;
@@ -227,10 +233,76 @@ c-ontrol-panel-button {
   text-decoration: none;
 }
 
-c-ontent {
-  --content-window-height: 55%;
+/* ----------------------------- content ---------------------------------- */
+
+c-ontent > input#modal_content_switch:checked {
+  ~ #content {
+    --content-window-height: 90vh;
+    --content-window-visibility: 1;
+    --content-window-border-image: url(images/bubble.png);
+  }
+  ~ #modal_content_switch_label {
+    display: block;
+  }
+}
+
+c-ontent c-ontent > input#modal_content_switch ~ #content {
+  --content-window-height: 0;
+  --content-window-visibility: 0;
   --content-window-border-image: none;
+  #modal_content_switch_label {
+    display: none;
+  }
+}
+
+c-ontent > input#bubble_content_switch:checked ~ #content {
+  --content-window-height: 65%;
   --content-window-visibility: 1;
+  --content-window-border-image: url(images/speech_bubble.png);
+  #bubble_content_switch_label {
+    display: block;
+  }
+}
+
+c-ontent {
+  position: absolute;
+  z-index: 90;
+  left: 0;
+  top: 0;
+  height: 50vh;
+  width: 100vw;
+  overflow-y: visible;
+  input {
+    display: none;
+  }
+
+  .close_button {
+    background-image: url(images/close_button_on_off.png);
+  }
+  .close_button:hover,
+  .close_button:active {
+    background-position-x: 16px;
+  }
+  #modal_content_switch_label,
+  #bubble_content_switch_label {
+    display: none;
+  }
+  #modal_content_switch_label > div,
+  #bubble_content_switch_label > div {
+    position: absolute;
+    right: 16px;
+    top: 12px;
+    height: 16px;
+    width: 16px;
+  }
+}
+
+c-ontent > #content {
+  /*
+  #bubble_content_switch_label {
+    display: none;
+  } */
+
   position: absolute;
   margin-inline: 5%;
   width: 90%;
@@ -246,7 +318,9 @@ c-ontent {
   border-image-repeat: stretch;
   opacity: var(--content-window-visibility);
 
-  transition: height 1s, opacity 0.5s;
+  transition: height 1s, opacity 1s;
+  transition-delay: var(--content-delay);
+
   p {
     margin-block-start: 0;
     margin-block-end: 1rem;
@@ -262,23 +336,12 @@ c-ontent {
     color: white;
     text-shadow: #000 0px 0px 2px;
   }
-  .close_button {
-    position: absolute;
-    right: 16px;
-    top: 12px;
-    height: 16px;
-    width: 16px;
-    background-image: url(images/close_button_on_off.png);
-  }
-  .close_button:hover,
-  .close_button:active {
-    background-position-x: 16px;
-  }
 
   .work_content_container {
     display: flex;
     flex-direction: column;
     height: 88%;
+    overflow-y: hidden;
   }
 
   .work_selector {
@@ -288,7 +351,7 @@ c-ontent {
   #card_list {
     margin-top: 4px;
     overflow-x: clip;
-    overflow-y: auto;
+    overflow-y: scroll;
     .card_wrapper {
       input {
         display: none;
