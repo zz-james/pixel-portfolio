@@ -32,7 +32,7 @@ class Content extends HTMLElement {
     if (this.selectedContent.length === 0) {
       window.location.hash = this.route;
     }
-
+    if (!db[this.route]) return;
     this.windowType = db[this.route].type;
     this.templateID = db[this.route].contentID;
   }
