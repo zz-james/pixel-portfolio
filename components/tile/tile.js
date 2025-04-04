@@ -9,6 +9,7 @@ class Tile extends HTMLElement {
     const cols = this.parentElement.tileMapCols;
 
     // convert index into x and y props
+    // these used to offset the background
     const y = (this.tileIndex / cols) | 0;
 
     const x = this.tileIndex - 1 - cols * y;

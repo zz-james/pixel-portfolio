@@ -17,6 +17,11 @@ class TileLayer extends HTMLElement {
     return this.tileMapRows;
   }
 
+  /* put this somewhere
+  const bob = document.querySelector('t-ile-app')
+bob.addEventListener('mouseover', (e)=>console.log(e.target))
+*/
+
   connectedCallback() {
     this.name = this.getAttribute("name");
     this.data = this.parentElement.getLayerData(this.name);
@@ -32,7 +37,8 @@ class TileLayer extends HTMLElement {
 
     for (let c = 0; c < this.stageCols * this.stageRows; c++) {
       const tileIndex = this.data[c];
-      tileLayerHTML += '<t-ile index="' + tileIndex + '"></t-ile>';
+      tileLayerHTML +=
+        '<t-ile index="' + tileIndex + '" position="' + c + '"></t-ile>';
     }
     this.style.setProperty("z-index", this.getAttribute("layer"));
     this.innerHTML += tileLayerHTML;
