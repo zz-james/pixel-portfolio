@@ -29,8 +29,11 @@ class TileApp extends HTMLElement {
   }
 
   attachListeners() {
-    debugger;
-    this.addEventListener("mouseover", (e) => console.log(e.target));
+    this.addEventListener("mouseover", (e) => {
+      if (e.target.getAttribute("position") === "823") {
+        alert("you found it");
+      }
+    });
   }
 
   getLayerData(name) {
