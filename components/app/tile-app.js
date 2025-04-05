@@ -33,10 +33,16 @@ class TileApp extends HTMLElement {
       if (e.target.getAttribute("position") === "823") {
         e.target.style.setProperty("border", "1px solid red");
       }
+      if (e.target.getAttribute("position") === "367") {
+        e.target.style.setProperty("--y", "2");
+      }
     });
     this.addEventListener("mouseout", (e) => {
       if (e.target.getAttribute("position") === "823") {
         e.target.style.setProperty("border", "none");
+      }
+      if (e.target.getAttribute("position") === "367") {
+        e.target.style.setProperty("--y", "1");
       }
     });
   }
