@@ -7,6 +7,10 @@ class TileApp extends HTMLElement {
   tilemap;
   layersObject = {}; // holds the data for each array in an object with the layer name as key
 
+  gameState = {
+    chest: "closed",
+  };
+
   createLayers() {
     let htmlString = "";
     this.tilemap.layers.forEach((layerData, index) => {
@@ -32,22 +36,28 @@ class TileApp extends HTMLElement {
   }
   // https://codeburst.io/the-only-way-to-detect-touch-with-javascript-7791a3346685
   attachListeners() {
-    this.addEventListener("mouseover", (e) => {
-      if (e.target.getAttribute("position") === "823") {
-        e.target.style.setProperty("border", "1px solid red");
-      }
+    this.addEventListener("mouseup", (e) => {
+      // if (e.target.getAttribute("position") === "823") {
+      //   e.target.style.setProperty("border", "1px solid red");
+      // }
       if (e.target.getAttribute("position") === "367") {
-        e.target.style.setProperty("--y", "2");
+        if (this.gameState.door === "closed") {
+          this.gameState.door = "open";
+          e.target.style.setProperty("--y", "2");
+        } else {
+          this.gameState.door = "closed";
+          e.target.style.setProperty("--y", "1");
+        }
       }
     });
-    this.addEventListener("mouseout", (e) => {
-      if (e.target.getAttribute("position") === "823") {
-        e.target.style.setProperty("border", "none");
-      }
-      if (e.target.getAttribute("position") === "367") {
-        e.target.style.setProperty("--y", "1");
-      }
-    });
+    // this.addEventListener("mouseout", (e) => {
+    //   if (e.target.getAttribute("position") === "823") {
+    //     e.target.style.setProperty("border", "none");
+    //   }
+    //   if (e.target.getAttribute("position") === "367") {
+    //     e.target.style.setProperty("--y", "1");
+    //   }
+    // });
   }
 
   getLayerData(name) {

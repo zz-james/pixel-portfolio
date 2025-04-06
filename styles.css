@@ -257,7 +257,7 @@ c-ontent > input#modal_content_switch:checked ~ #modal_content_switch_label {
 
 c-ontent > input#bubble_content_switch:checked {
   ~ #content {
-    --content-window-height: 65%;
+    --content-window-height: 65dvh;
     --content-window-visibility: 1;
     --content-window-border-image: url(images/speech_bubble.png);
   }

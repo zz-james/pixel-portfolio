@@ -2,7 +2,7 @@ import { makeWorkDropDowns } from "./makeWorkDropDowns.js";
 
 // this class is largely just about switching the templates
 class Content extends HTMLElement {
-  route = "welcome";
+  route = "Home";
   windowType;
   params;
   selectedContent;
@@ -23,7 +23,7 @@ class Content extends HTMLElement {
   setRoute() {
     const [route, ...params] = window.location.hash.substring(1).split("/");
 
-    const newRoute = decodeURI(route);
+    const newRoute = decodeURI(route) || "Home";
 
     if (this.route === newRoute) {
       // we haven't moved
@@ -57,7 +57,9 @@ class Content extends HTMLElement {
   }
 
   selectContent() {
-    let items = db.Work.content;
+    let items = db[this.route]?.content;
+
+    if (!items) return [];
 
     if (
       !Number.isNaN(parseInt(this.params[0], 10)) ||
@@ -102,6 +104,8 @@ class Content extends HTMLElement {
     const templateNode = document.importNode(contentTemplate.content, true);
 
     switch (templateID) {
+      case "home":
+        break;
       case "work":
         // render drop downs
         makeWorkDropDowns(

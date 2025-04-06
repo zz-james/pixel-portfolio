@@ -2,10 +2,12 @@ const db = {
   Welcome: {
     type: "bubble",
     contentID: "welcome",
+    content: ["Welcome to my site!"],
   },
   Home: {
-    type: null,
-    contentID: null,
+    type: "bubble",
+    contentID: "home",
+    content: ["Welcome to my site!"],
   },
   Work: {
     type: "modal",
