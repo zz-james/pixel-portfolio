@@ -20,6 +20,9 @@ class TileApp extends HTMLElement {
     return htmlString;
   }
 
+  // use an observable and a reducer for game state?
+  // https://javascript.info/task/observable
+
   connectedCallback() {
     this.tilemap = TileMaps[this.getAttribute("mapname")];
     const tilesString = this.createLayers() + "<p-layer></p-layer>";
@@ -27,7 +30,7 @@ class TileApp extends HTMLElement {
     this.innerHTML = tilesString;
     this.attachListeners();
   }
-
+  // https://codeburst.io/the-only-way-to-detect-touch-with-javascript-7791a3346685
   attachListeners() {
     this.addEventListener("mouseover", (e) => {
       if (e.target.getAttribute("position") === "823") {
