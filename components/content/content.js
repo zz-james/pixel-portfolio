@@ -13,7 +13,7 @@ class Content extends HTMLElement {
     this.setRoute();
     this.render();
     this.setStyles();
-    this.processTemplate(this.templateID);
+    this.processTemplate(this.templateID, this.dialogID);
   }
 
   attachListeners() {
@@ -93,15 +93,15 @@ class Content extends HTMLElement {
   /**
    * @param templateID
    */
-  processTemplate(templateID) {
-    const contentNode = this.querySelector("#content");
 
+  processTemplate(templateID) {
     const contentTemplate = document.getElementById(templateID);
+    const contentNode = this.querySelector("#content"); // where we append
     if (!contentTemplate) {
       contentNode.replaceChildren("");
       return;
     }
-    const templateNode = document.importNode(contentTemplate.content, true);
+    const contentFrag = document.importNode(contentTemplate.content, true);
 
     switch (templateID) {
       case "home":
@@ -109,7 +109,7 @@ class Content extends HTMLElement {
       case "work":
         // render drop downs
         makeWorkDropDowns(
-          templateNode,
+          contentFrag,
           this.params,
           this.selectedContent,
           this.route
@@ -117,7 +117,7 @@ class Content extends HTMLElement {
 
         // render cards
         const cardTemplate = document.getElementById("card");
-        const cardList = templateNode.querySelector("#card_list");
+        const cardList = contentFrag.querySelector("#card_list");
         this.selectedContent.forEach((data, index) => {
           cardList.append(this.makeCard(data, cardTemplate, index));
         });
@@ -125,8 +125,7 @@ class Content extends HTMLElement {
       default:
         console.log(`no matching templateID: ${templateID} process`);
     }
-
-    contentNode.replaceChildren(templateNode);
+    contentNode.replaceChildren(contentFrag);
   }
 
   makeCard(card, cardTemplate, id) {
@@ -204,21 +203,11 @@ class Content extends HTMLElement {
 
   setStyles() {
     const modal = document.getElementById("modal_content_switch");
-    const bubble = document.getElementById("bubble_content_switch");
 
-    switch (this.windowType) {
-      case null:
-        modal.checked = false;
-        bubble.checked = false;
-        break;
-      case "modal":
-        modal.checked = true;
-        bubble.checked = false;
-        break;
-      case "bubble":
-        modal.checked = false;
-        bubble.checked = true;
-        break;
+    if (this.windowType === "modal") {
+      modal.checked = true;
+    } else {
+      modal.chacked = false;
     }
   }
 

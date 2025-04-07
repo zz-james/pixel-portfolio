@@ -20,7 +20,9 @@ class TileApp extends HTMLElement {
       };
       htmlString += `<t-ile-layer layer="${index}" name="${layerData.name}" stageCols='${this.tilemap.width}' stageRows='${this.tilemap.height}'></t-ile-layer>`;
     });
-
+    htmlString += `<input id="bubble_content_switch" type="checkbox" name="window_selector" />
+    
+    <div id="dialog"></div>`;
     return htmlString;
   }
 

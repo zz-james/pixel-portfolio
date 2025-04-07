@@ -17,7 +17,9 @@
   <body>
     <div id="layout">
       <div id="game">
-        <t-ile-app mapname="tilemap_01"></t-ile-app>
+        <t-ile-app mapname="tilemap_01">
+          <div>Loading</div>
+        </t-ile-app>
       </div>
       <div id="navigation">
         <c-ontrol-panel></c-ontrol-panel>
@@ -28,38 +30,66 @@
     <c-ontent></c-ontent>
 
     <!-- templates -->
-    <template id="home">
-      <h4>Welcome to my portfolio.</h4>
-      <p>
-        Please use the buttons below to navigate the site. You will find
-        everything you need to know about me and my work as a web developer
-      </p>
 
-      <!-- <p>
-        For a plain text version of the site please click the text button at the
-        top of the screen
-      </p> -->
+    <template id="dialog_home">
+      <label for="bubble_content_switch" id="bubble_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
+      <section class="dialog mandatory-scroll-snapping">
+        <div>
+          <h4>Welcome to my portfolio.</h4>
+          Please use the buttons below to navigate the site. You will find
+          everything you need to know about me and my work as a web developer
+        </div>
 
-      <div style="position: absolute; bottom: 3rem; right: 2rem">
+        <div>
+          For a plain text version of the site please click the text button at
+          the top of the screen.
+        </div>
+
+        <div>
+          <p>Tap on me (the ghost!) to talk to me</p>
+          <p>
+            In each section (Work, Projects etc), near me is a hidden heart.
+          </p>
+          <img src="images/heart.png" />
+        </div>
+
+        <div>
+          <p>Collect all the hearts for a reward.</p>
+          <p>Try clicking/poking doors, windows and other objects.</p>
+          <h4>Good Luck!</h4>
+        </div>
+      </section>
+      <div class="dialog_button_container">
         <a class="button_unstyled blue_button" href="#Home">
           <span class="control_panel_button_text" style="position: static"
-            >Continue</span
+            >back</span
+          >
+        </a>
+        <a class="button_unstyled blue_button" href="#Home">
+          <span class="control_panel_button_text" style="position: static"
+            >next</span
           >
         </a>
       </div>
     </template>
 
+    <template id="dialog_work"> Some Content </template>
+
+    <template id="home"> </template>
+
+    <!-- hello -->
+    <!-- <input id="bubble_content_switch" type="checkbox" name="window_selector" />
+    <label for="bubble_content_switch" id="bubble_content_switch_label">
+      <div class="close_button button_unstyled"></div>
+    </label> -->
+    <!-- hello -->
+
     <template id="window">
       <input id="modal_content_switch" type="checkbox" name="window_selector" />
-      <input
-        id="bubble_content_switch"
-        type="checkbox"
-        name="window_selector"
-      />
+
       <label for="modal_content_switch" id="modal_content_switch_label">
-        <div class="close_button button_unstyled"></div>
-      </label>
-      <label for="bubble_content_switch" id="bubble_content_switch_label">
         <div class="close_button button_unstyled"></div>
       </label>
       <div id="content"></div>

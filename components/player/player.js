@@ -1,40 +1,13 @@
-class Player extends HTMLElement {
-  positions = {
-    "": {
-      left: 170,
-      top: 280,
-    },
-    Home: {
-      left: 260,
-      top: 280,
-    },
-    Work: {
-      left: 545,
-      top: 670,
-    },
-    Projects: {
-      left: 1100,
-      top: 670,
-    },
-    "Free-lance": {
-      left: 170,
-      top: 890,
-    },
-    About: {
-      left: 1100,
-      top: 288,
-    },
-    Contact: {
-      left: 1100,
-      top: 890,
-    },
-  };
-  route; /*string*/
+import { makeDialogButtons } from "./makeDialogButtons.js";
 
+class Player extends HTMLElement {
+  route; /*string*/
+  windowType;
   connectedCallback() {
     this.id = "player";
     this.attachListeners();
     this.locationHashChanged();
+    this.innerHTML = "<label for='bubble_content_switch'></label>";
   }
 
   attachListeners() {
@@ -46,16 +19,45 @@ class Player extends HTMLElement {
     const newRoute = decodeURI(route);
     this.route = newRoute;
 
-    if (!this.positions[newRoute]) return;
+    this.windowType = db[newRoute].type;
+
+    if (!db[newRoute].player) return;
     // we make these global
     document.documentElement.style.setProperty(
       "--player-left",
-      this.positions[newRoute].left
+      db[newRoute].player.left
     );
     document.documentElement.style.setProperty(
       "--player-top",
-      this.positions[newRoute].top
+      db[newRoute].player.top
     );
+    this.setStyles();
+    this.processDialogLayer(db[newRoute].dialogID);
+  }
+  processDialogLayer(dialogID) {
+    const dialogTemplate = document.getElementById(dialogID);
+    const dialogNode = document.querySelector("#dialog");
+    const dialogFrag = document.importNode(dialogTemplate.content, true);
+    switch (dialogID) {
+      case "dialog_home":
+        makeDialogButtons(dialogFrag);
+
+        break;
+      case "work":
+        break;
+      default:
+        console.log(`no matching templateID: ${dialogID} process`);
+    }
+    dialogNode.replaceChildren(dialogFrag);
+  }
+  setStyles() {
+    const bubble = document.getElementById("bubble_content_switch");
+
+    if (this.windowType === "bubble") {
+      bubble.checked = true;
+    } else {
+      bubble.checked = false;
+    }
   }
 }
 

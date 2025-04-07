@@ -14,7 +14,9 @@
   --content-delay: 0s;
   --content-window-visibility: 0;
   --content-window-height: 0;
-  --content-window-border-image: none;
+  --content-window-border-image: url(images/bubble.png);
+  --game-overflow: hidden; /* or sometimes   overflow: scroll; */
+  --content-width: calc(var(--player-left) - 20);
 }
 
 * {
@@ -22,6 +24,11 @@
     ".SFUIText", Helvetica, Arial, sans-serif;
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+p {
+  margin-block-start: 0;
+  margin-block-end: 1rem;
 }
 
 t-ile-app {
@@ -104,7 +111,8 @@ body {
 }
 
 #game {
-  overflow: hidden;
+  overflow: var(--game-overflow);
+  scrollbar-width: none;
   background-color: black;
   flex-grow: 1;
   scroll-behavior: smooth;
@@ -119,6 +127,11 @@ body {
   width: calc(var(--tile-size) * 1px);
   background-image: var(--player-sprite);
   transition: top 2s, left 2s;
+  label {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 /* ------------------------------- control panel ----------------------------------- */
@@ -233,113 +246,169 @@ c-ontrol-panel-button {
   text-decoration: none;
 }
 
-/* ----------------------------- content ---------------------------------- */
-
-c-ontent > input#modal_content_switch:checked ~ #content {
-  --content-window-height: 94dvh;
-  --content-window-visibility: 1;
-  --content-window-border-image: url(images/bubble.png);
-  --content-delay: 2s;
+.close_button {
+  background-image: url(images/close_button_on_off.png);
+}
+.close_button:hover,
+.close_button:active {
+  background-position-x: 16px;
 }
 
-c-ontent > input#modal_content_switch:checked ~ #modal_content_switch_label {
-  display: block;
+.blue_button {
+  border: 12px solid;
+  border-image-source: url(images/blue_button_blank.png);
+  border-image-slice: 15 fill;
+  cursor: pointer;
 }
 
-/* c-ontent > input#modal_content_switch ~ #content {
-  --content-window-height: 0;
-  --content-window-visibility: 0;
-  --content-window-border-image: none;
-  #modal_content_switch_label {
-    display: none;
-  }
-} */
+/* ---------------------------- dialogs ----------------- */
 
-c-ontent > input#bubble_content_switch:checked {
-  ~ #content {
+t-ile-app > input#bubble_content_switch {
+  display: none;
+}
+
+t-ile-app > input#bubble_content_switch:checked {
+  ~ #dialog {
     --content-window-height: 65dvh;
     --content-window-visibility: 1;
-    --content-window-border-image: url(images/speech_bubble.png);
-    right: calc(calc(var(--player-left) + 100) * 1px);
-    bottom: calc(calc(var(--player-top) + 200) * 1px);
-    width: calc(calc(var(--player-left) - 20) * 1px);
-    height: calc(calc(var(--player-top) - 20) * 1px);
-    top: 20px;
-    left: 20px;
-  }
-  ~ #bubble_content_switch_label {
-    display: block;
+    /* --content-window-border-image: url(images/speech_bubble.png); */
+    left: calc(calc(var(--player-left) - 290) * 1px);
+    /* right: calc(calc(var(--player-left) + 100) * 1px); */
+    top: calc(calc(var(--player-top) - 260) * 1px);
+    /* bottom: calc(calc(var(--player-top) + 200) * 1px); */
+
+    width: 15.5rem;
+    height: 16.5rem;
+
+    #bubble_content_switch_label {
+      display: block;
+    }
   }
 }
 
-c-ontent {
-  position: absolute;
-  z-index: 100;
-  left: 0;
-  top: 0;
-  height: 0;
-  width: 100vw;
-  overflow-y: visible;
-  input {
-    display: none;
-  }
-
-  .close_button {
-    background-image: url(images/close_button_on_off.png);
-  }
-  .close_button:hover,
-  .close_button:active {
-    background-position-x: 16px;
-  }
-  #modal_content_switch_label,
-  #bubble_content_switch_label {
-    display: none;
-    position: absolute;
-    right: calc(5% + 20px);
-    top: 1.4rem;
-    z-index: 101;
-  }
-  #modal_content_switch_label > div,
-  #bubble_content_switch_label > div {
-    height: 16px;
-    width: 16px;
-  }
+#bubble_content_switch_label {
+  display: none;
+  height: 16px;
+  width: 16px;
+  margin-right: 0;
+  margin-left: auto;
 }
 
-c-ontent > #content {
-  /*
-  #bubble_content_switch_label {
-    display: none;
-  } */
+#bubble_content_switch_label > div {
+  height: 16px;
+  width: 16px;
+}
+
+t-ile-app > #dialog {
   --content-delay: 0s;
   position: absolute;
   margin-inline: 5%;
-  width: 90%;
-  top: 0.5rem;
+  /* top: 1.25rem;
+  left: 20px; */
+  width: calc(var(--content-width) * 1px);
   height: var(--content-window-height);
   background-color: transparent;
   z-index: 20;
   padding: 15px 20px;
-
+  border-width: 15px;
   border-image-width: 15px 15px 35px 15px;
-  border-image-source: var(--content-window-border-image);
+  border-image-source: url(images/speech_bubble.png);
   border-image-slice: 15 15 45 15 fill;
   border-image-repeat: stretch;
   opacity: var(--content-window-visibility);
 
   transition: height 1s, opacity 1s;
   transition-delay: var(--content-delay);
+  h4 {
+    margin: 0;
+    margin-block-end: 0.7em;
+  }
+  .dialog_button_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: -12px;
+    a {
+      display: block;
+      height: 10px;
+      font-size: 10px;
+      line-height: 0;
+      transition: opacity 0.5s;
+    }
+    a:first-child {
+      opacity: 0;
+    }
+    a:last-child {
+      opacity: 1;
+    }
+  }
+  .dialog:not([data-scroll="0"]) ~ .dialog_button_container > a:first-child {
+    opacity: 1;
+  }
+  .dialog[data-scroll="end"] ~ .dialog_button_container > a:last-child {
+    opacity: 0;
+  }
+}
 
-  p {
-    margin-block-start: 0;
-    margin-block-end: 1rem;
+/* ----------------------------- content ---------------------------------- */
+
+c-ontent > input#modal_content_switch:checked {
+  ~ #content {
+    --content-window-visibility: 1;
+    --content-delay: 2s;
+    height: 94dvh;
+  }
+  ~ #modal_content_switch_label {
+    display: block;
+  }
+}
+
+c-ontent {
+  display: block;
+  position: relative;
+  z-index: 100;
+  left: 0;
+  top: -98dvh;
+  height: 0;
+  overflow-y: visible;
+  margin: auto;
+  input#modal_content_switch {
+    display: none;
   }
 
-  .blue_button {
-    border: 12px solid;
-    border-image-source: url(images/blue_button_blank.png);
-    border-image-slice: 15 fill;
+  #modal_content_switch_label {
+    display: none;
+    position: absolute;
+    left: calc(95vw - 30px); /* hacky hard coded */
+    top: 2rem;
+    z-index: 101;
   }
+  #modal_content_switch_label > div {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+c-ontent > #content {
+  --content-delay: 0s;
+  position: absolute;
+  margin-inline: 5%;
+  top: 1.25rem;
+  left: 20px;
+  width: 88vw;
+  height: 0;
+  background-color: transparent;
+  z-index: 20;
+  padding: 15px 20px;
+  border-width: 15px;
+  border-image-width: 15px 15px 35px 15px;
+  border-image-source: url(images/bubble.png);
+  border-image-slice: 15 15 45 15 fill;
+  border-image-repeat: stretch;
+  opacity: var(--content-window-visibility);
+  transition: height 1s, opacity 1s;
+  transition-delay: var(--content-delay);
+
   .button_text {
     font-size: 12px;
     color: white;
@@ -451,5 +520,26 @@ c-ontent > #content {
     img {
       width: 100%;
     }
+  }
+}
+
+.mandatory-scroll-snapping {
+  display: flex;
+  margin: 0.5rem auto;
+  flex: none;
+  overflow-x: auto;
+  flex-flow: row nowrap;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+
+  div {
+    flex: none;
+    width: 100%;
+
+    padding-bottom: 8px;
+    scroll-snap-stop: normal;
   }
 }
