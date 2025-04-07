@@ -260,6 +260,12 @@ c-ontent > input#bubble_content_switch:checked {
     --content-window-height: 65dvh;
     --content-window-visibility: 1;
     --content-window-border-image: url(images/speech_bubble.png);
+    right: calc(calc(var(--player-left) + 100) * 1px);
+    bottom: calc(calc(var(--player-top) + 200) * 1px);
+    width: calc(calc(var(--player-left) - 20) * 1px);
+    height: calc(calc(var(--player-top) - 20) * 1px);
+    top: 20px;
+    left: 20px;
   }
   ~ #bubble_content_switch_label {
     display: block;

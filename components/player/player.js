@@ -5,7 +5,7 @@ class Player extends HTMLElement {
       top: 280,
     },
     Home: {
-      left: 170,
+      left: 260,
       top: 280,
     },
     Work: {
@@ -47,8 +47,15 @@ class Player extends HTMLElement {
     this.route = newRoute;
 
     if (!this.positions[newRoute]) return;
-    this.style.setProperty("--player-left", this.positions[newRoute].left);
-    this.style.setProperty("--player-top", this.positions[newRoute].top);
+    // we make these global
+    document.documentElement.style.setProperty(
+      "--player-left",
+      this.positions[newRoute].left
+    );
+    document.documentElement.style.setProperty(
+      "--player-top",
+      this.positions[newRoute].top
+    );
   }
 }
 
