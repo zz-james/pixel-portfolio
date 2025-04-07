@@ -36,16 +36,16 @@ class TileApp extends HTMLElement {
   }
   // https://codeburst.io/the-only-way-to-detect-touch-with-javascript-7791a3346685
   attachListeners() {
-    this.addEventListener("mouseup", (e) => {
+    this.addEventListener("mousedown", (e) => {
       // if (e.target.getAttribute("position") === "823") {
       //   e.target.style.setProperty("border", "1px solid red");
       // }
       if (e.target.getAttribute("position") === "367") {
-        if (this.gameState.door === "closed") {
-          this.gameState.door = "open";
+        if (this.gameState.chest === "closed") {
+          this.gameState.chest = "open";
           e.target.style.setProperty("--y", "2");
         } else {
-          this.gameState.door = "closed";
+          this.gameState.chest = "closed";
           e.target.style.setProperty("--y", "1");
         }
       }
