@@ -555,10 +555,10 @@ c-ontent > #content {
         z-index: 21;
         top: 0;
         left: 0;
-        width: 100vw;
-        height: 100vh;
-        margin-top: -8px;
-        margin-left: -5%;
+        width: 99.9dvw;
+        height: 99.9dvh;
+        margin-top: 0px;
+        margin-left: -8%;
         .card_description {
           display: block;
         }
