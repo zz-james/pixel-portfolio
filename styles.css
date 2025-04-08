@@ -428,9 +428,9 @@ c-ontent {
       --content-window-visibility: 1;
       --content-delay: 2s;
       height: 94dvh;
-    }
-    ~ #modal_content_switch_label {
-      display: block;
+      #modal_content_switch_label {
+        display: block;
+      }
     }
   }
 }
@@ -446,18 +446,6 @@ c-ontent {
   margin: auto;
   input#modal_content_switch {
     display: none;
-  }
-
-  #modal_content_switch_label {
-    display: none;
-    position: absolute;
-    left: calc(95vw - 30px); /* hacky hard coded */
-    top: 2rem;
-    z-index: 101;
-  }
-  #modal_content_switch_label > div {
-    height: 16px;
-    width: 16px;
   }
 }
 
@@ -481,6 +469,19 @@ c-ontent > #content {
   transition: height 1s, opacity 1s;
   transition-delay: var(--content-delay);
   pointer-events: none;
+
+  #modal_content_switch_label {
+    display: none;
+    margin-left: auto;
+    margin-right: 0;
+    height: 16px;
+    width: 16px;
+  }
+  #modal_content_switch_label > div {
+    height: 16px;
+    width: 16px;
+  }
+
   .button_text {
     font-size: 12px;
     color: white;

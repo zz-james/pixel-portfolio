@@ -97,6 +97,13 @@ class Content extends HTMLElement {
   processTemplate(templateID) {
     const contentTemplate = document.getElementById(templateID);
     const contentNode = this.querySelector("#content"); // where we append
+
+    const closeButton = (document.createElement(
+      "div"
+    ).innerHTML = `<label for="modal_content_switch" id="modal_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>`);
+
     if (!contentTemplate) {
       contentNode.replaceChildren("");
       return;
@@ -118,6 +125,7 @@ class Content extends HTMLElement {
         // render cards
         const cardTemplate = document.getElementById("card");
         const cardList = contentFrag.querySelector("#card_list");
+
         this.selectedContent.forEach((data, index) => {
           cardList.append(this.makeCard(data, cardTemplate, index));
         });
