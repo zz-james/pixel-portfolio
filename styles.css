@@ -25,6 +25,7 @@
     ".SFUIText", Helvetica, Arial, sans-serif;
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: rgb(40, 40, 40);
 }
 
 p {
@@ -501,12 +502,53 @@ c-ontent > #content {
     margin-top: 4px;
     overflow-x: clip;
     overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 30%));
+    grid-gap: 1rem;
     .card_wrapper {
       input {
         display: none;
         touch-action: manipulation;
       }
 
+      .card {
+        height: 100%;
+        position: relative;
+        isolation: isolate;
+        padding: 4px 8px 4px 8px;
+        border: 1px solid lightgrey;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+        margin: 8px 8px 0 0;
+        .card_switch_click_target {
+          position: absolute;
+
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+        }
+        img {
+          margin-top: 2px;
+          border: 1px solid #ddd;
+        }
+        .card_description {
+          display: none;
+        }
+        .card_skills {
+          display: none;
+        }
+        .card_dates {
+          font-size: 10px;
+        }
+        .card_title {
+          display: block;
+          max-width: calc(100% - 10px);
+          line-height: 1.5em;
+          padding: 2px 4px;
+        }
+      }
       input:checked ~ .card {
         position: absolute;
         z-index: 21;
@@ -542,46 +584,6 @@ c-ontent > #content {
           height: 16px;
           width: 16px;
           background-image: url(images/close_button_on_off.png);
-        }
-      }
-      .card {
-        position: relative;
-        isolation: isolate;
-        padding: 0 5px 5px 5px;
-        border: 2px solid lightgrey;
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
-        margin: 8px 8px 0 0;
-        .card_switch_click_target {
-          position: absolute;
-
-          left: 0;
-          top: 0;
-          right: 0;
-          bottom: 0;
-        }
-        img {
-          margin-top: 2px;
-          border: 1px solid #ddd;
-        }
-        .card_description {
-          display: none;
-        }
-        .card_skills {
-          display: none;
-        }
-        .card_dates {
-          font-size: 10px;
-        }
-        .card_title {
-          display: block;
-          max-width: calc(100% - 10px);
-          line-height: 1.5em;
-          /* max-height: 3em;
-          text-overflow: ellipsis;
-          overflow: hidden; */
-          padding: 2px 4px;
         }
       }
       .card:hover {

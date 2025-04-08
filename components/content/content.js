@@ -159,6 +159,11 @@ class Content extends HTMLElement {
     description.removeAttribute("id");
     description.innerHTML = card.description;
 
+    /* do role */
+    const role = cardNode.querySelector("#card_role");
+    role.removeAttribute("id");
+    role.innerHTML = card.role.join(" / ");
+
     /* do skills */
     const skills = cardNode.querySelector("#card_skills");
     skills.removeAttribute("id");

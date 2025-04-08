@@ -69,7 +69,7 @@ const db = {
         },
         description:
           "pi-top is a Raspberry-Pi based educational project that puts toughened up Raspberry Pis with simple to wire-up connectors into classrooms together with electronics kit, robotics kit and a highly interactive web based learning platform named Further. I was part of the full-stack software engineering team at pi-top that built Further using ReactJS, Apollo GraphQL, Express, MongoDB, Prisma, Loopback, PostGres and also the Further-Link server that runs on the RaspberryPi using Python (Flask). I worked on all aspects of the codebase as well as collaborating on domain model design and technical direction decisions. All code was fully tested with a combination of component and e2e tests. Hosted on Google Cloud using Git, Docker and Jenkins to provide a CI pipeline. Working as a collaborative cross-functional Agile team (at most 5 developers and 1 UX designer) we self-managed using Scrum method organised through Jira, taking feature requests from users, fleshing out features and negotiating timelines with stakeholders such as teachers, resellers, consumers and senior management.",
-        role: ["Full-Stack"],
+        role: ["Full-Stack", "Developer"],
         employer: "Pi-Top/CEED LTD",
         skills: [
           "React",
