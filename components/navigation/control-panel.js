@@ -25,7 +25,7 @@ class ControlPanel extends HTMLElement {
     },
     "Free-lance": {
       x: 0,
-      y: 450,
+      y: 550,
     },
     About: {
       x: 620,

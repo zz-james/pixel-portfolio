@@ -81,7 +81,6 @@ class TileApp extends HTMLElement {
   }
 
   renderInteraction(key, value) {
-    console.log({ key, value });
     switch (key) {
       case "chest":
         value === "open"
