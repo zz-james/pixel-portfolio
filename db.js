@@ -1,15 +1,28 @@
 const db = {
-  Welcome: {
-    type: "bubble",
-    contentID: "welcome",
-  },
   Home: {
-    type: null,
-    contentID: null,
+    type: "bubble",
+    contentID: "home",
+    dialogID: "dialog_home",
+    content: ["Welcome to my site!"],
+    player: {
+      left: 270,
+      top: 280,
+    },
+    locations: {
+      367: "chest",
+    },
   },
   Work: {
     type: "modal",
     contentID: "work",
+    dialogID: "dialog_work",
+    player: {
+      left: 545,
+      top: 670,
+    },
+    locations: {
+      648: "chimney",
+    },
     content: [
       {
         dates: {
@@ -162,18 +175,54 @@ const db = {
   Projects: {
     type: "modal",
     contentID: "projects",
+    dialogID: "dialog_projects",
+    player: {
+      left: 1100,
+      top: 670,
+    },
+    locations: {
+      551: "tree",
+    },
+    content: [],
   },
   "Free-lance": {
     type: "modal",
     contentID: "freelance",
+    dialogID: "dialog_freelance",
+    player: {
+      left: 280,
+      top: 890,
+    },
+    locations: {
+      1122: "flowers",
+    },
+    content: [],
   },
   About: {
     type: "modal",
     contentID: "about",
+    dialogID: "dialog_about",
+    player: {
+      left: 1100,
+      top: 288,
+    },
+    locations: {
+      152: "crate",
+    },
+    content: [],
   },
   Contact: {
     type: "modal",
     contentID: "contact",
+    dialogID: "dialog_contact",
+    player: {
+      left: 1100,
+      top: 890,
+    },
+    locations: {
+      1317: "skeli",
+    },
+    content: [],
   },
   "": {
     type: "bubble",

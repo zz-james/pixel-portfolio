@@ -20,20 +20,20 @@ class ControlPanel extends HTMLElement {
       y: 400,
     },
     Projects: {
-      x: 620,
+      x: 850,
       y: 300,
     },
     "Free-lance": {
       x: 0,
-      y: 450,
+      y: 850,
     },
     About: {
-      x: 620,
+      x: 1050,
       y: 0,
     },
     Contact: {
-      x: 620,
-      y: 450,
+      x: 1020,
+      y: 850,
     },
   };
   route; /*string*/
