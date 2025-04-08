@@ -25,15 +25,15 @@ class ControlPanel extends HTMLElement {
     },
     "Free-lance": {
       x: 0,
-      y: 550,
+      y: 850,
     },
     About: {
-      x: 620,
+      x: 1050,
       y: 0,
     },
     Contact: {
-      x: 620,
-      y: 450,
+      x: 1020,
+      y: 850,
     },
   };
   route; /*string*/

@@ -183,15 +183,20 @@ const db = {
     locations: {
       551: "tree",
     },
+    content: [],
   },
   "Free-lance": {
     type: "modal",
     contentID: "freelance",
     dialogID: "dialog_freelance",
     player: {
-      left: 170,
+      left: 280,
       top: 890,
     },
+    locations: {
+      1122: "flowers",
+    },
+    content: [],
   },
   About: {
     type: "modal",
@@ -201,6 +206,10 @@ const db = {
       left: 1100,
       top: 288,
     },
+    locations: {
+      152: "crate",
+    },
+    content: [],
   },
   Contact: {
     type: "modal",
@@ -210,6 +219,10 @@ const db = {
       left: 1100,
       top: 890,
     },
+    locations: {
+      1317: "skeli",
+    },
+    content: [],
   },
   "": {
     type: "bubble",

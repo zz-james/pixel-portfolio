@@ -36,6 +36,10 @@ class Player extends HTMLElement {
   }
   processDialogLayer(dialogID) {
     const dialogTemplate = document.getElementById(dialogID);
+    if (!dialogTemplate) {
+      console.log(`no template found for ${dialogID}`);
+      return;
+    }
     const dialogNode = document.querySelector("#dialog");
     const dialogFrag = document.importNode(dialogTemplate.content, true);
     switch (dialogID) {
@@ -49,7 +53,7 @@ class Player extends HTMLElement {
         makeDialogButtons(dialogFrag);
         break;
       default:
-        console.log(`no matching templateID: ${dialogID} process`);
+        console.log(`no matching ${dialogID} process`);
     }
     dialogNode.replaceChildren(dialogFrag);
   }

@@ -8,6 +8,7 @@ class TileApp extends HTMLElement {
   layersObject = {}; // holds the data for each array in an object with the layer name as key
   route;
   tileElement;
+  locations;
   createLayers() {
     let htmlString = "";
     this.tilemap.layers.forEach((layerData, index) => {
@@ -37,47 +38,54 @@ class TileApp extends HTMLElement {
     });
 
     state.observe((key, value) => this.renderInteraction(key, value));
-
-    const [route] = window.location.hash.substring(1).split("/");
-    const newRoute = decodeURI(route) || "Home";
-    this.route = newRoute;
-
-    this.attachListeners();
+    this.locationHashChanged();
   }
   // https://codeburst.io/the-only-way-to-detect-touch-with-javascript-7791a3346685
   attachListeners() {
+    window.addEventListener("hashchange", () => this.locationHashChanged());
+
     const locations = db[this.route].locations;
+
+    this.removeEventListener("mouseup", this.mouseListener);
 
     if (!locations) {
       return;
+    } else {
+      this.locations = locations;
     }
 
-    this.addEventListener("mousedown", (e) => {
-      const position = e.target.getAttribute("position");
+    this.addEventListener("mouseup", this.mouseListener);
+  }
 
-      const item = locations[position];
-      if (!item) return;
+  mouseListener(e) {
+    const position = e.target.getAttribute("position");
+    const item = this.locations[position];
+    if (!item) return;
 
-      this.tileElement = e.target;
+    this.tileElement = e.target;
 
-      switch (item) {
-        case "chest":
-          state.chest = state.chest === "closed" ? "open" : "closed";
-          break;
-        case "chimney":
-          state.chimney = "found";
-        case "tree":
-          state.tree = "found";
-      }
-    });
-    // this.addEventListener("mouseout", (e) => {
-    //   if (e.target.getAttribute("position") === "823") {
-    //     e.target.style.setProperty("border", "none");
-    //   }
-    //   if (e.target.getAttribute("position") === "367") {
-    //     e.target.style.setProperty("--y", "1");
-    //   }
-    // });
+    switch (item) {
+      case "chest":
+        state.chest = state.chest === "closed" ? "open" : "closed";
+        break;
+      case "chimney":
+        state.chimney = "found";
+      case "tree":
+        state.tree = "found";
+      case "flowers":
+        state.flowers = "found";
+      case "crate":
+        state.crate = "found";
+      case "skeli":
+        state.skeli = "found";
+    }
+  }
+
+  locationHashChanged() {
+    const [route] = window.location.hash.substring(1).split("/");
+    const newRoute = decodeURI(route) || "Home";
+    this.route = newRoute;
+    this.attachListeners();
   }
 
   renderInteraction(key, value) {
@@ -91,6 +99,15 @@ class TileApp extends HTMLElement {
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
       case "tree":
+        this.tileElement.style.setProperty("--x", "13");
+        this.tileElement.style.setProperty("--y", "1");
+      case "flowers":
+        this.tileElement.style.setProperty("--x", "13");
+        this.tileElement.style.setProperty("--y", "1");
+      case "crate":
+        this.tileElement.style.setProperty("--x", "13");
+        this.tileElement.style.setProperty("--y", "1");
+      case "skeli":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
     }
