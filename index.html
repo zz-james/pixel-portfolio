@@ -10,6 +10,7 @@
       type="module"
       src="./components/navigation/control-panel.js"
     ></script>
+    <script type="module" src="./components/progress/progress.js"></script>
     <script type="text/javascript" src="./db.js"></script>
     <script type="module" src="./components/content/content.js"></script>
     <link href="./styles.css" rel="stylesheet" />
@@ -18,12 +19,15 @@
     <div id="layout">
       <div id="game">
         <t-ile-app mapname="tilemap_01">
-          <div>Loading</div>
+          <div id="loading">
+            <div>Loading...</div>
+            <img src="images/tube-spinner.svg" width="100" height="100" />
+          </div>
         </t-ile-app>
       </div>
       <div id="navigation">
         <c-ontrol-panel></c-ontrol-panel>
-        <div id="progress"></div>
+        <p-rogress></p-rogress>
       </div>
     </div>
 

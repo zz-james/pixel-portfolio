@@ -32,16 +32,38 @@ p {
   margin-block-end: 1rem;
 }
 
+#loading {
+  display: grid;
+  height: 100vh;
+  width: 100dvw;
+  background-color: #16a2e2;
+  place-items: center;
+
+  div {
+    display: block;
+    font-size: xx-large;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #loading {
+    width: auto;
+  }
+}
+
 t-ile-app {
   display: block;
   position: relative;
   margin: auto;
   background-image: url(images/background.png);
   background-repeat: repeat-x;
-  background-size: calc(var(--background-width) * 1px) 100%;
-  /* width: 98vw; */
   height: calc(calc(var(--tile-size) * var(--stage-rows)) * 1px);
   width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
+  box-shadow: 0 7px 30px -10px rgba(0, 0, 0, 1);
+}
+
+t-ile-app:has(#loading) {
+  box-shadow: none;
 }
 
 t-ile-layer {
@@ -109,14 +131,23 @@ body {
   display: flex;
   flex-direction: column;
   align-content: stretch;
+
+  background-color: #16a2e2;
 }
 
 #game {
   overflow: var(--game-overflow);
   scrollbar-width: none;
-  background-color: black;
+  margin: 10px 0 2px 0;
   flex-grow: 1;
   scroll-behavior: smooth;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 600px) {
+  #game {
+    margin: 0;
+  }
 }
 
 #player {
@@ -138,10 +169,21 @@ body {
 /* ------------------------------- control panel ----------------------------------- */
 
 #navigation {
-  background-color: yellowgreen;
   flex-shrink: 0;
-
   display: flex;
+  width: 100vw;
+  margin: auto;
+  border-image-source: url(images/panel.png);
+  border-image-slice: 1 4 2 4 fill;
+  margin-bottom: 1px;
+  padding: 4px;
+  max-width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
+}
+
+@media screen and (min-width: 600px) {
+  #navigation {
+    padding: 8px 12px 8px 12px;
+  }
 }
 
 /* mobile portrait */
@@ -197,7 +239,7 @@ body {
 c-ontrol-panel {
   min-width: var(--control-panel-width);
   width: var(--control-panel-width);
-  background-color: peru;
+
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -225,7 +267,7 @@ c-ontrol-panel-button {
 .control_panel_button_text {
   font-size: 12px;
   color: white;
-  text-shadow: #000 0px 0px 2px;
+  text-shadow: #000 0px 0px 8px;
   position: absolute;
   top: 50%;
   left: 50%;

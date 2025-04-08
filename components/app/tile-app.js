@@ -60,14 +60,19 @@ class TileApp extends HTMLElement {
         break;
       case "chimney":
         state.chimney = "found";
+        break;
       case "tree":
         state.tree = "found";
+        break;
       case "flowers":
         state.flowers = "found";
+        break;
       case "crate":
         state.crate = "found";
+        break;
       case "skeli":
         state.skeli = "found";
+        break;
     }
   }
 
