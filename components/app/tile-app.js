@@ -56,22 +56,22 @@ class TileApp extends HTMLElement {
 
     switch (item) {
       case "chest":
-        state.chest = state.chest === "closed" ? "open" : "closed";
+        state.Home = "found"; /*state.chest === "closed" ? "found" : "closed";*/
         break;
       case "chimney":
-        state.chimney = "found";
+        state.Work = "found";
         break;
       case "tree":
-        state.tree = "found";
+        state.Projects = "found";
         break;
       case "flowers":
-        state.flowers = "found";
+        state.Freelance = "found";
         break;
       case "crate":
-        state.crate = "found";
+        state.About = "found";
         break;
       case "skeli":
-        state.skeli = "found";
+        state.Contact = "found";
         break;
     }
   }
@@ -95,24 +95,24 @@ class TileApp extends HTMLElement {
 
   renderInteraction(key, value) {
     switch (key) {
-      case "chest":
-        value === "open"
+      case "Home":
+        value === "found"
           ? this.tileElement.style.setProperty("--y", "2") // make it open
           : this.tileElement.style.setProperty("--y", "1"); // make it closed
         break;
-      case "chimney":
+      case "Work":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
-      case "tree":
+      case "Projects":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
-      case "flowers":
+      case "Freelance":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
-      case "crate":
+      case "About":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
-      case "skeli":
+      case "Contact":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
     }

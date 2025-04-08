@@ -4,22 +4,38 @@ class Progress extends HTMLElement {
   route;
   connectedCallback() {
     state.observe((key, value) => this.renderInteraction(key, value));
-    // this.attachListeners();
-    // this.locationHashChanged();
+    this.renderInteraction();
   }
 
-  attachListeners() {
-    // window.addEventListener("hashchange", () => this.locationHashChanged());
-  }
+  template(_, state) {
+    const sections = [
+      "Home",
+      "Work",
+      "Projects",
+      "Freelance",
+      "About",
+      "Contact",
+    ];
 
-  locationHashChanged() {
-    // const [route] = window.location.hash.substring(1).split("/");
-    // const newRoute = decodeURI(route) || "Home";
-    // this.route = newRoute;
+    const heartsRow = `${sections
+      .map(
+        (section) =>
+          `<div class="inner_progress_panel"><div>${section}</div> <div>${
+            state[section]
+              ? "<img src='images/heart.png'>"
+              : "<img src='images/heart_off.png'>"
+          }</div></div>`
+      )
+      .join("")}`;
+
+    const overAllRow = ``;
+    const contentRow = ``;
+
+    return `<div class='hearts_progress'>${heartsRow}${overAllRow}${contentRow}</div>`;
   }
 
   renderInteraction(key, value) {
-    this.innerHTML = JSON.stringify(state);
+    this.innerHTML = this.template`${state}`;
   }
 }
 

@@ -171,7 +171,7 @@ body {
 #navigation {
   flex-shrink: 0;
   display: flex;
-  width: 100vw;
+  width: 100dvw;
   margin: auto;
   border-image-source: url(images/panel.png);
   border-image-slice: 1 4 2 4 fill;
@@ -274,10 +274,37 @@ c-ontrol-panel-button {
   transform: translate(-50%, -50%);
 }
 
-#progress {
+p-rogress {
   flex-grow: 1;
-  flex-shrink: 0;
-  background-color: aquamarine;
+
+  .hearts_progress {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4px;
+    gap: 4px;
+
+    > div {
+      font-size: 1.8vw;
+      border-radius: 4px;
+      background-color: rgba(255, 255, 255, 0.2);
+      background-repeat: no-repeat;
+      flex-grow: 1;
+      margin: 0 2px;
+      background-position: center bottom;
+      text-align: center;
+    }
+    .inner_progress_panel {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+/* not so big on bigger screens */
+@media screen and (min-width: 600px) {
+  p-rogress > .hearts_progress > div {
+    font-size: 1.5vw;
+  }
 }
 
 .button_unstyled {
