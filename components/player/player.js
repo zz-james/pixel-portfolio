@@ -43,7 +43,8 @@ class Player extends HTMLElement {
         makeDialogButtons(dialogFrag);
 
         break;
-      case "work":
+      case "dialog_work":
+        makeDialogButtons(dialogFrag);
         break;
       default:
         console.log(`no matching templateID: ${dialogID} process`);

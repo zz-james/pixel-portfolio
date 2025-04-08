@@ -1,16 +1,13 @@
 import { TileLayer } from "../tilelayer/tilelayer.js";
 import { Player } from "../player/player.js";
-
+import { state } from "../../state.js";
 // TileMaps: global (sorry!) at the moment is the data output from Tiled (https://www.mapeditor.org/)
 
 class TileApp extends HTMLElement {
   tilemap;
   layersObject = {}; // holds the data for each array in an object with the layer name as key
-
-  gameState = {
-    chest: "closed",
-  };
-
+  route;
+  tileElement;
   createLayers() {
     let htmlString = "";
     this.tilemap.layers.forEach((layerData, index) => {
@@ -34,22 +31,41 @@ class TileApp extends HTMLElement {
     const tilesString = this.createLayers() + "<p-layer></p-layer>";
 
     this.innerHTML = tilesString;
+
+    state.init({
+      chest: "closed",
+    });
+
+    state.observe((key, value) => this.renderInteraction(key, value));
+
+    const [route] = window.location.hash.substring(1).split("/");
+    const newRoute = decodeURI(route) || "Home";
+    this.route = newRoute;
+
     this.attachListeners();
   }
   // https://codeburst.io/the-only-way-to-detect-touch-with-javascript-7791a3346685
   attachListeners() {
+    const locations = db[this.route].locations;
+
+    if (!locations) {
+      return;
+    }
+
     this.addEventListener("mousedown", (e) => {
-      // if (e.target.getAttribute("position") === "823") {
-      //   e.target.style.setProperty("border", "1px solid red");
-      // }
-      if (e.target.getAttribute("position") === "367") {
-        if (this.gameState.chest === "closed") {
-          this.gameState.chest = "open";
-          e.target.style.setProperty("--y", "2");
-        } else {
-          this.gameState.chest = "closed";
-          e.target.style.setProperty("--y", "1");
-        }
+      const position = e.target.getAttribute("position");
+
+      const item = locations[position];
+      if (!item) return;
+
+      this.tileElement = e.target;
+
+      switch (item) {
+        case "chest":
+          state.chest = state.chest === "closed" ? "open" : "closed";
+          break;
+        case "chimney":
+          state.chimney = "found";
       }
     });
     // this.addEventListener("mouseout", (e) => {
@@ -60,6 +76,20 @@ class TileApp extends HTMLElement {
     //     e.target.style.setProperty("--y", "1");
     //   }
     // });
+  }
+
+  renderInteraction(key, value) {
+    console.log({ key, value });
+    switch (key) {
+      case "chest":
+        value === "open"
+          ? this.tileElement.style.setProperty("--y", "2") // make it open
+          : this.tileElement.style.setProperty("--y", "1"); // make it closed
+        break;
+      case "chimney":
+        this.tileElement.style.setProperty("--x", "4");
+        this.tileElement.style.setProperty("--y", "7");
+    }
   }
 
   getLayerData(name) {

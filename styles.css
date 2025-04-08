@@ -271,11 +271,6 @@ t-ile-app > input#bubble_content_switch:checked {
   ~ #dialog {
     --content-window-height: 65dvh;
     --content-window-visibility: 1;
-    /* --content-window-border-image: url(images/speech_bubble.png); */
-    left: calc(calc(var(--player-left) - 290) * 1px);
-    /* right: calc(calc(var(--player-left) + 100) * 1px); */
-    top: calc(calc(var(--player-top) - 260) * 1px);
-    /* bottom: calc(calc(var(--player-top) + 200) * 1px); */
 
     width: 15.5rem;
     height: 16.5rem;
@@ -302,10 +297,12 @@ t-ile-app > input#bubble_content_switch:checked {
 t-ile-app > #dialog {
   --content-delay: 0s;
   position: absolute;
+  left: calc(calc(var(--player-left) - 290) * 1px);
+
+  top: calc(calc(var(--player-top) - 260) * 1px);
+  width: 15.5rem;
+  height: 0;
   margin-inline: 5%;
-  /* top: 1.25rem;
-  left: 20px; */
-  width: calc(var(--content-width) * 1px);
   height: var(--content-window-height);
   background-color: transparent;
   z-index: 20;

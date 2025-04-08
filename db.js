@@ -8,6 +8,9 @@ const db = {
       left: 270,
       top: 280,
     },
+    locations: {
+      367: "chest",
+    },
   },
   Work: {
     type: "modal",
@@ -16,6 +19,9 @@ const db = {
     player: {
       left: 545,
       top: 670,
+    },
+    locations: {
+      648: "chimney",
     },
     content: [
       {
@@ -173,6 +179,9 @@ const db = {
     player: {
       left: 1100,
       top: 670,
+    },
+    locations: {
+      648: "chimney",
     },
   },
   "Free-lance": {
