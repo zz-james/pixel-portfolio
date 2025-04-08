@@ -20,7 +20,7 @@ class ControlPanel extends HTMLElement {
       y: 400,
     },
     Projects: {
-      x: 620,
+      x: 850,
       y: 300,
     },
     "Free-lance": {

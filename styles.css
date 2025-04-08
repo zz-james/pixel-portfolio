@@ -13,6 +13,7 @@
   --player-sprite: url(images/ghost.png);
   --content-delay: 0s;
   --content-window-visibility: 0;
+  --dialog-visibility: 0;
   --content-window-height: 0;
   --content-window-border-image: url(images/bubble.png);
   --game-overflow: hidden; /* or sometimes   overflow: scroll; */
@@ -270,11 +271,11 @@ t-ile-app > input#bubble_content_switch {
 t-ile-app > input#bubble_content_switch:checked {
   ~ #dialog {
     --content-window-height: 65dvh;
-    --content-window-visibility: 1;
-
+    --dialog-visibility: 1;
+    visibility: visible;
     width: 15.5rem;
     height: 16.5rem;
-
+    pointer-events: all;
     #bubble_content_switch_label {
       display: block;
     }
@@ -298,7 +299,7 @@ t-ile-app > #dialog {
   --content-delay: 0s;
   position: absolute;
   left: calc(calc(var(--player-left) - 290) * 1px);
-
+  pointer-events: none;
   top: calc(calc(var(--player-top) - 260) * 1px);
   width: 15.5rem;
   height: 0;
@@ -312,8 +313,8 @@ t-ile-app > #dialog {
   border-image-source: url(images/speech_bubble.png);
   border-image-slice: 15 15 45 15 fill;
   border-image-repeat: stretch;
-  opacity: var(--content-window-visibility);
-
+  opacity: var(--dialog-visibility);
+  visibility: none;
   transition: height 1s, opacity 1s;
   transition-delay: var(--content-delay);
   h4 {

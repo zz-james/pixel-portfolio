@@ -66,6 +66,8 @@ class TileApp extends HTMLElement {
           break;
         case "chimney":
           state.chimney = "found";
+        case "tree":
+          state.tree = "found";
       }
     });
     // this.addEventListener("mouseout", (e) => {
@@ -87,8 +89,11 @@ class TileApp extends HTMLElement {
           : this.tileElement.style.setProperty("--y", "1"); // make it closed
         break;
       case "chimney":
-        this.tileElement.style.setProperty("--x", "4");
-        this.tileElement.style.setProperty("--y", "7");
+        this.tileElement.style.setProperty("--x", "13");
+        this.tileElement.style.setProperty("--y", "1");
+      case "tree":
+        this.tileElement.style.setProperty("--x", "13");
+        this.tileElement.style.setProperty("--y", "1");
     }
   }
 

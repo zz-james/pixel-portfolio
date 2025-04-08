@@ -181,7 +181,7 @@ const db = {
       top: 670,
     },
     locations: {
-      648: "chimney",
+      551: "tree",
     },
   },
   "Free-lance": {

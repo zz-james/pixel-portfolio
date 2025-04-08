@@ -41,9 +41,11 @@ class Player extends HTMLElement {
     switch (dialogID) {
       case "dialog_home":
         makeDialogButtons(dialogFrag);
-
         break;
       case "dialog_work":
+        makeDialogButtons(dialogFrag);
+        break;
+      case "dialog_projects":
         makeDialogButtons(dialogFrag);
         break;
       default:
