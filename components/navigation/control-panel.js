@@ -53,6 +53,9 @@ class ControlPanel extends HTMLElement {
   locationHashChanged() {
     const [route] = window.location.hash?.substring(1).split("/");
     /* move map */
+    if (route === "") {
+      window.location.hash = "Home";
+    }
 
     const newRoute = decodeURI(route);
     this.route = newRoute;
