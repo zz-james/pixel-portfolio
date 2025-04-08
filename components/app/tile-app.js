@@ -38,27 +38,17 @@ class TileApp extends HTMLElement {
     });
 
     state.observe((key, value) => this.renderInteraction(key, value));
+    this.attachListeners();
     this.locationHashChanged();
   }
   // https://codeburst.io/the-only-way-to-detect-touch-with-javascript-7791a3346685
   attachListeners() {
     window.addEventListener("hashchange", () => this.locationHashChanged());
-
-    const locations = db[this.route].locations;
-
-    this.removeEventListener("mouseup", this.mouseListener);
-
-    if (!locations) {
-      return;
-    } else {
-      this.locations = locations;
-    }
-
-    this.addEventListener("mouseup", this.mouseListener);
   }
 
   mouseListener(e) {
     const position = e.target.getAttribute("position");
+
     const item = this.locations[position];
     if (!item) return;
 
@@ -85,7 +75,17 @@ class TileApp extends HTMLElement {
     const [route] = window.location.hash.substring(1).split("/");
     const newRoute = decodeURI(route) || "Home";
     this.route = newRoute;
-    this.attachListeners();
+    const locations = db[newRoute].locations;
+
+    this.removeEventListener("mouseup", this.mouseListener);
+
+    if (!locations) {
+      return;
+    } else {
+      this.locations = locations;
+    }
+
+    this.addEventListener("mouseup", this.mouseListener);
   }
 
   renderInteraction(key, value) {
