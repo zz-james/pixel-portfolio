@@ -198,6 +198,14 @@ const db = {
         link: "https://catplusplus.org.uk/warrior/",
       },
       {
+        title: "Pixel Art Collection Kit",
+        description:
+          "Originally started as a game making kit for use in summer school projects with young people this collection of scripts renders scenes built with 'Tiled' an open source pixel art tile map editor, scenes can be created from any tilemap, with any size, multiple layers, then output with 'save as JavaScript' using these scripts you can directly import the JavaScript map file along with the tiles and the browser will construct the image, the advantage is it can be very large but the image file will only be the size of the tiles file. I used it to make this portfolio!",
+        skills: ["JavaScript", "CSS", "HTML"],
+        screenshot: "images/project/pixelart/pixelart.png",
+        link: "https://github.com/zz-james/pixel-portfolio",
+      },
+      {
         title: "Morecambe Agora",
         description:
           "Morecambe Agora was a collaboration between myself, artist Jessie Holmes and Creative West End, Morecambe. The project was part of an art trail through the many alleyways of Morecambe's west end. At 8 points on the trail you encountered QR codes printed on ceramic tiles and mounted on the wall. Using your mobile, you were linked to a web page which had an embedded augmented reality (AR) sculpture and an audio file. Based on Greek mythology the alleyways become the Labyrinth and you encounter a minataur, a spider, Daedalus and Theseus who narrate your journey.",
@@ -220,6 +228,22 @@ const db = {
         screenshot: "images/project/elastic/elastic1.png",
         link: "http://www.elasticsystem.net/WWWMuse/About.html",
       },
+      {
+        title: "Smorgasborg",
+        description:
+          "My MSc. Computer Science was 25% practical. For this I began work on a project that would make it easier for developers of interactive learning material to create web based simulations and games that could be served from LMS software such as Blackboard or Moodle. This involved creating a flexible game engine which I based on the one found in Rudy Rucker's book 'Software Engineering and Computer Games'. I created DOM Sprites and used the transform property to move them over the playing area, I also included the abilit to move the player viewpoint (camera) this involved CSS matrix and some optimised maths. I also included a 'pin' option which you could pin sprite's location to any value that could be observed, and was easily able to use a JS port of Box2D physics engine, enabling learning matierial developers to harness that power with minimal setup.",
+        skills: ["JavaScript", "CSS", "HTML"],
+        screenshot: "images/project/smorgasbord/smorgasbord.png",
+        link: "https://catplusplus.org.uk/catpsite/smorgasbord/",
+      },
+      {
+        title: "Happening Histories",
+        description:
+          "Happeninig Histories was an Arts Council of England funded project to create a time capsule of a small residential estate in South East London. Everyone was invited to participate through the tenants and residents association, people who chose to participate came for training in digital photography, photoshop, sound recording, editing, video making in order to create a multimedia story of some element of their lives. Everyone has a story, one resident had been a dancer in Paris in the 1940s and got to Paris from London on her bike! Another showed of an amazing collection of Nigerian printed fabrics, a taxi driver had an amazing collection of old photos he'd taken from his cab, children told stories of what happened in the playground, many residents played musical instruments. The final project was a virtual estate which you could walk around and call in at people's houses, it exists as a CD-Rom in the British Library. ",
+        skills: ["Adobe Director", "Lingo"],
+        screenshot: "images/project/happening/hh.png",
+        link: "https://catplusplus.org.uk/catpsite/hh/",
+      },
     ],
   },
   "Free-lance": {
@@ -233,7 +257,36 @@ const db = {
     locations: {
       1122: "flowers",
     },
-    content: [],
+    content: [
+      `
+      <p>I'm available for freelance work either as a sole trader or through my company James Cat Ltd. </p>
+      <p>
+      My day rate is a sliding scale from &pound;250/day to well, to infinity but the average day rate I'm seeing for a web software engineer with my experience is around &pound;400/day.</p> 
+      
+      <p>If you've got an interesting project, either it uses something game-y, or some interesting data vis, or it helps people out but you can't afford &pound;400 a day, drop me an email or fill out the email form on the <a href='#Contact'>contact page</a><p>
+      
+      <h5>List of past clients:</h5>
+      <p>I've worked for some big name clients (usually through an agency) so I know the importance of protecting brand integrity through high level of quality in my work.</p>
+
+      <ul>
+        <li>Sainsbury's</li>
+        <li>Ben & Jerry's Ice Cream</li>
+        <li>Channel 4</li>
+        <li>Volvo</li>
+        <li>BMW Mini</li>
+        <li>Virgin Games</li>
+        <li>Rough Trade Record Shop</li>
+        <li>SleezeNation Magazine</li>
+        <li>Britax</li>
+        <li>Union Bank of Switzerland</li>
+      </ul>
+
+      <p>I also consult with community orgs and charities to help them with digital strategy and occasionally fix their broken websites, get in touch if this is you</p>
+
+      <a href="#Contact">Contact page</a>
+
+      `,
+    ],
   },
   About: {
     type: "modal",
@@ -246,7 +299,32 @@ const db = {
     locations: {
       152: "crate",
     },
-    content: [],
+    content: [
+      `
+        <p>Hello. My name is James Smith, this is what I look like:<p>
+        <img src="images/about/james2.png" width="50%"/>
+        <p>Dont be fooled, this palm tree is actually in Manchester.</p>
+        <p>I need to work on this part of the site!!<br />
+        Things I like<br /><br />
+        <ul>
+        <li>Retro computer graphics</li>
+        <li><i>any</i> Computer graphics</li>
+        <li>Retro computer games</li>
+        <li>Skateboarding</li>
+        <li>Dance Music</li>
+        <li>Punk Music</li>
+        <li>Sound Collages</li>
+        <li>Graphic Arts</li>
+        <li>Bright colours</li>
+        <li>White chocolate (lol I know!)</li>
+        <li><i>any</i> chocolate</li>
+        <li>Stories (reading and writing)</li>
+        <li>Probably tons of stuff I forgot right now</li>
+        </ul>
+        <p>
+        <a href="#Contact">Contact me</a> if you want any web work done, I'm pretty good!</p>
+      `,
+    ],
   },
   Contact: {
     type: "modal",
@@ -259,7 +337,40 @@ const db = {
     locations: {
       1317: "skeli",
     },
-    content: [],
+    content: [
+      `
+        <p>Here's a list of useful links if you want to find out more about me beyond this website<p>
+
+        <div style="display: flex; gap: 10px">
+        <div><img src="images/contact/github.png" height="20px"/></div><div><a target="pop" href="https://github.com/zz-james/">My Github</a></div>
+        </div>
+
+          <br />
+
+        <div style="display: flex; gap: 10px">
+        <div><img src="images/contact/wordpress.png" height="20px"/></div><div><a target="pop" href="https://zzjames.wordpress.com/">My Wordpress Blog </a> It's full of notes not actual posts but I will tidy it up!</div>
+        </div>
+
+        <br />
+
+        <div style="display: flex; gap: 10px">
+        <div><img src="images/contact/linkedin.png" height="20px"/></div><div><a target="pop" href="https://www.linkedin.com/in/james-smith-4aa3465/">My LinkedIn Profile </a></div>
+        </div>
+        <br />
+        Or you can send me a message direct!
+        <br /><br />
+        <form  id="contact_form">
+        <table>
+        <tr><td>Your Name:</td><td><input type="text" name="name"></td></tr>
+        <tr><td>Email Address:</td><td><input type="text" name="email"></td></tr>
+        <tr><td>Message:</td><td><textarea name="message" rows="10"></textarea></td></tr>
+        </table>
+            <input type="submit" value="Submit">
+            <p id="form-status"></p>
+        </form>	
+ 
+      `,
+    ],
   },
   "": {
     type: "bubble",

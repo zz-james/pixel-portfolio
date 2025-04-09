@@ -42,19 +42,9 @@ class Player extends HTMLElement {
     }
     const dialogNode = document.querySelector("#dialog");
     const dialogFrag = document.importNode(dialogTemplate.content, true);
-    switch (dialogID) {
-      case "dialog_home":
-        makeDialogButtons(dialogFrag);
-        break;
-      case "dialog_work":
-        makeDialogButtons(dialogFrag);
-        break;
-      case "dialog_projects":
-        makeDialogButtons(dialogFrag);
-        break;
-      default:
-        console.log(`no matching ${dialogID} process`);
-    }
+
+    makeDialogButtons(dialogFrag);
+
     dialogNode.replaceChildren(dialogFrag);
   }
   setStyles() {

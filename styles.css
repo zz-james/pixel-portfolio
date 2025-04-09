@@ -504,6 +504,10 @@ c-ontent > #content {
     flex-direction: column;
     height: 86%;
     overflow-y: hidden;
+    .scroller {
+      margin: 0 10px 0 10px;
+      overflow-y: auto;
+    }
   }
 
   .work_selector {

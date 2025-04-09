@@ -98,12 +98,6 @@ class Content extends HTMLElement {
     const contentTemplate = document.getElementById(templateID);
     const contentNode = this.querySelector("#content"); // where we append
 
-    const closeButton = (document.createElement(
-      "div"
-    ).innerHTML = `<label for="modal_content_switch" id="modal_content_switch_label">
-        <div class="close_button button_unstyled"></div>
-      </label>`);
-
     if (!contentTemplate) {
       contentNode.replaceChildren("");
       return;
@@ -138,11 +132,44 @@ class Content extends HTMLElement {
         this.selectedContent.forEach((data, index) => {
           cardListP.append(this.makeCard(data, cardTemplateP, index));
         });
+        break;
+      case "freelance":
+      case "about":
+      case "contact":
+        const contEl = document.createElement("div");
 
+        contEl.innerHTML = this.selectedContent[0];
+        contEl.classList.add("scroller");
+        contentFrag.querySelector(".work_content_container").append(contEl);
+
+        break;
       default:
         console.log(`no matching templateID: ${templateID} to process`);
     }
     contentNode.replaceChildren(contentFrag);
+
+    if (templateID === "contact") {
+      const form = contentNode.querySelector("#contact_form");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const status = document.querySelector("#form-status");
+        const data = new FormData(e.target);
+        fetch("contact_handler.php", {
+          method: "POST",
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        }).then((response) => {
+          if (response.ok) {
+            status.innerHTML("Thanks! I look forward to reading this");
+            form.reset();
+          } else {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+          }
+        });
+      });
+    }
   }
 
   makeCard(card, cardTemplate, id) {
