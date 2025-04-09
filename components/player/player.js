@@ -16,6 +16,10 @@ class Player extends HTMLElement {
   }
 
   locationHashChanged() {
+    // close dialog if open
+    const bubble = document.getElementById("bubble_content_switch");
+    bubble.checked = false;
+
     const [route] = window.location.hash.substring(1).split("/");
     const newRoute = decodeURI(route);
     this.route = newRoute;
@@ -36,6 +40,17 @@ class Player extends HTMLElement {
     this.processDialogLayer(db[newRoute].dialogID);
   }
   processDialogLayer(dialogID) {
+    if (
+      state.Home === "found" &&
+      state.Work === "found" &&
+      state.Projects === "found" &&
+      state.Freelance === "found" &&
+      state.About === "found" &&
+      state.Contact === "found"
+    ) {
+      dialogID = "dialog_reward";
+    }
+
     const dialogTemplate = document.getElementById(dialogID);
     if (!dialogTemplate) {
       console.log(`no template found for ${dialogID}`);
@@ -43,7 +58,9 @@ class Player extends HTMLElement {
     }
     const dialogNode = document.querySelector("#dialog");
     const dialogFrag = document.importNode(dialogTemplate.content, true);
-    if (dialogID !== "dialog_found") {
+    if (dialogID === "dialog_found" || dialogID === "dialog_reward") {
+      // do nothins
+    } else {
       makeDialogButtons(dialogFrag);
     }
 
@@ -60,8 +77,10 @@ class Player extends HTMLElement {
   }
   respondToHeartFound(key, value) {
     if (value !== "found") return;
-    db[key].dialogID = "dialog_found";
-    this.processDialogLayer(db[key].dialogID);
+
+    db[this.route].dialogID = "dialog_found";
+
+    this.processDialogLayer(db[this.route].dialogID);
     const bubble = document.getElementById("bubble_content_switch");
     bubble.checked = true;
   }
