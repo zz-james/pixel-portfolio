@@ -210,13 +210,18 @@ class Content extends HTMLElement {
       role.removeAttribute("id");
       role.innerHTML = card.role.join(" / ");
     }
-    /* do skills */
+    /* do skills if in work section*/
+
     const skills = cardNode.querySelector("#card_skills");
     skills.removeAttribute("id");
     skills.innerHTML = card.skills
       .map(
         (skill) =>
-          `<li><a class="card_tag_link" href="#${this.route}/${skill}">${skill}</a></li>`
+          `<li>${
+            this.templateID === "work"
+              ? `<a class="card_tag_link" href="#${this.route}/${skill}">${skill}</a>`
+              : skill
+          }</li>`
       )
       .join(" ");
 

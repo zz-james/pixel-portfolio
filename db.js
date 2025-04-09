@@ -293,7 +293,7 @@ const db = {
     contentID: "about",
     dialogID: "dialog_about",
     player: {
-      left: 1100,
+      left: 1200,
       top: 288,
     },
     locations: {
@@ -331,7 +331,7 @@ const db = {
     contentID: "contact",
     dialogID: "dialog_contact",
     player: {
-      left: 1100,
+      left: 1230,
       top: 890,
     },
     locations: {
@@ -341,7 +341,7 @@ const db = {
       `
         <p>Here's a list of useful links if you want to find out more about me beyond this website<p>
 
-        <div style="display: flex; gap: 10px">
+        <div style="display: flex; gap: 10px;">
         <div><img src="images/contact/github.png" height="20px"/></div><div><a target="pop" href="https://github.com/zz-james/">My Github</a></div>
         </div>
 
@@ -361,11 +361,20 @@ const db = {
         <br /><br />
         <form  id="contact_form">
         <table>
-        <tr><td>Your Name:</td><td><input type="text" name="name"></td></tr>
-        <tr><td>Email Address:</td><td><input type="text" name="email"></td></tr>
-        <tr><td>Message:</td><td><textarea name="message" rows="10"></textarea></td></tr>
-        </table>
-            <input type="submit" value="Submit">
+
+        <div style="display: flex; gap: 10px; margin-bottom: 5px; flex-wrap: wrap">
+          <div style="flex-basis: 150px">Your Name:</div><div><input type="text" name="name"></div>
+        </div>
+        <div style="display: flex; gap: 10px;margin-bottom: 5px; flex-wrap: wrap">
+          <div style="flex-basis: 150px">Email Address:</div><div><input type="text" name="email"></div>
+        </div>
+        <div style="display: flex; gap: 10px;margin-bottom: 5px; flex-wrap: wrap">
+          <div style="flex-basis: 150px">Message:</div><div><textarea name="message" rows="10"></textarea></div>
+        </div>
+        <div style="display: flex; gap: 10px;margin-bottom: 5px; flex-wrap: wrap">
+            <div style="flex-basis: 150px"></div>
+            <div><input type="submit" value="Submit"></div>
+            </div>
             <p id="form-status"></p>
         </form>	
  

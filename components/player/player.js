@@ -1,5 +1,5 @@
 import { makeDialogButtons } from "./makeDialogButtons.js";
-
+import { state } from "../../state.js";
 class Player extends HTMLElement {
   route; /*string*/
   windowType;
@@ -12,6 +12,7 @@ class Player extends HTMLElement {
 
   attachListeners() {
     window.addEventListener("hashchange", () => this.locationHashChanged());
+    state.observe((key, value) => this.respondToHeartFound(key, value));
   }
 
   locationHashChanged() {
@@ -42,8 +43,9 @@ class Player extends HTMLElement {
     }
     const dialogNode = document.querySelector("#dialog");
     const dialogFrag = document.importNode(dialogTemplate.content, true);
-
-    makeDialogButtons(dialogFrag);
+    if (dialogID !== "dialog_found") {
+      makeDialogButtons(dialogFrag);
+    }
 
     dialogNode.replaceChildren(dialogFrag);
   }
@@ -55,6 +57,13 @@ class Player extends HTMLElement {
     } else {
       bubble.checked = false;
     }
+  }
+  respondToHeartFound(key, value) {
+    if (value !== "found") return;
+    db[key].dialogID = "dialog_found";
+    this.processDialogLayer(db[key].dialogID);
+    const bubble = document.getElementById("bubble_content_switch");
+    bubble.checked = true;
   }
 }
 
