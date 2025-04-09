@@ -1,6 +1,7 @@
 import { TileLayer } from "../tilelayer/tilelayer.js";
 import { Player } from "../player/player.js";
 import { state } from "../../state.js";
+import { Font5x5 } from "../../font.js";
 // TileMaps: global (sorry!) at the moment is the data output from Tiled (https://www.mapeditor.org/)
 
 class TileApp extends HTMLElement {
@@ -99,19 +100,147 @@ class TileApp extends HTMLElement {
       case "Work":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
+        break;
       case "Projects":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
+        break;
       case "Freelance":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
+        break;
       case "About":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
+        break;
       case "Contact":
         this.tileElement.style.setProperty("--x", "13");
         this.tileElement.style.setProperty("--y", "1");
+        break;
     }
+
+    if (
+      state.Home === "found" &&
+      state.Work === "found" &&
+      state.Projects === "found" &&
+      state.Freelance === "found" &&
+      state.About === "found" &&
+      state.Contact === "found"
+    ) {
+      this.doRewards();
+    }
+  }
+
+  doRewards() {
+    const tiles = document.querySelectorAll(
+      't-ile-layer[name="accessories"] > t-ile'
+    );
+
+    // clear tiles
+    // tiles.forEach((node, index) => {
+    //   node.style.setProperty("--x", "0");
+    //   node.style.setProperty("--y", "0");
+    // });
+
+    const background = document.querySelectorAll(
+      't-ile-layer[name="items"] > t-ile'
+    );
+
+    let colours = [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "indigo",
+      "rebeccapurple",
+    ];
+
+    let colStart = 0;
+    let colEnd = 25;
+    const fontWidth = 5;
+    let dt = Date.now() + 1000;
+
+    const coloursLayer = () => {
+      if (Date.now() < dt) {
+        window.requestAnimationFrame(coloursLayer);
+        return;
+      }
+
+      if (colStart === colEnd) {
+        return;
+      }
+
+      background.forEach((node, index) => {
+        node.style.setProperty("background", colours[index % 7]);
+      });
+      colours.push(colours.shift());
+      colStart++;
+
+      window.requestAnimationFrame(coloursLayer);
+    };
+
+    window.requestAnimationFrame(coloursLayer);
+
+    let start = 0;
+    let end = 100;
+    let col = 0;
+    let row = 0;
+
+    let skip = false;
+
+    const heartsLayer = () => {
+      if (Date.now() < dt) {
+        window.requestAnimationFrame(heartsLayer);
+        return;
+      }
+
+      if (start === end) {
+        console.log("fin");
+        return;
+      }
+
+      tiles.forEach((node, index) => {
+        node.style.setProperty("--x", "0");
+        node.style.setProperty("--y", "0");
+      });
+
+      let ch = "WellDone".charCodeAt(start % 8);
+      let data = Font5x5[ch];
+
+      // loop start
+      tiles.forEach((node, index) => {
+        if (col >= this.tilemap.width) {
+          col = 0;
+          row++;
+        }
+
+        const dataRow = row % 5;
+
+        if (col % 10 > 4 || row % 10 > 4) {
+          skip = true;
+        } else {
+          skip = false;
+        }
+
+        if (data[(index % 5) + dataRow * 5] === "X") {
+          if (!skip) {
+            node.style.setProperty("--x", "13");
+            node.style.setProperty("--y", "1");
+          }
+        }
+        col++;
+      });
+      // loop end
+      dt = Date.now() + 1000;
+      start++;
+      window.requestAnimationFrame(heartsLayer);
+    };
+
+    window.requestAnimationFrame(heartsLayer);
+    // const tiles = document.querySelectorAll(
+    //   't-ile-layer[name="accessories"] > t-ile'
+    // );
   }
 
   getLayerData(name) {
