@@ -132,15 +132,12 @@ class TileApp extends HTMLElement {
   }
 
   doRewards() {
+    const modal = document.getElementById("modal_content_switch");
+    modal.checked = false;
+
     const tiles = document.querySelectorAll(
       't-ile-layer[name="accessories"] > t-ile'
     );
-
-    // clear tiles
-    // tiles.forEach((node, index) => {
-    //   node.style.setProperty("--x", "0");
-    //   node.style.setProperty("--y", "0");
-    // });
 
     const background = document.querySelectorAll(
       't-ile-layer[name="items"] > t-ile'
