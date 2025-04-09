@@ -123,15 +123,24 @@ class Content extends HTMLElement {
         );
 
         // render cards
-        const cardTemplate = document.getElementById("card");
-        const cardList = contentFrag.querySelector("#card_list");
+        const cardTemplateW = document.getElementById("card");
+        const cardListW = contentFrag.querySelector("#card_list");
 
         this.selectedContent.forEach((data, index) => {
-          cardList.append(this.makeCard(data, cardTemplate, index));
+          cardListW.append(this.makeCard(data, cardTemplateW, index));
         });
         break;
+      case "projects":
+        // render cards
+        const cardTemplateP = document.getElementById("card");
+        const cardListP = contentFrag.querySelector("#card_list");
+
+        this.selectedContent.forEach((data, index) => {
+          cardListP.append(this.makeCard(data, cardTemplateP, index));
+        });
+
       default:
-        console.log(`no matching templateID: ${templateID} process`);
+        console.log(`no matching templateID: ${templateID} to process`);
     }
     contentNode.replaceChildren(contentFrag);
   }
@@ -139,23 +148,24 @@ class Content extends HTMLElement {
   makeCard(card, cardTemplate, id) {
     let cardNode = document.importNode(cardTemplate.content, true);
     /* do dates */
-    const dates = cardNode.querySelector("#card_dates");
-    dates.id = "card_dates" + id;
-    dates.innerHTML =
-      card.dates.start.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "short",
-      }) +
-      " - " +
-      card.dates.end.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "short",
-      });
-
+    if (card.dates) {
+      const dates = cardNode.querySelector("#card_dates");
+      dates.id = "card_dates" + id;
+      dates.innerHTML =
+        card.dates.start.toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+        }) +
+        " - " +
+        card.dates.end.toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+        });
+    }
     /* do title */
     const title = cardNode.querySelector("#card_title");
     title.removeAttribute("id");
-    title.innerHTML = card.employer;
+    title.innerHTML = card.title;
 
     /* do image */
     const imagescr = cardNode.querySelector("#card_image");
@@ -168,10 +178,11 @@ class Content extends HTMLElement {
     description.innerHTML = card.description;
 
     /* do role */
-    const role = cardNode.querySelector("#card_role");
-    role.removeAttribute("id");
-    role.innerHTML = card.role.join(" / ");
-
+    if (card.role) {
+      const role = cardNode.querySelector("#card_role");
+      role.removeAttribute("id");
+      role.innerHTML = card.role.join(" / ");
+    }
     /* do skills */
     const skills = cardNode.querySelector("#card_skills");
     skills.removeAttribute("id");

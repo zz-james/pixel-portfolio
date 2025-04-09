@@ -560,6 +560,9 @@ c-ontent > #content {
           line-height: 1.5em;
           padding: 2px 4px;
         }
+        .card_link {
+          overflow-x: clip;
+        }
       }
       input:checked ~ .card {
         position: absolute;
