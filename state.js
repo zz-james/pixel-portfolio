@@ -28,15 +28,12 @@ state.init = (data) => {
   Object.keys(data).map((key) => {
     state[key] = data[key];
   });
-  state = makeObservable(state);
 };
 
-// state.observeKey = (prop, callback) => {
-//   state.observe((key, value) => {
-//     if (key === prop) {
-//       callback(value);
-//     }
-//   });
-// };
+state.init({
+  chest: "closed",
+});
+
+state = makeObservable(state);
 
 export { state };

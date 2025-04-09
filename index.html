@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tile Map</title>
+    <title>James Cat Ltd. / James Smith work portfolio</title>
     <!-- <script type="text/javascript" src="./mobile_portrait.js"></script> -->
     <script type="text/javascript" src="./tilemap_01.js"></script>
     <script type="module" src="./components/app/tile-app.js"></script>
@@ -148,6 +148,103 @@
       </div>
     </template>
 
+    <template id="dialog_freelance">
+      <label for="bubble_content_switch" id="bubble_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
+      <section class="dialog mandatory-scroll-snapping">
+        <div>
+          <p>
+            If you're not sure about hiring a freelancer, just get in touch and
+            we can discuss it.
+          </p>
+        </div>
+        <div>
+          <p>Hint: if you're hunting for the heart it's close to the ground!</p>
+        </div>
+      </section>
+      <div class="dialog_button_container">
+        <a class="button_unstyled blue_button">
+          <span class="control_panel_button_text" style="position: static"
+            >back</span
+          >
+        </a>
+        <a class="button_unstyled blue_button">
+          <span class="control_panel_button_text" style="position: static"
+            >next</span
+          >
+        </a>
+      </div>
+    </template>
+
+    <template id="dialog_about">
+      <label for="bubble_content_switch" id="bubble_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
+      <section class="dialog mandatory-scroll-snapping">
+        <div>
+          <p>
+            Hopefully you're still interested in hiring me now you know more
+            about me :-)
+          </p>
+        </div>
+        <div>
+          <p>Hint: if you're hunting for the heart it's up!</p>
+        </div>
+      </section>
+      <div class="dialog_button_container">
+        <a class="button_unstyled blue_button">
+          <span class="control_panel_button_text" style="position: static"
+            >back</span
+          >
+        </a>
+        <a class="button_unstyled blue_button">
+          <span class="control_panel_button_text" style="position: static"
+            >next</span
+          >
+        </a>
+      </div>
+    </template>
+
+    <template id="dialog_contact">
+      <label for="bubble_content_switch" id="bubble_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
+      <section class="dialog mandatory-scroll-snapping">
+        <div>
+          <p>Thanks for checking out my site and (hopefully) contacting me.</p>
+        </div>
+        <div>
+          <p>Hint: in the depths!</p>
+        </div>
+      </section>
+      <div class="dialog_button_container">
+        <a class="button_unstyled blue_button">
+          <span class="control_panel_button_text" style="position: static"
+            >back</span
+          >
+        </a>
+        <a class="button_unstyled blue_button">
+          <span class="control_panel_button_text" style="position: static"
+            >next</span
+          >
+        </a>
+      </div>
+    </template>
+
+    <template id="dialog_found">
+      <label for="bubble_content_switch" id="bubble_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
+      <section class="dialog mandatory-scroll-snapping">
+        <div>
+          <p>Well done you found the heart for this section.</p>
+          <p>Now try one of the other sections.</p>
+          <p>Use the rainbow coloured buttons below.</p>
+        </div>
+      </section>
+    </template>
+
     <template id="home"> </template>
 
     <!-- hello -->
@@ -160,13 +257,13 @@
     <template id="window">
       <input id="modal_content_switch" type="checkbox" name="window_selector" />
 
-      <label for="modal_content_switch" id="modal_content_switch_label">
-        <div class="close_button button_unstyled"></div>
-      </label>
       <div id="content"></div>
     </template>
 
     <template id="work">
+      <label for="modal_content_switch" id="modal_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
       <h4>Work.</h4>
       <div class="work_content_container">
         <div>
@@ -182,6 +279,9 @@
     </template>
 
     <template id="projects">
+      <label for="modal_content_switch" id="modal_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
       <h4>Projects.</h4>
       <div class="work_content_container">
         <div id="card_list"></div>
@@ -189,6 +289,9 @@
     </template>
 
     <template id="about">
+      <label for="modal_content_switch" id="modal_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
       <h4>About.</h4>
       <div class="work_content_container">
         <div id="card_list"></div>
@@ -196,6 +299,9 @@
     </template>
 
     <template id="freelance">
+      <label for="modal_content_switch" id="modal_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
       <h4>Freelance.</h4>
       <div class="work_content_container">
         <div id="card_list"></div>
@@ -203,6 +309,9 @@
     </template>
 
     <template id="contact">
+      <label for="modal_content_switch" id="modal_content_switch_label">
+        <div class="close_button button_unstyled"></div>
+      </label>
       <h4>Contact.</h4>
       <div class="work_content_container">
         <div id="card_list"></div>
@@ -217,12 +326,12 @@
             <div class="card_switch_click_target"></div>
           </label>
           <div id="card_dates" class="card_dates"></div>
-          <img id="card_image" src="images/work/xams.png" />
+          <div id="card_role"></div>
+          <img id="card_image" />
           <span id="card_title" class="card_title"></span>
-
           <div id="card_description" class="card_description"></div>
           <ul id="card_skills" class="card_skills"></ul>
-          <a id="card_link"></a>
+          <div class="card_link"><a id="card_link"></a></div>
         </div>
       </div>
     </template>

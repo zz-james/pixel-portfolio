@@ -97,6 +97,7 @@ class Content extends HTMLElement {
   processTemplate(templateID) {
     const contentTemplate = document.getElementById(templateID);
     const contentNode = this.querySelector("#content"); // where we append
+
     if (!contentTemplate) {
       contentNode.replaceChildren("");
       return;
@@ -116,38 +117,82 @@ class Content extends HTMLElement {
         );
 
         // render cards
-        const cardTemplate = document.getElementById("card");
-        const cardList = contentFrag.querySelector("#card_list");
+        const cardTemplateW = document.getElementById("card");
+        const cardListW = contentFrag.querySelector("#card_list");
+
         this.selectedContent.forEach((data, index) => {
-          cardList.append(this.makeCard(data, cardTemplate, index));
+          cardListW.append(this.makeCard(data, cardTemplateW, index));
         });
         break;
+      case "projects":
+        // render cards
+        const cardTemplateP = document.getElementById("card");
+        const cardListP = contentFrag.querySelector("#card_list");
+
+        this.selectedContent.forEach((data, index) => {
+          cardListP.append(this.makeCard(data, cardTemplateP, index));
+        });
+        break;
+      case "freelance":
+      case "about":
+      case "contact":
+        const contEl = document.createElement("div");
+
+        contEl.innerHTML = this.selectedContent[0];
+        contEl.classList.add("scroller");
+        contentFrag.querySelector(".work_content_container").append(contEl);
+
+        break;
       default:
-        console.log(`no matching templateID: ${templateID} process`);
+        console.log(`no matching templateID: ${templateID} to process`);
     }
     contentNode.replaceChildren(contentFrag);
+
+    if (templateID === "contact") {
+      const form = contentNode.querySelector("#contact_form");
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const status = document.querySelector("#form-status");
+        const data = new FormData(e.target);
+        fetch("contact_handler.php", {
+          method: "POST",
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        }).then((response) => {
+          if (response.ok) {
+            status.innerHTML("Thanks! I look forward to reading this");
+            form.reset();
+          } else {
+            status.innerHTML = "Oops! There was a problem submitting your form";
+          }
+        });
+      });
+    }
   }
 
   makeCard(card, cardTemplate, id) {
     let cardNode = document.importNode(cardTemplate.content, true);
     /* do dates */
-    const dates = cardNode.querySelector("#card_dates");
-    dates.id = "card_dates" + id;
-    dates.innerHTML =
-      card.dates.start.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "short",
-      }) +
-      " - " +
-      card.dates.end.toLocaleDateString("en-us", {
-        year: "numeric",
-        month: "short",
-      });
-
+    if (card.dates) {
+      const dates = cardNode.querySelector("#card_dates");
+      dates.id = "card_dates" + id;
+      dates.innerHTML =
+        card.dates.start.toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+        }) +
+        " - " +
+        card.dates.end.toLocaleDateString("en-us", {
+          year: "numeric",
+          month: "short",
+        });
+    }
     /* do title */
     const title = cardNode.querySelector("#card_title");
     title.removeAttribute("id");
-    title.innerHTML = card.employer;
+    title.innerHTML = card.title;
 
     /* do image */
     const imagescr = cardNode.querySelector("#card_image");
@@ -159,13 +204,24 @@ class Content extends HTMLElement {
     description.removeAttribute("id");
     description.innerHTML = card.description;
 
-    /* do skills */
+    /* do role */
+    if (card.role) {
+      const role = cardNode.querySelector("#card_role");
+      role.removeAttribute("id");
+      role.innerHTML = card.role.join(" / ");
+    }
+    /* do skills if in work section*/
+
     const skills = cardNode.querySelector("#card_skills");
     skills.removeAttribute("id");
     skills.innerHTML = card.skills
       .map(
         (skill) =>
-          `<li><a class="card_tag_link" href="#${this.route}/${skill}">${skill}</a></li>`
+          `<li>${
+            this.templateID === "work"
+              ? `<a class="card_tag_link" href="#${this.route}/${skill}">${skill}</a>`
+              : skill
+          }</li>`
       )
       .join(" ");
 

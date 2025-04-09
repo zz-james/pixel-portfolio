@@ -33,10 +33,6 @@ class TileApp extends HTMLElement {
 
     this.innerHTML = tilesString;
 
-    state.init({
-      chest: "closed",
-    });
-
     state.observe((key, value) => this.renderInteraction(key, value));
     this.attachListeners();
     this.locationHashChanged();
