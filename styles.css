@@ -390,6 +390,7 @@ t-ile-app
 #bubble_content_switch_label > div {
   height: 16px;
   width: 16px;
+  cursor: pointer;
 }
 
 t-ile-app > #dialog {
@@ -537,11 +538,16 @@ c-ontent > #content .work_selector {
 
 c-ontent > #content #card_list {
   margin-top: 4px;
+  overflow-x: hidden;
   overflow-x: clip;
   overflow-y: scroll;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 32%));
   grid-gap: 1rem;
+}
+
+c-ontent > #content #card_list .card_wrapper {
+  background-color: white;
 }
 
 c-ontent > #content #card_list .card_wrapper input {
@@ -566,6 +572,8 @@ c-ontent > #content #card_list .card_wrapper .card .card_switch_click_target {
   top: 0;
   right: 0;
   bottom: 0;
+  z-index: 10;
+  cursor: pointer;
 }
 /* c-ontent > #content #card_list .card_wrapper .card img {
 } */
@@ -574,6 +582,9 @@ c-ontent > #content #card_list .card_wrapper .card .picture {
   container: picture / inline-size;
   width: 100%;
   display: inline-flex;
+  position: relative;
+  max-width: 70%;
+  margin: 0 15%;
 }
 c-ontent > #content #card_list .card_wrapper .card .picture img {
   max-width: 800px;
@@ -584,19 +595,30 @@ c-ontent > #content #card_list .card_wrapper .card .picture img {
   border: 1px solid #ddd;
 }
 
+/* If the inline-size value is not supported, use media query fallback */
+@supports not (contain: inline-size) {
+  c-ontent > #content #card_list .card_wrapper .card .picture img.medium_image {
+    display: initial;
+    position: static;
+  }
+}
+
 @container picture (0 < width <= 250px) {
   c-ontent > #content #card_list .card_wrapper .card .picture img.small_image {
     display: initial;
+    position: static;
   }
 }
 @container picture (250px < width <= 500px) {
   c-ontent > #content #card_list .card_wrapper .card .picture img.medium_image {
     display: initial;
+    position: static;
   }
 }
 @container picture (500px < width) {
   c-ontent > #content #card_list .card_wrapper .card .picture img.large_image {
     display: initial;
+    position: static;
   }
 }
 
