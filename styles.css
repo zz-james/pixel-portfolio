@@ -254,7 +254,7 @@ body {
 @media screen and (max-height: 640px) {
   :root {
     --control-panel-button-height: 50px;
-    --control-panel-width: 390px;
+    --control-panel-width: 50%;
   }
 }
 
@@ -364,9 +364,10 @@ t-ile-app > input#bubble_content_switch:checked ~ #dialog {
   --dialog-visibility: 1;
   visibility: visible;
   width: 15.5rem;
-  height: 33dvh;
+  height: auto;
   pointer-events: all;
 }
+
 t-ile-app
   > input#bubble_content_switch:checked
   ~ #dialog
