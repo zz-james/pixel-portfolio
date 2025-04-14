@@ -16,8 +16,20 @@
     <link href="./styles.css" rel="stylesheet" />
   </head>
   <body>
+    <a
+      class="button"
+      style="position: absolute; top: 5px; right: 5px; z-index: 100"
+      href="/alternative/index.html"
+    >
+      <span class="sr-only"
+        >This website uses a very large number of graphical elements, the site
+        on this link has the same content and is recommended for enhanced non
+        visual ecperience</span
+      >
+      Plain Text Site
+    </a>
     <div id="layout">
-      <div id="game">
+      <div id="game" role="presentation">
         <t-ile-app mapname="tilemap_01">
           <div id="loading">
             <div>Loading...</div>
@@ -255,6 +267,9 @@
             Congats! <br />You found <br />every<br />
             heart
           </h2>
+          <a class="button_unstyled blue_button" href="index.html"
+            >Reset Game</a
+          >
         </div>
       </section>
     </template>

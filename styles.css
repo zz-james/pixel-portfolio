@@ -33,17 +33,27 @@ p {
   margin-block-end: 1rem;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
 #loading {
   display: grid;
   height: 100vh;
   width: 100dvw;
   background-color: #16a2e2;
   place-items: center;
-
-  div {
-    display: block;
-    font-size: xx-large;
-  }
+}
+#loading div {
+  display: block;
+  font-size: xx-large;
 }
 
 @media screen and (min-width: 600px) {
@@ -171,11 +181,11 @@ body {
   transition: top 2s, left 2s;
   animation: ghost 1s steps(4) infinite;
   animation-fill-mode: both;
-  label {
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
+}
+#player label {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* ------------------------------- control panel ----------------------------------- */
@@ -241,7 +251,7 @@ body {
 }
 
 /* if screen height is under 500 height */
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 640px) {
   :root {
     --control-panel-button-height: 50px;
     --control-panel-width: 390px;
@@ -288,28 +298,28 @@ c-ontrol-panel-button {
 
 p-rogress {
   flex-grow: 1;
+}
 
-  .hearts_progress {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 4px;
-    gap: 4px;
+p-rogress .hearts_progress {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  gap: 4px;
+}
 
-    > div {
-      font-size: 2.2vw;
-      border-radius: 4px;
-      background-color: rgba(255, 255, 255, 0.2);
-      background-repeat: no-repeat;
-      flex-grow: 1;
-      margin: 0 2px;
-      background-position: center bottom;
-      text-align: center;
-    }
-    .inner_progress_panel {
-      display: flex;
-      flex-direction: column;
-    }
-  }
+p-rogress .hearts_progress > div {
+  font-size: 2.2vw;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.2);
+  background-repeat: no-repeat;
+  flex-grow: 1;
+  margin: 0 2px;
+  background-position: center bottom;
+  text-align: center;
+}
+p-rogress .hearts_progress .inner_progress_panel {
+  display: flex;
+  flex-direction: column;
 }
 
 /* not so big on bigger screens */
@@ -349,18 +359,19 @@ t-ile-app > input#bubble_content_switch {
   display: none;
 }
 
-t-ile-app > input#bubble_content_switch:checked {
-  ~ #dialog {
-    --content-window-height: 65dvh;
-    --dialog-visibility: 1;
-    visibility: visible;
-    width: 15.5rem;
-    height: auto;
-    pointer-events: all;
-    #bubble_content_switch_label {
-      display: block;
-    }
-  }
+t-ile-app > input#bubble_content_switch:checked ~ #dialog {
+  --content-window-height: 65dvh;
+  --dialog-visibility: 1;
+  visibility: visible;
+  width: 15.5rem;
+  height: 33dvh;
+  pointer-events: all;
+}
+t-ile-app
+  > input#bubble_content_switch:checked
+  ~ #dialog
+  #bubble_content_switch_label {
+  display: block;
 }
 
 #bubble_content_switch_label {
@@ -398,52 +409,54 @@ t-ile-app > #dialog {
   visibility: none;
   transition: height 1s, opacity 1s;
   transition-delay: var(--content-delay);
-  h4 {
-    margin: 0;
-    margin-block-end: 0.7em;
-  }
-  .dialog_button_container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: -12px;
-    margin-bottom: 20px;
-    a {
-      display: block;
-      height: 10px;
-      font-size: 10px;
-      line-height: 0;
-      transition: opacity 0.5s;
-    }
-    a:first-child {
-      opacity: 0;
-    }
-    a:last-child {
-      opacity: 1;
-    }
-  }
-  .dialog:not([data-scroll="0"]) ~ .dialog_button_container > a:first-child {
-    opacity: 1;
-  }
-  .dialog[data-scroll="end"] ~ .dialog_button_container > a:last-child {
-    opacity: 0;
-  }
+}
+t-ile-app > #dialog h4 {
+  margin: 0;
+  margin-block-end: 0.7em;
+}
+t-ile-app > #dialog .dialog_button_container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: -12px;
+  margin-bottom: 20px;
+}
+
+t-ile-app > #dialog .dialog_button_container a {
+  display: block;
+  height: 10px;
+  font-size: 10px;
+  line-height: 0;
+  transition: opacity 0.5s;
+}
+t-ile-app > #dialog .dialog_button_container a:first-child {
+  opacity: 0;
+}
+t-ile-app > #dialog .dialog_button_container a:last-child {
+  opacity: 1;
+}
+
+.dialog:not([data-scroll="0"]) ~ .dialog_button_container > a:first-child {
+  opacity: 1 !important;
+}
+.dialog[data-scroll="end"] ~ .dialog_button_container > a:last-child {
+  opacity: 0 !important;
 }
 
 /* ----------------------------- content ---------------------------------- */
 
-c-ontent {
-  > input#modal_content_switch:checked {
-    ~ #content {
-      pointer-events: all;
-      --content-window-visibility: 1;
-      --content-delay: 2s;
-      height: 94dvh;
-      #modal_content_switch_label {
-        display: block;
-      }
-    }
-  }
+c-ontent > input#modal_content_switch:checked ~ #content {
+  pointer-events: all;
+  --content-window-visibility: 1;
+  --content-delay: 2s;
+  height: 94dvh;
+}
+
+c-ontent
+  > input#modal_content_switch:checked
+  ~ #content
+  #modal_content_switch_label {
+  display: block;
 }
 
 c-ontent {
@@ -456,9 +469,9 @@ c-ontent {
   width: 100dvw;
   overflow-y: visible;
   margin: auto;
-  input#modal_content_switch {
-    display: none;
-  }
+}
+c-ontent input#modal_content_switch {
+  display: none;
 }
 
 c-ontent > #content {
@@ -480,138 +493,141 @@ c-ontent > #content {
   transition: height 1s, opacity 1s;
   transition-delay: var(--content-delay);
   pointer-events: none;
+}
 
-  #modal_content_switch_label {
-    display: none;
-    margin-left: auto;
-    margin-right: 0;
-    height: 16px;
-    width: 16px;
+c-ontent > #content #modal_content_switch_label {
+  display: none;
+  margin-left: auto;
+  margin-right: 0;
+  height: 16px;
+  width: 16px;
+}
+c-ontent > #content #modal_content_switch_label > div {
+  height: 16px;
+  width: 16px;
+}
+
+c-ontent > #content .button_text {
+  font-size: 12px;
+  color: white;
+  text-shadow: #000 0px 0px 2px;
+}
+
+c-ontent > #content .work_content_container {
+  display: flex;
+  flex-direction: column;
+  height: 86%;
+  overflow-y: hidden;
+  .scroller {
+    margin: 0 10px 0 10px;
+    overflow-y: auto;
   }
-  #modal_content_switch_label > div {
-    height: 16px;
-    width: 16px;
-  }
+}
 
-  .button_text {
-    font-size: 12px;
-    color: white;
-    text-shadow: #000 0px 0px 2px;
-  }
+c-ontent > #content .work_selector {
+  width: 100%;
+}
 
-  .work_content_container {
-    display: flex;
-    flex-direction: column;
-    height: 86%;
-    overflow-y: hidden;
-    .scroller {
-      margin: 0 10px 0 10px;
-      overflow-y: auto;
-    }
-  }
+c-ontent > #content #card_list {
+  margin-top: 4px;
+  overflow-x: clip;
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 30%));
+  grid-gap: 1rem;
+}
 
-  .work_selector {
-    width: 100%;
-  }
+c-ontent > #content #card_list .card_wrapper input {
+  display: none;
+  touch-action: manipulation;
+}
 
-  #card_list {
-    margin-top: 4px;
-    overflow-x: clip;
-    overflow-y: scroll;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 30%));
-    grid-gap: 1rem;
-    .card_wrapper {
-      input {
-        display: none;
-        touch-action: manipulation;
-      }
+c-ontent > #content #card_list .card_wrapper .card {
+  height: 100%;
+  position: relative;
+  isolation: isolate;
+  padding: 4px 8px 4px 8px;
+  border: 1px solid lightgrey;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+  margin: 8px 8px 0 0;
+}
+c-ontent > #content #card_list .card_wrapper .card .card_switch_click_target {
+  position: absolute;
 
-      .card {
-        height: 100%;
-        position: relative;
-        isolation: isolate;
-        padding: 4px 8px 4px 8px;
-        border: 1px solid lightgrey;
-        background-color: white;
-        border-radius: 5px;
-        box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
-        margin: 8px 8px 0 0;
-        .card_switch_click_target {
-          position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+c-ontent > #content #card_list .card_wrapper .card img {
+  margin-top: 2px;
+  border: 1px solid #ddd;
+}
+c-ontent > #content #card_list .card_wrapper .card .card_description {
+  display: none;
+}
+c-ontent > #content #card_list .card_wrapper .card .card_skills {
+  display: none;
+}
+c-ontent > #content #card_list .card_wrapper .card .card_dates {
+  font-size: 10px;
+}
+c-ontent > #content #card_list .card_wrapper .card .card_title {
+  display: block;
+  max-width: calc(100% - 10px);
+  line-height: 1.5em;
+  padding: 2px 4px;
+}
+c-ontent > #content #card_list .card_wrapper .card .card_link {
+  overflow-x: clip;
+}
 
-          left: 0;
-          top: 0;
-          right: 0;
-          bottom: 0;
-        }
-        img {
-          margin-top: 2px;
-          border: 1px solid #ddd;
-        }
-        .card_description {
-          display: none;
-        }
-        .card_skills {
-          display: none;
-        }
-        .card_dates {
-          font-size: 10px;
-        }
-        .card_title {
-          display: block;
-          max-width: calc(100% - 10px);
-          line-height: 1.5em;
-          padding: 2px 4px;
-        }
-        .card_link {
-          overflow-x: clip;
-        }
-      }
-      input:checked ~ .card {
-        position: absolute;
-        z-index: 21;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 99dvh;
-        margin: 0;
-        .card_description {
-          display: block;
-        }
-        .card_skills {
-          display: flex;
-          flex-wrap: wrap;
-          list-style-type: none;
-          padding: 0;
-          margin: 0;
-          li {
-            background-color: blue;
-            border-radius: 5px;
-            font-size: 12px;
-            padding: 2px 4px;
-            margin: 2px 4px;
-            a {
-              color: white;
-              text-decoration: none;
-            }
-          }
-        }
-        .card_switch_click_target {
-          margin-left: calc(100% - 20px);
-          height: 16px;
-          width: 16px;
-          background-image: url(images/close_button_on_off.png);
-        }
-      }
-      .card:hover {
-        border-color: yellow;
-      }
-    }
-    img {
-      width: 100%;
-    }
-  }
+input:checked ~ .card {
+  position: absolute;
+  z-index: 21;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 99dvh;
+  margin: 0;
+}
+input:checked ~ .card .card_description {
+  display: block;
+}
+input:checked ~ .card .card_skills {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+input:checked ~ .card .card_skills li {
+  background-color: blue;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 2px 4px;
+  margin: 2px 4px;
+}
+input:checked ~ .card .card_skills li a {
+  color: white;
+  text-decoration: none;
+}
+
+input:checked ~ .card .card_switch_click_target {
+  margin-left: calc(100% - 20px);
+  height: 16px;
+  width: 16px;
+  background-image: url(images/close_button_on_off.png);
+}
+
+.card .card:hover {
+  border-color: yellow;
+}
+
+.card img {
+  width: 100%;
 }
 
 .mandatory-scroll-snapping {
@@ -625,12 +641,10 @@ c-ontent > #content {
   scroll-snap-type: x mandatory;
   scrollbar-width: thin;
   scroll-behavior: smooth;
-
-  div {
-    flex: none;
-    width: 100%;
-
-    padding-bottom: 8px;
-    scroll-snap-stop: normal;
-  }
+}
+.mandatory-scroll-snapping div {
+  flex: none;
+  width: 100%;
+  padding-bottom: 8px;
+  scroll-snap-stop: normal;
 }
