@@ -144,6 +144,7 @@ class Content extends HTMLElement {
 
         contEl.innerHTML = this.selectedContent[0];
         contEl.classList.add("scroller");
+        contEl.classList.add(`section_${templateID}`);
         contentFrag.querySelector(".work_content_container").append(contEl);
 
         break;
