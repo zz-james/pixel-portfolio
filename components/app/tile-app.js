@@ -222,7 +222,7 @@ class TileApp extends HTMLElement {
 
         if (data[(index % 5) + dataRow * 5] === "X") {
           if (!skip) {
-            node.style.setProperty("--x", "13");
+            node.style.setProperty("--x", (13 + (start % 4)).toString());
             node.style.setProperty("--y", "1");
           }
         }

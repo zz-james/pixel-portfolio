@@ -98,7 +98,10 @@ class Content extends HTMLElement {
     const contentTemplate = document.getElementById(templateID);
     const contentNode = this.querySelector("#content"); // where we append
 
+    if (!contentNode) return;
+
     if (!contentTemplate) {
+      console.log(`template with ${templateID} not found`);
       contentNode.replaceChildren("");
       return;
     }
@@ -128,7 +131,8 @@ class Content extends HTMLElement {
         // render cards
         const cardTemplateP = document.getElementById("card");
         const cardListP = contentFrag.querySelector("#card_list");
-
+        if (!cardTemplateP) return;
+        if (!cardListP) return;
         this.selectedContent.forEach((data, index) => {
           cardListP.append(this.makeCard(data, cardTemplateP, index));
         });
@@ -173,6 +177,7 @@ class Content extends HTMLElement {
   }
 
   makeCard(card, cardTemplate, id) {
+    if (!cardTemplate) return;
     let cardNode = document.importNode(cardTemplate.content, true);
     /* do dates */
     if (card.dates) {
@@ -225,7 +230,7 @@ class Content extends HTMLElement {
           `<li>${
             this.templateID === "work"
               ? `<a class="card_tag_link" href="#${this.route}/${skill}">${skill}</a>`
-              : skill
+              : `<span class="card_tag_link">${skill}</span>`
           }</li>`
       )
       .join(" ");
@@ -267,10 +272,14 @@ class Content extends HTMLElement {
   setStyles() {
     const modal = document.getElementById("modal_content_switch");
 
+    if (!modal) {
+      return;
+    }
+
     if (this.windowType === "modal") {
       modal.checked = true;
     } else {
-      modal.chacked = false;
+      modal.checked = false;
     }
   }
 

@@ -1,0 +1,28 @@
+c-ontent > #content #card_list .card_wrapper .card .picture {
+  container: picture / inline-size;
+  width: 100%;
+  display: inline-flex;
+}
+c-ontent > #content #card_list .card_wrapper .card .picture img {
+  display: none;
+  height: auto;
+  width: 100%;
+  margin-top: 2px;
+  border: 1px solid #ddd;
+}
+
+@container picture (0 < width <= 250px) {
+  c-ontent > #content #card_list .card_wrapper .card .picture img.small_image {
+    display: initial;
+  }
+}
+@container picture (250px < width <= 500px) {
+  c-ontent > #content #card_list .card_wrapper .card .picture img.medium_image {
+    display: initial;
+  }
+}
+@container picture (500px < width) {
+  c-ontent > #content #card_list .card_wrapper .card .picture img.large_image {
+    display: initial;
+  }
+}

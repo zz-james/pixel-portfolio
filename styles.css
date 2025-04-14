@@ -571,6 +571,7 @@ c-ontent > #content #card_list .card_wrapper .card .picture {
   display: inline-flex;
 }
 c-ontent > #content #card_list .card_wrapper .card .picture img {
+  max-width: 800px;
   display: none;
   height: auto;
   width: 100%;
@@ -609,7 +610,7 @@ c-ontent > #content #card_list .card_wrapper .card .card_skills {
   text-overflow: ellipsis;
 }
 
-c-ontent > #content #card_list .card_wrapper .card .card_skills a {
+c-ontent > #content #card_list .card_wrapper .card .card_skills .card_tag_link {
   /* display: none; */
   /* list-style-type: none; */
   text-decoration: none;
@@ -683,7 +684,7 @@ c-ontent
   ~ .card
   .card_skills
   li {
-  background-color: blue;
+  background-color: #4d9be6;
   border-radius: 5px;
   font-size: 12px;
   padding: 2px 4px;
@@ -697,9 +698,11 @@ c-ontent
   ~ .card
   .card_skills
   li
-  a {
+  .card_tag_link {
   color: white;
   text-decoration: none;
+  margin: auto;
+  pointer-events: all;
 }
 
 c-ontent

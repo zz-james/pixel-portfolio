@@ -35,9 +35,9 @@ const db = {
         title: "Coelrind Ltd",
         skills: ["React", "Typescript", "MUI components", "Zustand"],
         screenshot: {
-          small: "images/work/coelrind/xams_small.png",
-          medium: "images/work/coelrind/xams_medium.png",
-          large: "images/work/coelrind/xams.png",
+          small: "/images/work/coelrind/xams_small.png",
+          medium: "/images/work/coelrind/xams_medium.png",
+          large: "/images/work/coelrind/xams.png",
         },
         contract: "full time",
       },
@@ -64,9 +64,9 @@ const db = {
           "Cypress",
         ],
         screenshot: {
-          small: "images/work/oxford/patient_safety_small.png",
-          medium: "images/work/oxford/patient_safety_medium.png",
-          large: "images/work/oxford/patient_safety.png",
+          small: "/images/work/oxford/patient_safety_small.png",
+          medium: "/images/work/oxford/patient_safety_medium.png",
+          large: "/images/work/oxford/patient_safety.png",
         },
         contract: "fixed term",
       },
@@ -105,9 +105,9 @@ const db = {
         screenshot: "images/work/pi-top/further.png",
 
         screenshot: {
-          small: "images/work/pi-top/further_small.png",
-          medium: "images/work/pi-top/further_medium.png",
-          large: "images/work/pi-top/further.png",
+          small: "/images/work/pi-top/further_small.png",
+          medium: "/images/work/pi-top/further_medium.png",
+          large: "/images/work/pi-top/further.png",
         },
 
         link: "https://further.pi-top.com/",
@@ -125,9 +125,9 @@ const db = {
         title: "Learning Technologies Group UK Ltd.",
         skills: ["React", "Redux", "Sass", "Scorm"],
         screenshot: {
-          small: "images/work/leo/rails_small.webp",
-          medium: "images/work/leo/rails_medium.webp",
-          large: "images/work/leo/rails.webp",
+          small: "/images/work/leo/rails_small.webp",
+          medium: "/images/work/leo/rails_medium.webp",
+          large: "/images/work/leo/rails.webp",
         },
       },
 
@@ -142,9 +142,9 @@ const db = {
         title: "XAMS",
         skills: ["React", "Redux", "Material Design"],
         screenshot: {
-          small: "images/work/coelrind/xams-player2_small.png",
-          medium: "images/work/coelrind/xams-player2_medium.png",
-          large: "images/work/coelrind/xams-player2.png",
+          small: "/images/work/coelrind/xams-player2_small.png",
+          medium: "/images/work/coelrind/xams-player2_medium.png",
+          large: "/images/work/coelrind/xams-player2.png",
         },
       },
 
@@ -173,9 +173,9 @@ const db = {
           "Google Maps",
         ],
         screenshot: {
-          small: "images/work/calm/calm_small.png",
-          medium: "images/work/calm/calm_medium.png",
-          large: "images/work/calm/calm.png",
+          small: "/images/work/calm/calm_small.png",
+          medium: "/images/work/calm/calm_medium.png",
+          large: "/images/work/calm/calm.png",
         },
       },
 
@@ -198,9 +198,9 @@ const db = {
         screenshot: "images/work/edible_urban/edible_urban.png",
 
         screenshot: {
-          small: "images/work/edible_urban/edible_urban_small.png",
-          medium: "images/work/edible_urban/edible_urban_medium.png",
-          large: "images/work/edible_urban/edible_urban.png",
+          small: "/images/work/edible_urban/edible_urban_small.png",
+          medium: "/images/work/edible_urban/edible_urban_medium.png",
+          large: "/images/work/edible_urban/edible_urban.png",
         },
       },
     ],
@@ -227,7 +227,13 @@ const db = {
           "2D game coding",
           "C programming",
         ],
-        screenshot: "images/project/penguin/penguin.png",
+
+        screenshot: {
+          small: "/images/project/penguin/penguin.png",
+          medium: "/images/project/penguin/penguin.png",
+          large: "/images/project/penguin/penguin.png",
+        },
+
         link: "https://catplusplus.org.uk/warrior/",
       },
       {
@@ -235,7 +241,13 @@ const db = {
         description:
           "Originally started as a game making kit for use in summer school projects with young people this collection of scripts renders scenes built with 'Tiled' an open source pixel art tile map editor, scenes can be created from any tilemap, with any size, multiple layers, then output with 'save as JavaScript' using these scripts you can directly import the JavaScript map file along with the tiles and the browser will construct the image, the advantage is it can be very large but the image file will only be the size of the tiles file. I used it to make this portfolio!",
         skills: ["JavaScript", "CSS", "HTML"],
-        screenshot: "images/project/pixelart/pixelart.png",
+
+        screenshot: {
+          small: "/images/project/pixelart/pixelart.png",
+          medium: "/images/project/pixelart/pixelart.png",
+          large: "/images/project/pixelart/pixelart.png",
+        },
+
         link: "https://github.com/zz-james/pixel-portfolio",
       },
       {
@@ -243,8 +255,14 @@ const db = {
         description:
           "Morecambe Agora was a collaboration between myself, artist Jessie Holmes and Creative West End, Morecambe. The project was part of an art trail through the many alleyways of Morecambe's west end. At 8 points on the trail you encountered QR codes printed on ceramic tiles and mounted on the wall. Using your mobile, you were linked to a web page which had an embedded augmented reality (AR) sculpture and an audio file. Based on Greek mythology the alleyways become the Labyrinth and you encounter a minataur, a spider, Daedalus and Theseus who narrate your journey.",
         skills: ["HTML", "A-Frame", "WebVR", "PHP", "WebGL"],
-        screenshot: "images/project/agora/agora.png",
-        link: "https://catplusplus.org.uk/warrior/",
+
+        screenshot: {
+          small: "/images/project/agora/agora.png",
+          medium: "/images/project/agora/agora.png",
+          large: "/images/project/agora/agora.png",
+        },
+
+        link: "https://internationaltimes.it/avenues-and-alleyways/",
       },
       {
         title: "The Elastic Project",
@@ -258,7 +276,13 @@ const db = {
           "Python",
           "Bash",
         ],
-        screenshot: "images/project/elastic/elastic1.png",
+
+        screenshot: {
+          small: "/images/project/elastic/elastic1.png",
+          medium: "/images/project/elastic/elastic1.png",
+          large: "/images/project/elastic/elastic1.png",
+        },
+
         link: "http://www.elasticsystem.net/WWWMuse/About.html",
       },
       {
@@ -266,7 +290,13 @@ const db = {
         description:
           "My MSc. Computer Science was 25% practical. For this I began work on a project that would make it easier for developers of interactive learning material to create web based simulations and games that could be served from LMS software such as Blackboard or Moodle. This involved creating a flexible game engine which I based on the one found in Rudy Rucker's book 'Software Engineering and Computer Games'. I created DOM Sprites and used the transform property to move them over the playing area, I also included the abilit to move the player viewpoint (camera) this involved CSS matrix and some optimised maths. I also included a 'pin' option which you could pin sprite's location to any value that could be observed, and was easily able to use a JS port of Box2D physics engine, enabling learning matierial developers to harness that power with minimal setup.",
         skills: ["JavaScript", "CSS", "HTML"],
-        screenshot: "images/project/smorgasbord/smorgasbord.png",
+
+        screenshot: {
+          small: "/images/project/smorgasbord/smorgasbord.png",
+          medium: "/images/project/smorgasbord/smorgasbord.png",
+          large: "/images/project/smorgasbord/smorgasbord.png",
+        },
+
         link: "https://catplusplus.org.uk/catpsite/smorgasbord/",
       },
       {
@@ -274,7 +304,13 @@ const db = {
         description:
           "Happeninig Histories was an Arts Council of England funded project to create a time capsule of a small residential estate in South East London. Everyone was invited to participate through the tenants and residents association, people who chose to participate came for training in digital photography, photoshop, sound recording, editing, video making in order to create a multimedia story of some element of their lives. Everyone has a story, one resident had been a dancer in Paris in the 1940s and got to Paris from London on her bike! Another showed of an amazing collection of Nigerian printed fabrics, a taxi driver had an amazing collection of old photos he'd taken from his cab, children told stories of what happened in the playground, many residents played musical instruments. The final project was a virtual estate which you could walk around and call in at people's houses, it exists as a CD-Rom in the British Library. ",
         skills: ["Adobe Director", "Lingo"],
-        screenshot: "images/project/happening/hh.png",
+
+        screenshot: {
+          small: "/images/project/happening/hh.png",
+          medium: "/images/project/happening/hh.png",
+          large: "/images/project/happening/hh.png",
+        },
+
         link: "https://catplusplus.org.uk/catpsite/hh/",
       },
     ],
@@ -335,7 +371,7 @@ const db = {
     content: [
       `
         <p>Hello. My name is James Smith, this is what I look like:<p>
-        <img src="images/about/james2.png" width="50%"/>
+        <img src="/images/about/james2.png" width="50%"/>
         <p>Dont be fooled, this palm tree is actually in Manchester.</p>
         <p>I need to work on this part of the site!!<br />
         Things I like<br /><br />
