@@ -34,7 +34,11 @@ const db = {
         role: ["Front-End", "Lead", "Developer"],
         title: "Coelrind Ltd",
         skills: ["React", "Typescript", "MUI components", "Zustand"],
-        screenshot: "images/work/coelrind/xams.png",
+        screenshot: {
+          small: "images/work/coelrind/xams_small.png",
+          medium: "images/work/coelrind/xams_medium.png",
+          large: "images/work/coelrind/xams.png",
+        },
         contract: "full time",
       },
       {
@@ -59,7 +63,11 @@ const db = {
           "Flask",
           "Cypress",
         ],
-        screenshot: "images/work/oxford/patient_safety.png",
+        screenshot: {
+          small: "images/work/oxford/patient_safety_small.png",
+          medium: "images/work/oxford/patient_safety_medium.png",
+          large: "images/work/oxford/patient_safety.png",
+        },
         contract: "fixed term",
       },
       {
@@ -95,6 +103,13 @@ const db = {
           "Jira",
         ],
         screenshot: "images/work/pi-top/further.png",
+
+        screenshot: {
+          small: "images/work/pi-top/further_small.png",
+          medium: "images/work/pi-top/further_medium.png",
+          large: "images/work/pi-top/further.png",
+        },
+
         link: "https://further.pi-top.com/",
         contract: "full time",
       },
@@ -109,7 +124,11 @@ const db = {
         role: ["Front-End", "Developer"],
         title: "Learning Technologies Group UK Ltd.",
         skills: ["React", "Redux", "Sass", "Scorm"],
-        screenshot: "images/work/leo/rails.webp",
+        screenshot: {
+          small: "images/work/leo/rails_small.webp",
+          medium: "images/work/leo/rails_medium.webp",
+          large: "images/work/leo/rails.webp",
+        },
       },
 
       {
@@ -122,7 +141,11 @@ const db = {
         role: ["UI Design", "Front-End", "Developer"],
         title: "XAMS",
         skills: ["React", "Redux", "Material Design"],
-        screenshot: "images/work/coelrind/xams-player2.png",
+        screenshot: {
+          small: "images/work/coelrind/xams-player2_small.png",
+          medium: "images/work/coelrind/xams-player2_medium.png",
+          large: "images/work/coelrind/xams-player2.png",
+        },
       },
 
       {
@@ -149,7 +172,11 @@ const db = {
           "JavaScript",
           "Google Maps",
         ],
-        screenshot: "images/work/calm/calm.png",
+        screenshot: {
+          small: "images/work/calm/calm_small.png",
+          medium: "images/work/calm/calm_medium.png",
+          large: "images/work/calm/calm.png",
+        },
       },
 
       {
@@ -169,6 +196,12 @@ const db = {
           "Data Visualisation",
         ],
         screenshot: "images/work/edible_urban/edible_urban.png",
+
+        screenshot: {
+          small: "images/work/edible_urban/edible_urban_small.png",
+          medium: "images/work/edible_urban/edible_urban_medium.png",
+          large: "images/work/edible_urban/edible_urban.png",
+        },
       },
     ],
   },

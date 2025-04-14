@@ -535,7 +535,7 @@ c-ontent > #content #card_list {
   overflow-x: clip;
   overflow-y: scroll;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 30%));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 32%));
   grid-gap: 1rem;
 }
 
@@ -557,30 +557,88 @@ c-ontent > #content #card_list .card_wrapper .card {
 }
 c-ontent > #content #card_list .card_wrapper .card .card_switch_click_target {
   position: absolute;
-
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
 }
-c-ontent > #content #card_list .card_wrapper .card img {
+/* c-ontent > #content #card_list .card_wrapper .card img {
+} */
+
+c-ontent > #content #card_list .card_wrapper .card .picture {
+  container: picture / inline-size;
+  width: 100%;
+  display: inline-flex;
+}
+c-ontent > #content #card_list .card_wrapper .card .picture img {
+  display: none;
+  height: auto;
+  width: 100%;
   margin-top: 2px;
   border: 1px solid #ddd;
 }
+
+@container picture (0 < width <= 250px) {
+  c-ontent > #content #card_list .card_wrapper .card .picture img.small_image {
+    display: initial;
+  }
+}
+@container picture (250px < width <= 500px) {
+  c-ontent > #content #card_list .card_wrapper .card .picture img.medium_image {
+    display: initial;
+  }
+}
+@container picture (500px < width) {
+  c-ontent > #content #card_list .card_wrapper .card .picture img.large_image {
+    display: initial;
+  }
+}
+
 c-ontent > #content #card_list .card_wrapper .card .card_description {
   display: none;
 }
 c-ontent > #content #card_list .card_wrapper .card .card_skills {
-  display: none;
+  /* display: none; */
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding: 0;
+  padding-inline-start: 16px;
+  max-height: 42px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+c-ontent > #content #card_list .card_wrapper .card .card_skills a {
+  /* display: none; */
+  /* list-style-type: none; */
+  text-decoration: none;
+  pointer-events: none;
+  display: block;
+  margin-right: 25px;
+  margin-left: -5px;
+}
+
+c-ontent > #content #card_list .card_wrapper .card .card_skills li {
+  float: left;
 }
 c-ontent > #content #card_list .card_wrapper .card .card_dates {
   font-size: 10px;
+}
+c-ontent > #content #card_list .card_wrapper .card .card_role {
+  font-weight: bolder;
+  max-height: 2em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 c-ontent > #content #card_list .card_wrapper .card .card_title {
   display: block;
   max-width: calc(100% - 10px);
   line-height: 1.5em;
   padding: 2px 4px;
+  font-weight: bold;
 }
 c-ontent > #content #card_list .card_wrapper .card .card_link {
   overflow-x: clip;

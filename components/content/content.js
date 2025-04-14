@@ -195,9 +195,14 @@ class Content extends HTMLElement {
     title.innerHTML = card.title;
 
     /* do image */
-    const imagescr = cardNode.querySelector("#card_image");
-    imagescr.removeAttribute("id");
-    imagescr.src = card.screenshot;
+    const smallImage = cardNode.querySelector(".small_image");
+    smallImage.src = card.screenshot.small;
+
+    const mediumImage = cardNode.querySelector(".medium_image");
+    mediumImage.src = card.screenshot.medium;
+
+    const largeImage = cardNode.querySelector(".large_image");
+    largeImage.src = card.screenshot.large;
 
     /* do description */
     const description = cardNode.querySelector("#card_description");
@@ -253,7 +258,9 @@ class Content extends HTMLElement {
       }
     });
     const label = cardNode.querySelector("#card_switch_label");
-    label.htmlFor = `checkbox_${id}`;
+    if (label) {
+      label.htmlFor = `checkbox_${id}`;
+    }
     return cardNode;
   }
 

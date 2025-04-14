@@ -17,8 +17,17 @@
   </head>
   <body>
     <a
-      class="button"
-      style="position: absolute; top: 5px; right: 5px; z-index: 100"
+      class="blue_button button_unstyled"
+      style="
+        position: absolute;
+        top: 15px;
+        right: 5px;
+        z-index: 100;
+        border-width: 6px;
+        border-image-slice: 8 fill;
+        color: white;
+        padding: 0 5px;
+      "
       href="/alternative/index.html"
     >
       <span class="sr-only"
@@ -355,8 +364,14 @@
             <div class="card_switch_click_target"></div>
           </label>
           <div id="card_dates" class="card_dates"></div>
-          <div id="card_role"></div>
-          <img id="card_image" />
+          <div id="card_role" class="card_role"></div>
+
+          <picture class="picture">
+            <img class="small_image" loading="lazy" />
+            <img class="medium_image" loading="lazy" />
+            <img class="large_image" loading="lazy" />
+          </picture>
+
           <span id="card_title" class="card_title"></span>
           <div id="card_description" class="card_description"></div>
           <ul id="card_skills" class="card_skills"></ul>
