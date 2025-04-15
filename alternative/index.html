@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>James Cat Ltd. / James Smith portfolio</title>
     <link rel="stylesheet" href="./alt_style.css" />
     <link rel="stylesheet" href="./tailwind.css" />
@@ -15,7 +16,7 @@
     <!-- <h1>Welcome to my portfolio</h1> -->
     <nav class="container mx-auto hidden md:flex">
       <ul role="menubar">
-        <li role="none"><a href="#Home" role="menuitem">Home</a></li>
+        <!-- <li role="none"><a href="#Home" role="menuitem">Home</a></li> -->
         <li role="none"><a href="#Work" role="menuitem">Work</a></li>
         <li role="none"><a href="#Projects" role="menuitem">Projects</a></li>
         <li role="none"><a href="#Free-lance" role="menuitem">Freelance</a></li>
@@ -43,7 +44,7 @@
         </button>
       </div>
       <ul role="menubar" id="menuItems">
-        <li role="none"><a href="#Home" role="menuitem">Home</a></li>
+        <!-- <li role="none"><a href="#Home" role="menuitem">Home</a></li> -->
         <li role="none"><a href="#Work" role="menuitem">Work</a></li>
         <li role="none"><a href="#Projects" role="menuitem">Projects</a></li>
         <li role="none"><a href="#Free-lance" role="menuitem">Freelance</a></li>
@@ -55,9 +56,17 @@
 
     <script>
       const mobileMenuItems = document.getElementById("menuItems");
-      menuBtn.addEventListener("click", () => {
+
+      const handleMobileClicks = () => {
         const isMenuActive = mobileMenuItems.classList.toggle("active");
         menuBtn.setAttribute("aria-expanded", isMenuActive);
+      };
+
+      menuBtn.addEventListener("click", handleMobileClicks);
+
+      const menuItems = document.querySelectorAll('[role="menuitem"]');
+      menuItems.forEach((menuItem) => {
+        menuItem.addEventListener("click", handleMobileClicks);
       });
     </script>
 
@@ -83,6 +92,14 @@
             "
           >
             <div>
+              One decade of work, maybe your organisation will be next on the
+              list?
+              <br />
+              Select from the <strong>skills</strong> or
+              <strong>roles</strong> drop-downs to filter. <br /><br />
+            </div>
+
+            <div>
               <label for="skills">Skills:</label><br />
               <select class="work_selector" name="skills" id="skills"></select>
             </div>
@@ -107,7 +124,7 @@
               projects, some personal side projects, It's all open source and
               most of it can be seen on my
               <a href="https://github.com/zz-james/" target="pop">github</a>.
-              <br />
+              <br /><br />
             </div>
           </div>
           <div id="card_list"></div>
@@ -129,6 +146,9 @@
           <input id="card_switch" type="checkbox" name="selector" />
 
           <div class="card">
+            <span id="card_title" class="card_title"></span>
+            <div id="card_dates" class="card_dates"></div>
+            <div id="card_role" class="card_role"></div>
             <div>
               <picture class="picture">
                 <img class="small_image" loading="lazy" />
@@ -137,37 +157,35 @@
               </picture>
             </div>
             <div>
-              <div id="card_dates" class="card_dates"></div>
-              <div id="card_role" class="card_role"></div>
-              <span id="card_title" class="card_title"></span>
               <div id="card_description" class="card_description"></div>
             </div>
             <div>
-              <ul id="card_skills" class="card_skills"></ul>
               <div class="card_link"><a id="card_link"></a></div>
+              <ul id="card_skills" class="card_skills points"></ul>
             </div>
           </div>
         </div>
       </template>
-      <!-- <div>
-      <h2>Work History</h2>
-    </div>
 
-    <div>
-      <h2>My projects</h2>
-    </div>
+      <template id="freelance">
+        <label for="modal_content_switch" id="modal_content_switch_label">
+          <div class="close_button button_unstyled"></div>
+        </label>
+        <h4>Freelance.</h4>
+        <div class="work_content_container">
+          <div id="card_list"></div>
+        </div>
+      </template>
 
-    <div>
-      <h2>Hire me as a freelancer</h2>
-    </div>
-
-    <div>
-      <h2>About me</h2>
-    </div>
-
-    <div>
-      <h2>Contact</h2>
-    </div> -->
+      <template id="contact">
+        <label for="modal_content_switch" id="modal_content_switch_label">
+          <div class="close_button button_unstyled"></div>
+        </label>
+        <h4>Contact.</h4>
+        <div class="work_content_container">
+          <div id="card_list"></div>
+        </div>
+      </template>
     </main>
   </body>
 </html>

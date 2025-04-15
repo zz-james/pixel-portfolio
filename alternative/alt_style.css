@@ -18,6 +18,15 @@ ul {
   padding: 0;
 }
 
+ul.points {
+  list-style: disc;
+
+  margin-block-start: 1em;
+
+  padding-inline-start: 40px;
+  unicode-bidi: isolate;
+}
+
 nav.hidden {
   align-items: center;
   justify-content: space-between;
@@ -37,11 +46,13 @@ nav.mobile ul[role="menubar"].active {
 
 nav.mobile ul[role="menubar"] {
   position: absolute;
-  top: 2rem;
-  left: 1rem;
+  top: 3rem;
+  left: 0rem;
   right: 0;
   display: none;
   background-color: white;
+  padding-left: 8px;
+  padding-bottom: 12px;
 }
 nav.mobile ul[role="menubar"] li {
   margin-block: 1rem;
@@ -97,6 +108,10 @@ c-ontent > #content #card_list .card_wrapper .card .picture img {
 
 c-ontent > #content #card_list .card_wrapper .card .card_link {
   word-break: break-all;
+}
+
+c-ontent > #content #card_list .card_wrapper .card .card_title {
+  font-weight: bold;
 }
 
 @container picture (0 < width <= 250px) {

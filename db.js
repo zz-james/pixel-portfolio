@@ -47,7 +47,7 @@ const db = {
           end: new Date("April 2024"),
         },
         description:
-          "Develped dashboards for hospital staff to read and interrogate predictions made by machine learning statistical models using historical NHS data, I designed and implemented a UI and data visualisations including maps, charts and dynamic diagrams. I also co-developed a Flask based Python back-end that consolidates data so patient level, ward level and hospital level data is efficiently available",
+          "<p>Developed dashboards for hospital staff to read and interrogate predictions made by machine learning statistical models using historical NHS data</p> <p>I designed and implemented a UI and data visualisations including maps, charts and dynamic diagrams.</p> <p>I also co-developed a Flask based Python back-end that consolidates data so patient level, ward level and hospital level data is efficiently available</p>",
         role: ["UI Design", "Full-Stack", "Developer"],
         title:
           "Nuffield Department of Medicine / The Big Data Institute, University of Oxford",
@@ -337,7 +337,7 @@ const db = {
       <h5>List of past clients:</h5>
       <p>I've worked for some big name clients (usually through an agency) so I know the importance of protecting brand integrity through high level of quality in my work.</p>
 
-      <ul>
+      <ul class="points">
         <li>Sainsbury's</li>
         <li>Ben & Jerry's Ice Cream</li>
         <li>Channel 4</li>
@@ -349,7 +349,7 @@ const db = {
         <li>Britax</li>
         <li>Union Bank of Switzerland</li>
       </ul>
-
+<br />
       <p>I also consult with community orgs and charities to help them with digital strategy and occasionally fix their broken websites, get in touch if this is you</p>
 
       <a href="#Contact">Contact page</a>
@@ -377,8 +377,8 @@ const db = {
         <p>I need to work on this part of the site!!<br />
       </div>
       <div>
-        Things I like<br /><br />
-        <ul>
+        Things I like<br />
+        <ul class="points">
         <li>Retro computer graphics</li>
         <li><i>any</i> Computer graphics</li>
         <li>Retro computer games</li>
@@ -393,7 +393,7 @@ const db = {
         <li>Stories (reading and writing)</li>
         <li>Probably tons of stuff I forgot right now</li>
         </ul>
-        <p>
+        <p><br />
         <a href="#Contact">Contact me</a> if you want any web work done, I'm pretty good!</p>
       </div>
       `,
@@ -415,19 +415,19 @@ const db = {
         <p>Here's a list of useful links if you want to find out more about me beyond this website<p>
 
         <div style="display: flex; gap: 10px;">
-        <div><img src="images/contact/github.png" height="20px"/></div><div><a target="pop" href="https://github.com/zz-james/">My Github</a></div>
+        <div><img src="/images/contact/github.png" height="20px"/></div><div><a target="pop" href="https://github.com/zz-james/">My Github</a></div>
         </div>
 
           <br />
 
         <div style="display: flex; gap: 10px">
-        <div><img src="images/contact/wordpress.png" height="20px"/></div><div><a target="pop" href="https://zzjames.wordpress.com/">My Wordpress Blog </a> It's full of notes not actual posts but I will tidy it up!</div>
+        <div><img src="/images/contact/wordpress.png" height="20px"/></div><div><a target="pop" href="https://zzjames.wordpress.com/">My Wordpress Blog </a> It's full of notes not actual posts but I will tidy it up!</div>
         </div>
 
         <br />
 
         <div style="display: flex; gap: 10px">
-        <div><img src="images/contact/linkedin.png" height="20px"/></div><div><a target="pop" href="https://www.linkedin.com/in/james-smith-4aa3465/">My LinkedIn Profile </a></div>
+        <div><img src="/images/contact/linkedin.png" height="20px"/></div><div><a target="pop" href="https://www.linkedin.com/in/james-smith-4aa3465/">My LinkedIn Profile </a></div>
         </div>
         <br />
         Or you can send me a message direct!

@@ -9,7 +9,9 @@ export const makeWorkDropDowns = (domNode, params, selectedContent, route) => {
         })
         .flat(1)
     ),
-  ];
+  ].sort();
+
+  console.log(skills);
 
   htmlString += `<option value="all">Show all</option>`;
 
