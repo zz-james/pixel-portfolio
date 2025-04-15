@@ -160,7 +160,7 @@ class Content extends HTMLElement {
         e.preventDefault();
         const status = document.querySelector("#form-status");
         const data = new FormData(e.target);
-        fetch("contact_handler.php", {
+        fetch("/contact_handler.php", {
           method: "POST",
           body: data,
           headers: {
@@ -168,9 +168,11 @@ class Content extends HTMLElement {
           },
         }).then((response) => {
           if (response.ok) {
-            status.innerHTML("Thanks! I look forward to reading this");
+            if (!status) return;
+            status.innerHTML = "Thanks! I look forward to reading this";
             form.reset();
           } else {
+            if (!status) return;
             status.innerHTML = "Oops! There was a problem submitting your form";
           }
         });
