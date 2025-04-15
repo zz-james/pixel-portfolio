@@ -311,7 +311,7 @@ p-rogress .hearts_progress {
 }
 
 p-rogress .hearts_progress > div {
-  font-size: 2.2vw;
+  clamp(16px, 2.2vw, 22px);
   border-radius: 4px;
   background-color: rgba(255, 255, 255, 0.2);
   background-repeat: no-repeat;
@@ -325,12 +325,7 @@ p-rogress .hearts_progress .inner_progress_panel {
   flex-direction: column;
 }
 
-/* not so big on bigger screens */
-@media screen and (min-width: 600px) {
-  p-rogress > .hearts_progress > div {
-    font-size: 1.5vw;
-  }
-}
+
 
 .button_unstyled {
   background-color: transparent;
@@ -405,7 +400,7 @@ t-ile-app > #dialog {
   height: var(--content-window-height);
   background-color: transparent;
   z-index: 20;
-  padding: 15px 20px;
+  padding: 15px 20px 10px 20px;
   border-width: 15px;
   border-image-width: 15px 15px 35px 15px;
   border-image-source: url(images/speech_bubble.png);

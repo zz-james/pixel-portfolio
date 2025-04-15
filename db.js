@@ -220,7 +220,7 @@ const db = {
       {
         title: "Penguin Warrior",
         description:
-          "Penguin Warrior is a game developed in the book 'Programming Linux Games'. The book is a primer on the C library SDL and as I was designing a 2D browser based graphics library I was keen to learn it and apply that to my project, the result is browser based penguin warrior ported from C into TypeScript. Unfortunetely it wasn't made for the mobile age so until I have time to include touch controls this one is only playble on the desktop. You can load it on mobile and see the high frame rate and particle effects, you can be shot at by the enemy ship, you just can't move and shoot back :-). No sound either, I'm working on it!",
+          "Penguin Warrior is the game developed in the book 'Programming Linux Games'. The book is a primer on the C library SDL and as I was designing a 2D browser based graphics library I was keen to learn it and apply that to my project, the result is browser based penguin warrior ported from C into TypeScript. Unfortunately the original game wasn't made for the mobile age so until I have time to include touch controls this one is only playble on the desktop. You can load it on mobile and see the high frame rate and particle effects, you can be shot at by the enemy ship, but if you're on mobile you can't move and shoot back :-) No sound either, I'm working on it!",
         skills: [
           "Typescript",
           "HTML5 Canvas",
@@ -363,7 +363,7 @@ const db = {
     dialogID: "dialog_about",
     player: {
       left: 1200,
-      top: 288,
+      top: 258,
     },
     locations: {
       152: "crate",
