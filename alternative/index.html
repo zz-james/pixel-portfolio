@@ -9,6 +9,9 @@
     <script type="module" src="../components/content/content.js"></script>
     <script>
       console.log(document.location.hash);
+      if (document.location.hash === "" || document.location.hash === "#Home") {
+        document.location.hash = "Work";
+      }
     </script>
   </head>
 
@@ -64,7 +67,7 @@
 
       menuBtn.addEventListener("click", handleMobileClicks);
 
-      const menuItems = document.querySelectorAll('[role="menuitem"]');
+      const menuItems = document.querySelectorAll('.mobile [role="menuitem"]');
       menuItems.forEach((menuItem) => {
         menuItem.addEventListener("click", handleMobileClicks);
       });
