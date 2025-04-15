@@ -202,7 +202,7 @@ class TileApp extends HTMLElement {
         node.style.setProperty("--y", "0");
       });
 
-      let ch = "WellDone".charCodeAt(start % 8);
+      let ch = "Well Done".charCodeAt(start % 8);
       let data = Font5x5[ch];
 
       // loop start
