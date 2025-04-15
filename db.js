@@ -76,7 +76,7 @@ const db = {
           end: new Date("February 2023"),
         },
         description:
-          "pi-top is a Raspberry-Pi based educational project that puts toughened up Raspberry Pis with simple to wire-up connectors into classrooms together with electronics kit, robotics kit and a highly interactive web based learning platform named Further. I was part of the full-stack software engineering team at pi-top that built Further using ReactJS, Apollo GraphQL, Express, MongoDB, Prisma, Loopback, PostGres and also the Further-Link server that runs on the RaspberryPi using Python (Flask). I worked on all aspects of the codebase as well as collaborating on domain model design and technical direction decisions. All code was fully tested with a combination of component and e2e tests. Hosted on Google Cloud using Git, Docker and Jenkins to provide a CI pipeline. Working as a collaborative cross-functional Agile team (at most 5 developers and 1 UX designer) we self-managed using Scrum method organised through Jira, taking feature requests from users, fleshing out features and negotiating timelines with stakeholders such as teachers, resellers, consumers and senior management.",
+          "<p>pi-top is a Raspberry-Pi based educational project that puts toughened up Raspberry Pis with simple to wire-up connectors into classrooms together with electronics kit, robotics kit and a highly interactive web based learning platform named Further.</p> <p>I was part of the full-stack software engineering team at pi-top that built Further using ReactJS, Apollo GraphQL, Express, MongoDB, Prisma, Loopback, PostGres and also the Further-Link server that runs on the RaspberryPi using Python (Flask). </p> <p>I worked on all aspects of the codebase as well as collaborating on domain model design and technical direction decisions. All code was fully tested with a combination of component and e2e tests. Hosted on Google Cloud using Git, Docker and Jenkins to provide a CI pipeline.</p><p> Working as a collaborative cross-functional Agile team (at most 5 developers and 1 UX designer) we self-managed using Scrum method organised through Jira, taking feature requests from users, fleshing out features and negotiating timelines with stakeholders such as teachers, resellers, consumers and senior management.</p>",
         role: ["Full-Stack", "Developer"],
         title: "Pi-Top/CEED LTD",
         skills: [
@@ -229,7 +229,7 @@ const db = {
         ],
 
         screenshot: {
-          small: "/images/project/penguin/penguin.png",
+          small: "/images/project/penguin/penguin_small.png",
           medium: "/images/project/penguin/penguin.png",
           large: "/images/project/penguin/penguin.png",
         },
@@ -243,7 +243,7 @@ const db = {
         skills: ["JavaScript", "CSS", "HTML"],
 
         screenshot: {
-          small: "/images/project/pixelart/pixelart.png",
+          small: "/images/project/pixelart/pixelart_small.png",
           medium: "/images/project/pixelart/pixelart.png",
           large: "/images/project/pixelart/pixelart.png",
         },
@@ -257,7 +257,7 @@ const db = {
         skills: ["HTML", "A-Frame", "WebVR", "PHP", "WebGL"],
 
         screenshot: {
-          small: "/images/project/agora/agora.png",
+          small: "/images/project/agora/agora_small.png",
           medium: "/images/project/agora/agora.png",
           large: "/images/project/agora/agora.png",
         },
@@ -278,7 +278,7 @@ const db = {
         ],
 
         screenshot: {
-          small: "/images/project/elastic/elastic1.png",
+          small: "/images/project/elastic/elastic1_small.png",
           medium: "/images/project/elastic/elastic1.png",
           large: "/images/project/elastic/elastic1.png",
         },
@@ -292,7 +292,7 @@ const db = {
         skills: ["JavaScript", "CSS", "HTML"],
 
         screenshot: {
-          small: "/images/project/smorgasbord/smorgasbord.png",
+          small: "/images/project/smorgasbord/smorgasbord_small.png",
           medium: "/images/project/smorgasbord/smorgasbord.png",
           large: "/images/project/smorgasbord/smorgasbord.png",
         },
@@ -306,7 +306,7 @@ const db = {
         skills: ["Adobe Director", "Lingo"],
 
         screenshot: {
-          small: "/images/project/happening/hh.png",
+          small: "/images/project/happening/hh_small.png",
           medium: "/images/project/happening/hh.png",
           large: "/images/project/happening/hh.png",
         },
@@ -370,10 +370,13 @@ const db = {
     },
     content: [
       `
+      <div>
         <p>Hello. My name is James Smith, this is what I look like:<p>
         <img src="/images/about/james2.png" width="50%"/>
         <p>Dont be fooled, this palm tree is actually in Manchester.</p>
         <p>I need to work on this part of the site!!<br />
+      </div>
+      <div>
         Things I like<br /><br />
         <ul>
         <li>Retro computer graphics</li>
@@ -392,6 +395,7 @@ const db = {
         </ul>
         <p>
         <a href="#Contact">Contact me</a> if you want any web work done, I'm pretty good!</p>
+      </div>
       `,
     ],
   },

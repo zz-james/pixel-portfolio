@@ -523,13 +523,15 @@ c-ontent > #content .button_text {
 c-ontent > #content .work_content_container {
   display: flex;
   flex-direction: column;
-  height: 86%;
+  height: 96%;
   overflow-y: hidden;
+  margin: 0 10px;
 }
 
 c-ontent > #content .work_content_container .scroller {
   margin: 0 10px 0 10px;
   overflow-y: auto;
+  height: 100%;
 }
 
 c-ontent > #content .work_selector {
@@ -542,8 +544,12 @@ c-ontent > #content #card_list {
   overflow-x: clip;
   overflow-y: scroll;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 32%));
+  grid-template-columns: repeat(auto-fit, 250px);
+  grid-template-rows: repeat(auto-fit, 240px);
   grid-gap: 1rem;
+  justify-content: center;
+  height: 100%;
+  margin-top: 15px;
 }
 
 c-ontent > #content #card_list .card_wrapper {
@@ -584,7 +590,7 @@ c-ontent > #content #card_list .card_wrapper .card .picture {
   display: inline-flex;
   position: relative;
   max-width: 70%;
-  margin: 0 15%;
+  margin: 6px 15%;
 }
 c-ontent > #content #card_list .card_wrapper .card .picture img {
   max-width: 800px;
@@ -635,6 +641,7 @@ c-ontent > #content #card_list .card_wrapper .card .card_skills {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
 }
 
 c-ontent > #content #card_list .card_wrapper .card .card_skills .card_tag_link {
@@ -659,6 +666,7 @@ c-ontent > #content #card_list .card_wrapper .card .card_role {
   overflow: hidden;
   display: -webkit-box;
   -webkit-line-clamp: 1;
+
   -webkit-box-orient: vertical;
 }
 c-ontent > #content #card_list .card_wrapper .card .card_title {
@@ -667,6 +675,10 @@ c-ontent > #content #card_list .card_wrapper .card .card_title {
   line-height: 1.5em;
   padding: 2px 4px;
   font-weight: bold;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  max-height: 50px;
+  text-overflow: ellipsis;
 }
 c-ontent > #content #card_list .card_wrapper .card .card_link {
   overflow-x: clip;
@@ -682,6 +694,21 @@ c-ontent > #content #card_list .card_wrapper input:checked ~ .card {
   height: 99dvh;
   margin: 0;
 }
+
+c-ontent
+  > #content
+  #card_list
+  .card_wrapper
+  input:checked
+  ~ .card
+  .card_width_limit {
+  max-width: 1064px;
+  margin: auto;
+  border-left: 1px solid aliceblue;
+  border-right: 1px solid aliceblue;
+  padding: 0 10px;
+}
+
 c-ontent
   > #content
   #card_list
@@ -690,6 +717,7 @@ c-ontent
   ~ .card
   .card_description {
   display: block;
+  margin: 8px;
 }
 c-ontent
   > #content
@@ -733,6 +761,11 @@ c-ontent
   pointer-events: all;
 }
 
+c-ontent > #content #card_list .card_wrapper input:checked ~ .card .card_link {
+  display: block;
+  margin: 8px 4px;
+}
+
 c-ontent
   > #content
   #card_list
@@ -771,6 +804,20 @@ c-ontent > #content #card_list .card_wrapper .card img {
   width: 100%;
   padding-bottom: 8px;
   scroll-snap-stop: normal;
+}
+
+.title_about {
+  margin-left: 16px;
+}
+
+.section_about {
+  width: 100%;
+  max-height: 75vh;
+  display: flex;
+  gap: 8px;
+  justify-content: space-around;
+
+  flex-wrap: wrap;
 }
 
 .section_about img {

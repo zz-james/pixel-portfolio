@@ -140,11 +140,12 @@ class Content extends HTMLElement {
       case "freelance":
       case "about":
       case "contact":
+        contentFrag.querySelector("#card_list").remove();
         const contEl = document.createElement("div");
-
         contEl.innerHTML = this.selectedContent[0];
         contEl.classList.add("scroller");
         contEl.classList.add(`section_${templateID}`);
+        contentFrag.querySelector("h4").classList.add(`title_${templateID}`);
         contentFrag.querySelector(".work_content_container").append(contEl);
 
         break;
