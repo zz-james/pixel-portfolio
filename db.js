@@ -405,7 +405,7 @@ const db = {
     dialogID: "dialog_contact",
     player: {
       left: 1230,
-      top: 890,
+      top: 940,
     },
     locations: {
       1317: "skeli",
