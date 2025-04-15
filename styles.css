@@ -206,7 +206,8 @@ body {
 
 @media screen and (min-width: 600px) {
   #navigation {
-    padding: 8px 12px 8px 12px;
+    /* padding: 8px 12px 8px 12px; */
+    padding: 12px 22px 12px 20px;
   }
 }
 
