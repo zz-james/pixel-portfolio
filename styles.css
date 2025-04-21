@@ -629,16 +629,17 @@ c-ontent > #content #card_list .card_wrapper .card .card_description {
   display: none;
 }
 c-ontent > #content #card_list .card_wrapper .card .card_skills {
-  /* display: none; */
   margin-block-start: 0;
   margin-block-end: 0;
   padding: 0;
   padding-inline-start: 16px;
-  max-height: 42px;
+  max-height: 40px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
 }
 
 c-ontent > #content #card_list .card_wrapper .card .card_skills .card_tag_link {
@@ -652,7 +653,7 @@ c-ontent > #content #card_list .card_wrapper .card .card_skills .card_tag_link {
 }
 
 c-ontent > #content #card_list .card_wrapper .card .card_skills li {
-  float: left;
+  /* float: left; */
 }
 c-ontent > #content #card_list .card_wrapper .card .card_dates {
   font-size: 10px;
@@ -679,6 +680,7 @@ c-ontent > #content #card_list .card_wrapper .card .card_title {
 }
 c-ontent > #content #card_list .card_wrapper .card .card_link {
   overflow-x: clip;
+  display:none;
 }
 
 c-ontent > #content #card_list .card_wrapper input:checked ~ .card {
@@ -690,6 +692,7 @@ c-ontent > #content #card_list .card_wrapper input:checked ~ .card {
   height: 99vh;
   height: 99dvh;
   margin: 0;
+  background-color: lightgrey;
 }
 
 c-ontent
@@ -704,6 +707,7 @@ c-ontent
   border-left: 1px solid aliceblue;
   border-right: 1px solid aliceblue;
   padding: 0 10px;
+  background-color: white;
 }
 
 c-ontent
