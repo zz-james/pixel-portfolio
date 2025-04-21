@@ -187,16 +187,7 @@ class Content extends HTMLElement {
     if (card.dates) {
       const dates = cardNode.querySelector("#card_dates");
       dates.id = "card_dates" + id;
-      dates.innerHTML =
-        card.dates.start.toLocaleDateString("en-us", {
-          year: "numeric",
-          month: "short",
-        }) +
-        " - " +
-        card.dates.end.toLocaleDateString("en-us", {
-          year: "numeric",
-          month: "short",
-        });
+      dates.innerHTML = card.dates.start + " - " + card.dates.end;
     }
     /* do title */
     const title = cardNode.querySelector("#card_title");

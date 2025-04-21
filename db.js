@@ -26,8 +26,8 @@ const db = {
     content: [
       {
         dates: {
-          start: new Date("April 2024"),
-          end: new Date("April 2025"),
+          start: "April 2024",
+          end: "April 2025",
         },
         description:
           "Coelrind develop and operate online e-learning, e-training and e-assessment platforms. I was lead on the reports section of their flagship product XAMS which required creating complex UIs from JSON objects using the MUI components library",
@@ -43,8 +43,8 @@ const db = {
       },
       {
         dates: {
-          start: new Date("March 2023"),
-          end: new Date("April 2024"),
+          start: "March 2023",
+          end: "April 2024",
         },
         description:
           "<p>Developed dashboards for hospital staff to read and interrogate predictions made by machine learning statistical models using historical NHS data</p> <p>I designed and implemented a UI and data visualisations including maps, charts and dynamic diagrams.</p> <p>I also co-developed a Flask based Python back-end that consolidates data so patient level, ward level and hospital level data is efficiently available</p>",
@@ -72,8 +72,8 @@ const db = {
       },
       {
         dates: {
-          start: new Date("October 2019"),
-          end: new Date("February 2023"),
+          start: "October 2019",
+          end: "February 2023",
         },
         description:
           "<p>pi-top is a Raspberry-Pi based educational project that puts toughened up Raspberry Pis with simple to wire-up connectors into classrooms together with electronics kit, robotics kit and a highly interactive web based learning platform named Further.</p> <p>I was part of the full-stack software engineering team at pi-top that built Further using ReactJS, Apollo GraphQL, Express, MongoDB, Prisma, Loopback, PostGres and also the Further-Link server that runs on the RaspberryPi using Python (Flask). </p> <p>I worked on all aspects of the codebase as well as collaborating on domain model design and technical direction decisions. All code was fully tested with a combination of component and e2e tests. Hosted on Google Cloud using Git, Docker and Jenkins to provide a CI pipeline.</p><p> Working as a collaborative cross-functional Agile team (at most 5 developers and 1 UX designer) we self-managed using Scrum method organised through Jira, taking feature requests from users, fleshing out features and negotiating timelines with stakeholders such as teachers, resellers, consumers and senior management.</p>",
@@ -116,8 +116,8 @@ const db = {
 
       {
         dates: {
-          start: new Date("July 2019"),
-          end: new Date("September 2019"),
+          start: "July 2019",
+          end: "September 2019",
         },
         description:
           "Created a web based training game for VISA sales personel, The UI consisted of a virtual underground map with training material available at each stop. The team were struggling with complex state management and I was able to simplify this using an event bus implemented in the Redux middleware. The App was deployed as a SCORM object and delivered through Moodle.",
@@ -133,8 +133,8 @@ const db = {
 
       {
         dates: {
-          start: new Date("March 2017"),
-          end: new Date("March 2019"),
+          start: "March 2017",
+          end: "March 2019",
         },
         description:
           "Coelrind's flagship e-assessment app was undergoing a rewrite from server side rendered .NET based project to a SPA build in React with a .NET JSON API. My role was to design and build the exam player part of the system",
@@ -150,8 +150,8 @@ const db = {
 
       {
         dates: {
-          start: new Date("March 2017"),
-          end: new Date("March 2016"),
+          start: "March 2017",
+          end: "March 2016",
         },
         description:
           "Campaign Against Living Miserably (CALM) are a charity organisation that campaigns for suicide prevention through good mental health with a particular focus on men, their website delivered both health and entertainment information as well as hosting a vital online chat application to connect those in urgent need of support - a requirement of this service was 24/7 uptime and optimal efficient performance due to high loads at peak times",
@@ -181,8 +181,8 @@ const db = {
 
       {
         dates: {
-          start: new Date("February 2016"),
-          end: new Date("June 2015"),
+          start: "February 2016",
+          end: "June 2015",
         },
         description:
           "Edible Urban are an organisation set up to map out potential food growing areas in cities. I worked with them to develop an mobile app which could be used to crowd source data by allowing users to add potential food growing areas in their city to a map",

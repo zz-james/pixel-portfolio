@@ -199,6 +199,7 @@ body {
   margin: auto;
   border-image-source: url(images/panel.png);
   border-image-slice: 1 4 2 4 fill;
+  border-image-width: 1px 1px 1px 1px;
   margin-bottom: 1px;
   padding: 4px;
   max-width: calc(calc(var(--tile-size) * var(--stage-cols)) * 1px);
@@ -403,7 +404,7 @@ t-ile-app > #dialog {
   z-index: 20;
   padding: 15px 20px 10px 20px;
   border-width: 15px;
-  border-image-width: 15px 15px 35px 15px;
+  border-image-width: 15px 15px 35px 10px;
   border-image-source: url(images/speech_bubble.png);
   border-image-slice: 15 15 45 15 fill;
   border-image-repeat: stretch;
@@ -531,7 +532,7 @@ c-ontent > #content .work_content_container .scroller {
 }
 
 c-ontent > #content .work_selector {
-  width: 100%;
+  min-width: 180px;
 }
 
 c-ontent > #content #card_list {
