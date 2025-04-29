@@ -150,8 +150,8 @@ const db = {
 
       {
         dates: {
-          start: "March 2017",
-          end: "March 2016",
+          start: "March 2016",
+          end: "March 2017",
         },
         description:
           "Campaign Against Living Miserably (CALM) are a charity organisation that campaigns for suicide prevention through good mental health with a particular focus on men, their website delivered both health and entertainment information as well as hosting a vital online chat application to connect those in urgent need of support - a requirement of this service was 24/7 uptime and optimal efficient performance due to high loads at peak times",
@@ -217,6 +217,20 @@ const db = {
       551: "tree",
     },
     content: [
+      {
+        title: "Pixi Warrior",
+        description:
+          "I wanted to learn PixiJS so I have made this, a version of <a target='pop' href='https://catplusplus.org.uk/#Projects/0'>Penguin Warrior</a> that I have updated to use PixiJS as a renderer.<br /> The game logic remains mostly unchanged. The display area at the top uses object pooling as it consist of 300 sprites, but the more tricky part was creating the many particles - even though PixiJS has a particle renderer it wasn't up to the job of rendering the many single pixel explosions in a performant way (it required many allocations and deallocations of objects) - To solve this, this version renders pixels directly into an offscreen canvas, using PixiJS' texture.from() and texture.source.update() we copy the pixels back, this does not involve and calls to create new objects and keeps the garbage collection nice and low meaning no stutter.<br /><br /><small>Penguin Warrior is the game developed in the book 'Programming Linux Games'. The book is a primer on the C library SDL and as I was designing a 2D browser based graphics library I was keen to learn it and apply that to my project, the result is browser based penguin warrior ported from C into TypeScript. Unfortunately the original game wasn't made for the mobile age so until I have time to include touch controls this one is only playble on the desktop. You can load it on mobile and see the high frame rate and particle effects, you can be shot at by the enemy ship, but if you're on mobile you can't move and shoot back :-) No sound either, I'm working on it!</small>",
+        skills: ["PixiJS", "Typescript", "HTML5 Canvas", "2D game coding"],
+
+        screenshot: {
+          small: "/images/project/penguin/penguin_small.png",
+          medium: "/images/project/penguin/penguin.png",
+          large: "/images/project/penguin/penguin.png",
+        },
+
+        link: "https://catplusplus.org.uk/warrior/pixi/",
+      },
       {
         title: "Penguin Warrior",
         description:
