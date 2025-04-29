@@ -347,6 +347,15 @@ p-rogress .hearts_progress .inner_progress_panel {
   background-position-x: 16px;
 }
 
+.close_button_lg {
+  background-image: url(images/close_button_on_off_lg.png);
+}
+.close_button_lg:hover,
+.close_button_lg:active {
+  background-position-x: 32px;
+}
+
+
 .blue_button {
   border: 12px solid;
   border-image-source: url(images/blue_button_blank.png);
@@ -504,12 +513,13 @@ c-ontent > #content #modal_content_switch_label {
   display: none;
   margin-left: auto;
   margin-right: 0;
-  height: 16px;
-  width: 16px;
+  height: 32px;
+  width: 32px;
 }
 c-ontent > #content #modal_content_switch_label > div {
-  height: 16px;
-  width: 16px;
+  height: 32px;
+  width: 32px;
+  cursor: pointer;
 }
 
 c-ontent > #content .button_text {
@@ -775,10 +785,10 @@ c-ontent
   input:checked
   ~ .card
   .card_switch_click_target {
-  margin-left: calc(100% - 20px);
-  height: 16px;
-  width: 16px;
-  background-image: url(images/close_button_on_off.png);
+  margin-left: calc(100% - 34px);
+  height: 32px;
+  width: 32px;
+  background-image: url(images/close_button_on_off_lg.png);
 }
 
 c-ontent > #content #card_list .card_wrapper .card:hover {

@@ -11,7 +11,7 @@ export const makeWorkDropDowns = (domNode, params, selectedContent, route) => {
     ),
   ].sort();
 
-  console.log(skills);
+  // console.log(skills);
 
   htmlString += `<option value="all">Show all</option>`;
 
